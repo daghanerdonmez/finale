@@ -15,6 +15,8 @@ class SteinerTree():
     def _check_validity(nodes: list[str], edges: list[tuple[str, str, int]], terminals: list[str]) -> None:
         # check the type of nodes
         # check the contents of nodes
+        if not nodes:
+            raise ValueError("nodes can't be empty")
         if not (
             isinstance(nodes, list) and
             all(isinstance(node, str) for node in nodes)
@@ -23,6 +25,8 @@ class SteinerTree():
         
         
         # check the type and content of edges
+        if not edges:
+            raise ValueError("edges can't be empty")
         if not (
             isinstance(edges, list) and 
             all((
@@ -39,6 +43,8 @@ class SteinerTree():
             raise ValueError("invalid format for: edges")
         
         #check the type and content of terminals:
+        if not terminals:
+            raise ValueError("terminals can't be empty")
         if not (
             isinstance(terminals, list) and
             all((
