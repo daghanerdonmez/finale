@@ -1,5 +1,6 @@
 import dimod
 from SteinerTree import SteinerTree
+from typing import List, Tuple
 
 # Convert a Steiner Tree instance to dimod.BinaryQuadraticModel instance
 # Following the QUBO formulation of: https://arxiv.org/pdf/2603.04089
@@ -139,4 +140,98 @@ def add_H_5(
                     key = (var_name_1, var_name_2)
                     quadratic[key] = quadratic.get(key, 0.0) + constraint_weight
 
+def add_H_6(
+        problem: SteinerTree,
+        linear: dict,
+        quadratic: dict,
+        constraint_weight: float
+) -> float:
+    total_offset = 0.0
+    n = len(problem.nodes)
+    S = n
 
+    for terminal in problem.terminals:
+        coincidence_vars = []
+
+        for other_terminal in problem.terminals:
+            if terminal == other_terminal:
+                continue
+
+            for i in problem.nodes:
+                for s in range(S+1):
+                    var_name_1 = (i, s, terminal)
+                    var_name_2 = (i, s, other_terminal)
+                    z_var = ("h6_z", i, s, terminal, other_terminal)
+                    coincidence_vars.append(z_var)
+
+                    # Enforce z_var = var_name_1 * var_name_2.
+                    linear[z_var] = linear.get(z_var, 0.0) + 3 * constraint_weight
+
+                    key = (var_name_1, var_name_2)
+                    quadratic[key] = quadratic.get(key, 0.0) + constraint_weight
+
+                    key = (var_name_1, z_var)
+                    quadratic[key] = quadratic.get(key, 0.0) - 2 * constraint_weight
+
+                    key = (var_name_2, z_var)
+                    quadratic[key] = quadratic.get(key, 0.0) - 2 * constraint_weight
+
+        if not coincidence_vars:
+            continue
+
+        max_slack_value = len(coincidence_vars) - 1
+        slack_terms = []
+        bit_index = 0
+
+        while (2**bit_index) <= max_slack_value:
+            bit_weight = 2**bit_index
+            slack_var = ("h6_y", terminal, bit_index)
+            slack_terms.append((slack_var, bit_weight))
+            bit_index += 1
+
+        total_offset += _add_squared_sum_equals_one_with_slack(
+            coincidence_vars,
+            slack_terms,
+            linear,
+            quadratic,
+            constraint_weight,
+        )
+
+    return total_offset
+
+
+def _add_squared_sum_equals_one_with_slack(
+        coincidence_vars: list,
+        slack_terms: List[Tuple[object, int]],
+        linear: dict,
+        quadratic: dict,
+        constraint_weight: float,
+) -> float:
+    total_offset = constraint_weight
+
+    for coincidence_var in coincidence_vars:
+        linear[coincidence_var] = linear.get(coincidence_var, 0.0) - constraint_weight
+
+    for slack_var, bit_weight in slack_terms:
+        linear[slack_var] = linear.get(slack_var, 0.0) + constraint_weight * (
+            bit_weight ** 2 + 2 * bit_weight
+        )
+
+    for index, coincidence_var_1 in enumerate(coincidence_vars):
+        for coincidence_var_2 in coincidence_vars[index + 1:]:
+            key = (coincidence_var_1, coincidence_var_2)
+            quadratic[key] = quadratic.get(key, 0.0) + 2 * constraint_weight
+
+    for index, (slack_var_1, bit_weight_1) in enumerate(slack_terms):
+        for slack_var_2, bit_weight_2 in slack_terms[index + 1:]:
+            key = (slack_var_1, slack_var_2)
+            quadratic[key] = quadratic.get(key, 0.0) + (
+                2 * constraint_weight * bit_weight_1 * bit_weight_2
+            )
+
+    for coincidence_var in coincidence_vars:
+        for slack_var, bit_weight in slack_terms:
+            key = (coincidence_var, slack_var)
+            quadratic[key] = quadratic.get(key, 0.0) - 2 * constraint_weight * bit_weight
+
+    return total_offset

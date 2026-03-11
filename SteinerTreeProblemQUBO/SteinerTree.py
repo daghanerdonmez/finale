@@ -1,8 +1,10 @@
+from typing import List, Tuple
+
 LARGE_PENALTY_CONSTANT = 100000
 
 
 class SteinerTree():
-    def __init__(self, nodes: list[str], edges: list[tuple[str, str, int]], terminals: list[str]) -> None:
+    def __init__(self, nodes: List[str], edges: List[Tuple[str, str, int]], terminals: List[str]) -> None:
         # nodes is a list of strings, where each string represents a node
         # edges is a list of string tuples, where each string in a tuple represents a node
         # terminals is a list of strings, it must be a subset of nodes 
@@ -12,7 +14,7 @@ class SteinerTree():
         self.terminals = terminals
 
     @staticmethod
-    def _check_validity(nodes: list[str], edges: list[tuple[str, str, int]], terminals: list[str]) -> None:
+    def _check_validity(nodes: List[str], edges: List[Tuple[str, str, int]], terminals: List[str]) -> None:
         # check the type of nodes
         # check the contents of nodes
         if not nodes:
