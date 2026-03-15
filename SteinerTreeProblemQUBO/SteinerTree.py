@@ -1,6 +1,6 @@
 from typing import List, Tuple
 
-LARGE_PENALTY_CONSTANT = 100000
+LARGE_PENALTY_CONSTANT = 1000
 
 
 class SteinerTree():
