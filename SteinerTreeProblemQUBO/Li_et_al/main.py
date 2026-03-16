@@ -1,6 +1,6 @@
 import dimod
 from SteinerTree import SteinerTree
-from steiner_to_bqm import steiner_to_bqm_Li_et_al
+from SteinerTreeProblemQUBO.Li_et_al.steiner_to_bqm import steiner_to_bqm_Li_et_al
 from tqdm import tqdm
 
 nodes = ["a", "b", "c", "d"]

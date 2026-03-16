@@ -1,5 +1,5 @@
 from SteinerTree import SteinerTree
-from steiner_to_oj_qubo import steiner_to_oj_qubo_Li_et_al
+from SteinerTreeProblemQUBO.Li_et_al.steiner_to_oj_qubo import steiner_to_oj_qubo_Li_et_al
 import openjij as oj
 
 

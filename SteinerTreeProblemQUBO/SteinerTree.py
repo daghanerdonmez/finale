@@ -24,6 +24,8 @@ class SteinerTree():
             all(isinstance(node, str) for node in nodes)
         ):
             raise ValueError("invalid format for: nodes")
+        if not len(nodes) == len(set(nodes)):
+            raise ValueError("nodes cannot have duplicate names")
         
         
         # check the type and content of edges
@@ -43,6 +45,12 @@ class SteinerTree():
             ) for edge in edges)
         ):
             raise ValueError("invalid format for: edges")
+        seen_edges = set()
+        for u, v, _ in edges:
+            key = tuple(sorted((u, v)))
+            if key in seen_edges:
+                raise ValueError("there cannot be duplicate edges")
+            seen_edges.add(key)
         
         #check the type and content of terminals:
         if not terminals:
@@ -55,6 +63,9 @@ class SteinerTree():
             ) for terminal in terminals)
         ):
             raise ValueError("invalid format for: terminals")
+        if not len(terminals) == len(set(terminals)):
+            raise ValueError("terminals cannot have duplicate names")
+        
         
     def check_edge(self, node1: str, node2: str) -> int:
         # check if the nodes are even in the graph
