@@ -3,8 +3,11 @@ import sys
 import dimod
 import openjij as oj
 from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
-from SteinerTreeProblemQUBO.Li_et_al.steiner_to_oj_qubo import steiner_to_oj_qubo_Li_et_al
+from SteinerTreeProblemQUBO.MyFormulization.steiner_to_oj_qubo_daghan import (
+    steiner_to_oj_qubo_daghan,
+)
 from tqdm import tqdm
+
 
 def solve_with_sqa(
     problem: SteinerTree,
@@ -17,7 +20,7 @@ def solve_with_sqa(
     if num_reads < 1:
         raise ValueError("num_reads must be at least 1")
 
-    qubo, offset = steiner_to_oj_qubo_Li_et_al(problem, constraint_weight)
+    qubo, offset = steiner_to_oj_qubo_daghan(problem, constraint_weight)
 
     if show_stats:
         bqm = dimod.BinaryQuadraticModel.from_qubo(qubo, offset=offset)
@@ -54,26 +57,32 @@ def solve_with_sqa(
 
 
 if __name__ == "__main__":
-    #nodes = ["a", "b", "c", "d"]
-    #edges = [("a","b",10),("b","c",10),("a","c",10),("a","d",5),("b","d",5),("c","d",5)]
-    #terminals = ["a","b","c"]
-
     nodes = ["a", "b", "c", "d", "e", "f", "g"]
-    edges = [("a","b",2),("b","c",4),("b","d",1),("a","d",6),("a","e",7),("d","f",1),("d","g",2),("f","g",4),("e","f",3)]
-    terminals = ["a","c","f","g"]
+    edges = [
+        ("a", "b", 2),
+        ("b", "c", 4),
+        ("b", "d", 1),
+        ("a", "d", 6),
+        ("a", "e", 7),
+        ("d", "f", 1),
+        ("d", "g", 2),
+        ("f", "g", 4),
+        ("e", "f", 3),
+    ]
+    terminals = ["a", "c", "f", "g"]
 
     problem = SteinerTree(nodes, edges, terminals)
     print("SteinerTree object created")
     result = solve_with_sqa(
         problem,
         constraint_weight=100,
-        num_reads=1000,
+        num_reads=100000,
         show_stats=True,
         show_progress=True,
     )
 
+    print("best energy:", result["best_energy_with_offset"])
     print("best energy without offset:", result["best_energy_without_offset"])
-    print("best energy with offset:", result["best_energy_with_offset"])
     print("best sample:")
     for var, value in result["best_sample"].items():
         if value == 1:

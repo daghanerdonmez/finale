@@ -3,9 +3,9 @@ from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
 from SteinerTreeProblemQUBO.MyFormulization.steiner_to_bqm_daghan import steiner_to_bqm_daghan
 from tqdm import tqdm
 
-nodes = ["a", "b", "c", "d"]
-edges = [("a","b",10),("b","c",10),("a","c",10),("a","d",5),("b","d",5),("c","d",5)]
-terminals = ["a","b","c"]
+nodes = ["a", "b", "c", "d", "e", "f", "g"]
+edges = [("a","b",2),("b","c",4),("b","d",1),("a","d",6),("a","e",7),("d","f",1),("d","g",2),("f","g",4),("e","f",3)]
+terminals = ["a","c","f","g"]
 
 #nodes = ["a", "b"]
 #edges = [("a","b",100)]
@@ -13,7 +13,7 @@ terminals = ["a","b","c"]
 
 problem = SteinerTree(nodes,edges,terminals)
 print("SteinerTree object created")
-bqm = steiner_to_bqm_daghan(problem, 1000)
+bqm = steiner_to_bqm_daghan(problem, 10000)
 print("Problem converted to BQM")
 print(f"Number of variables {bqm.num_variables}")
 print(f"Number of interactions {bqm.num_interactions}")

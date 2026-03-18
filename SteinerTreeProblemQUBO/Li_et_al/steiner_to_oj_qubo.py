@@ -1,7 +1,6 @@
 import dimod
+from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
 from typing import List, Tuple
-
-from SteinerTree import SteinerTree
 
 
 def steiner_to_oj_qubo_Li_et_al(
