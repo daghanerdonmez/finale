@@ -1,5 +1,5 @@
 import dimod
-from SteinerTree import SteinerTree
+from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
 from typing import List, Tuple
 
 # Convert a Steiner Tree instance to dimod.BinaryQuadraticModel instance

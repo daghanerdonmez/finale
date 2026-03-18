@@ -1,6 +1,6 @@
 import dimod
-from SteinerTree import SteinerTree
-from SteinerTreeProblemQUBO.Li_et_al.steiner_to_bqm import steiner_to_bqm_Li_et_al
+from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
+from SteinerTreeProblemQUBO.MyFormulization.steiner_to_bqm_daghan import steiner_to_bqm_daghan
 from tqdm import tqdm
 
 nodes = ["a", "b", "c", "d"]
@@ -13,7 +13,7 @@ terminals = ["a","b","c"]
 
 problem = SteinerTree(nodes,edges,terminals)
 print("SteinerTree object created")
-bqm = steiner_to_bqm_Li_et_al(problem, 100)
+bqm = steiner_to_bqm_daghan(problem, 1000)
 print("Problem converted to BQM")
 print(f"Number of variables {bqm.num_variables}")
 print(f"Number of interactions {bqm.num_interactions}")
