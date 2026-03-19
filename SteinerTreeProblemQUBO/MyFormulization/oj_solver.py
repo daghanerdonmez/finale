@@ -75,14 +75,14 @@ if __name__ == "__main__":
     print("SteinerTree object created")
     result = solve_with_sqa(
         problem,
-        constraint_weight=100,
-        num_reads=100000,
+        constraint_weight=10,
+        num_reads=10000,
         show_stats=True,
         show_progress=True,
     )
 
     print("best energy:", result["best_energy_with_offset"])
-    print("best energy without offset:", result["best_energy_without_offset"])
+    #print("best energy without offset:", result["best_energy_without_offset"])
     print("best sample:")
     for var, value in result["best_sample"].items():
         if value == 1:

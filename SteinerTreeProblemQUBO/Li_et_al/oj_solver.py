@@ -66,7 +66,7 @@ if __name__ == "__main__":
     print("SteinerTree object created")
     result = solve_with_sqa(
         problem,
-        constraint_weight=100,
+        constraint_weight=50,
         num_reads=1000,
         show_stats=True,
         show_progress=True,
