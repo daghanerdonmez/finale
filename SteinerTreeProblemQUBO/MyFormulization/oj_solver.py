@@ -6,6 +6,7 @@ from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
 from SteinerTreeProblemQUBO.MyFormulization.steiner_to_oj_qubo_daghan import (
     steiner_to_oj_qubo_daghan,
 )
+from SteinerTreeProblemQUBO.random_problem_generator import generate_random_steiner_tree
 from tqdm import tqdm
 
 
@@ -57,26 +58,13 @@ def solve_with_sqa(
 
 
 if __name__ == "__main__":
-    nodes = ["a", "b", "c", "d", "e", "f", "g"]
-    edges = [
-        ("a", "b", 2),
-        ("b", "c", 4),
-        ("b", "d", 1),
-        ("a", "d", 6),
-        ("a", "e", 7),
-        ("d", "f", 1),
-        ("d", "g", 2),
-        ("f", "g", 4),
-        ("e", "f", 3),
-    ]
-    terminals = ["a", "c", "f", "g"]
 
-    problem = SteinerTree(nodes, edges, terminals)
+    problem = generate_random_steiner_tree(10, (10,100), 3, 0.6, 1)
     print("SteinerTree object created")
     result = solve_with_sqa(
         problem,
-        constraint_weight=10,
-        num_reads=10000,
+        constraint_weight=1000,
+        num_reads=50000,
         show_stats=True,
         show_progress=True,
     )
