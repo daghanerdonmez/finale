@@ -34,5 +34,5 @@ def draw_steiner_tree(problem: SteinerTree) -> None:
     plt.axis("off")
     plt.show()
 
-problem = generate_random_steiner_tree(10, (10,100), 3, 0.6, 1)
+problem = generate_random_steiner_tree(10, (10,100), 3, 0.3, 20)
 draw_steiner_tree(problem)

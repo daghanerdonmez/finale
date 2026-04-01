@@ -13,6 +13,7 @@ from tqdm import tqdm
 def solve_with_sqa(
     problem: SteinerTree,
     constraint_weight: float,
+    version = 2,
     num_reads: int = 1000,
     show_stats: bool = False,
     show_progress: bool = False,
@@ -21,7 +22,7 @@ def solve_with_sqa(
     if num_reads < 1:
         raise ValueError("num_reads must be at least 1")
 
-    qubo, offset = steiner_to_oj_qubo_daghan(problem, constraint_weight)
+    qubo, offset = steiner_to_oj_qubo_daghan(problem, constraint_weight, version)
 
     if show_stats:
         bqm = dimod.BinaryQuadraticModel.from_qubo(qubo, offset=offset)
@@ -59,12 +60,13 @@ def solve_with_sqa(
 
 if __name__ == "__main__":
 
-    problem = generate_random_steiner_tree(10, (10,100), 3, 0.6, 1)
+    problem = generate_random_steiner_tree(10, (10,100), 3, 0.3, 20)
     print("SteinerTree object created")
     result = solve_with_sqa(
         problem,
-        constraint_weight=1000,
-        num_reads=50000,
+        constraint_weight=100,
+        version = 2,
+        num_reads=1000,
         show_stats=True,
         show_progress=True,
     )

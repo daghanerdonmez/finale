@@ -87,7 +87,7 @@ def _mst_on_chosen_vertices(problem: SteinerTree, chosen_vertices: Set[str]):
 
 if __name__ == "__main__":
 
-    problem = generate_random_steiner_tree(10, (10,100), 3, 0.6, 1)
+    problem = generate_random_steiner_tree(10, (10,100), 3, 0.3, 20)
     solution = solve(problem)
     print(solution["cost"])
     print(solution["edges"])
