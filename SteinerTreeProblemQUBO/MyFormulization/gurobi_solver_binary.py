@@ -16,6 +16,7 @@ def solve_ilp_binary(problem: SteinerTree):
     B = math.ceil(math.log2(len(problem.terminals)))
 
     model = gp.Model("SteinerTree_BinaryILP")
+    model.setParam("OutputFlag", 0)
 
     # ---- Variables ----
 

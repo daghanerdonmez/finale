@@ -1,7 +1,10 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
-from SteinerTreeProblemQUBO.random_problem_generator import generate_random_steiner_tree
+from SteinerTreeProblemQUBO.random_problem_generator import (
+    generate_geometric_steiner_tree,
+    generate_erdos_renyi_steiner_tree,
+)
 
 
 def draw_steiner_tree(problem: SteinerTree) -> None:
@@ -34,5 +37,19 @@ def draw_steiner_tree(problem: SteinerTree) -> None:
     plt.axis("off")
     plt.show()
 
-problem = generate_random_steiner_tree(10, (10,100), 3, 0.3, 20)
+problem = generate_geometric_steiner_tree(
+                        node_count=8,
+                        terminal_count=3,
+                        max_weight=100,
+                        connectivity="knn",
+                        k=8,
+                        seed=1,
+                    )
+"""problem = generate_erdos_renyi_steiner_tree(
+                        node_count=8,
+                        terminal_count=4,
+                        edge_probability=0.3,
+                        weight_range=(1, 100),
+                        seed=1,
+                    )"""
 draw_steiner_tree(problem)

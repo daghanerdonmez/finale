@@ -1,3 +1,4 @@
 /venv
 /SteinerTreeProblemQUBO/__pycache__
 .DS_Store
+/SteinerTreeProblemQUBO/logs

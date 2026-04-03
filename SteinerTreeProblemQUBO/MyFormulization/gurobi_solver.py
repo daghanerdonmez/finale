@@ -13,6 +13,7 @@ def solve_ilp(problem: SteinerTree):
     M = len(problem.terminals) - 1  # max flow = |K| - 1
 
     model = gp.Model("SteinerTree_ILP")
+    model.setParam("OutputFlag", 0)
 
     # ---- Variables ----
 

@@ -52,6 +52,7 @@ def generate_random_steiner_tree(
 def generate_geometric_steiner_tree(
     node_count: int,
     terminal_count: int = 3,
+    max_weight: int = 100,
     region_size: float = 100.0,
     connectivity: Literal["complete", "knn", "radius"] = "knn",
     k: int = 5,
@@ -180,7 +181,13 @@ def generate_geometric_steiner_tree(
         edge_set.add(best_pair)
         components = _components()
 
-    edges = [(nodes[i], nodes[j], _weight(i, j)) for i, j in sorted(edge_set)]
+    # compute raw weights, then scale so the maximum equals max_weight
+    raw = {(i, j): _weight(i, j) for i, j in edge_set}
+    raw_max = max(raw.values()) if raw else 1
+    edges = [
+        (nodes[i], nodes[j], max(1, round(raw[i, j] * max_weight / raw_max)))
+        for i, j in sorted(edge_set)
+    ]
     terminals = rng.sample(nodes, terminal_count)
     return SteinerTree(nodes, edges, terminals)
 

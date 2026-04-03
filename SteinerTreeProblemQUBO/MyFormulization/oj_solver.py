@@ -6,7 +6,10 @@ from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
 from SteinerTreeProblemQUBO.MyFormulization.steiner_to_oj_qubo_daghan import (
     steiner_to_oj_qubo_daghan,
 )
-from SteinerTreeProblemQUBO.random_problem_generator import generate_random_steiner_tree
+from SteinerTreeProblemQUBO.random_problem_generator import (
+    generate_geometric_steiner_tree,
+    generate_erdos_renyi_steiner_tree,
+)
 from tqdm import tqdm
 
 
@@ -60,7 +63,21 @@ def solve_with_sqa(
 
 if __name__ == "__main__":
 
-    problem = generate_random_steiner_tree(10, (10,100), 3, 0.3, 20)
+    problem = generate_geometric_steiner_tree(
+                        node_count=12,
+                        terminal_count=3,
+                        max_weight=100,
+                        connectivity="knn",
+                        k=8,
+                        seed=1,
+                    )
+    """problem = generate_erdos_renyi_steiner_tree(
+                        node_count=10,
+                        terminal_count=3,
+                        edge_probability=0.1,
+                        weight_range=(1, 100),
+                        seed=1,
+                    )"""
     print("SteinerTree object created")
     result = solve_with_sqa(
         problem,
@@ -69,6 +86,8 @@ if __name__ == "__main__":
         num_reads=1000,
         show_stats=True,
         show_progress=True,
+        num_sweeps = 2000,
+        trotter = 8
     )
 
     print("best energy:", result["best_energy_with_offset"])
