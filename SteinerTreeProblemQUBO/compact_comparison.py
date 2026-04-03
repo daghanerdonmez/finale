@@ -28,7 +28,10 @@ ER_EDGE_PROB_LIST = [0.1, 0.3, 0.6]
 # OJ solver
 CONSTRAINT_WEIGHT = MAX_WEIGHT
 OJ_VERSION = 2
-NUM_READS = 10000
+OJ_BATCH_SIZE = 100
+OJ_MAX_READS = 10000
+OJ_NUM_SWEEPS = 2000
+OJ_TROTTER = 8
 # ────────────────────────────────────────────────────────────────────
 
 
@@ -46,26 +49,39 @@ def _run_one(problem, log):
     t_bin = time.time() - t0
     log.write(f"  Gurobi Binary ILP | cost: {r_bin['cost']:<10} | time: {t_bin:.4f}s\n")
 
-    # --- OJ SQA ---
+    # --- OJ SQA (incremental batches) ---
+    optimal_cost = r_ilp["cost"]
     t0 = time.time()
-    r_oj = solve_with_sqa(
-        problem,
-        constraint_weight=CONSTRAINT_WEIGHT,
-        version=OJ_VERSION,
-        num_reads=NUM_READS,
-        show_stats=False,
-        show_progress=False,
-    )
-    t_oj = time.time() - t0
-    oj_cost = r_oj["best_energy_with_offset"]
-    log.write(f"  OJ SQA            | cost: {oj_cost:<10.1f} | time: {t_oj:.4f}s\n")
+    total_reads = 0
+    best_oj_cost = float("inf")
+    matched_at = None
 
-    # --- Match check ---
-    if r_ilp["cost"] is not None:
-        oj_match = "yes" if abs(r_ilp["cost"] - oj_cost) < 1e-6 else "no"
+    while total_reads < OJ_MAX_READS:
+        r_oj = solve_with_sqa(
+            problem,
+            constraint_weight=CONSTRAINT_WEIGHT,
+            version=OJ_VERSION,
+            num_reads=OJ_BATCH_SIZE,
+            show_stats=False,
+            show_progress=False,
+            num_sweeps=OJ_NUM_SWEEPS,
+            trotter=OJ_TROTTER,
+        )
+        total_reads += OJ_BATCH_SIZE
+        oj_cost = r_oj["best_energy_with_offset"]
+        if oj_cost < best_oj_cost:
+            best_oj_cost = oj_cost
+
+        if optimal_cost is not None and abs(best_oj_cost - optimal_cost) < 1e-6:
+            matched_at = total_reads
+            break
+
+    t_oj = time.time() - t0
+
+    if matched_at is not None:
+        log.write(f"  OJ SQA            | cost: {best_oj_cost:<10.1f} | time: {t_oj:.4f}s | matched at {matched_at} reads\n")
     else:
-        oj_match = "n/a"
-    log.write(f"  OJ matches optimal: {oj_match}\n")
+        log.write(f"  OJ SQA            | cost: {best_oj_cost:<10.1f} | time: {t_oj:.4f}s | no match in {total_reads} reads\n")
     log.flush()
 
 
@@ -78,7 +94,7 @@ def main():
     with open(log_path, "w") as log:
         log.write(f"Steiner Tree Comparison  |  {timestamp}\n")
         log.write(f"node_counts: {NODE_COUNT_LIST}  terminals: {TERMINAL_COUNT}  max_weight: {MAX_WEIGHT}\n")
-        log.write(f"OJ params: constraint_weight={CONSTRAINT_WEIGHT}  version={OJ_VERSION}  num_reads={NUM_READS}\n")
+        log.write(f"OJ params: constraint_weight={CONSTRAINT_WEIGHT}  version={OJ_VERSION}  batch={OJ_BATCH_SIZE}  max_reads={OJ_MAX_READS}  num_sweeps={OJ_NUM_SWEEPS}  trotter={OJ_TROTTER}\n")
         log.write(f"Geometric params: connectivity={GEO_CONNECTIVITY}  k_values={GEO_K_LIST}\n")
         log.write(f"Erdos-Renyi params: edge_probabilities={ER_EDGE_PROB_LIST}\n")
         log.write(f"Seeds: {SEED_START}-{SEED_END}\n")
