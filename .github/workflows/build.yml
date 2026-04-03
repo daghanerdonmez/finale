@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - Dockerfile
-      - requirements.txt
+      - ClusterContainer/Dockerfile
+      - ClusterContainer/requirements.txt
       - .github/workflows/build.yml
 
 env:
@@ -33,7 +33,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ClusterContainer
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
           push: true
           cache-from: type=gha
