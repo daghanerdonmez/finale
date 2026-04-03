@@ -1,4 +1,6 @@
 import sys
+import os
+print(os.getcwd())
 
 import dimod
 import openjij as oj
