@@ -23,10 +23,16 @@ def steiner_to_bqm_daghan(
         offset += add_H_cap(problem, linear, quadratic, constraint_weight)
         add_H_opp(problem, quadratic, constraint_weight)
         offset += add_H_use(problem, linear, quadratic, constraint_weight, constraint_weight)
-    if version == 3:
+    if version == 3: # base model but the capacity constraint is implemented in an alternative way
         add_H_cost(problem, linear)
         offset += add_H_flow(problem, linear, quadratic, constraint_weight)
         offset += add_H_cap_alternative(problem, linear, quadratic, constraint_weight)
+    if version == 4: #version 2 but it is not using the faulty constraint of H_use
+        add_H_cost(problem, linear)
+        offset += add_H_flow(problem, linear, quadratic, constraint_weight)
+        offset += add_H_cap(problem, linear, quadratic, constraint_weight)
+        add_H_opp(problem, quadratic, constraint_weight)
+        #offset += add_H_use(problem, linear, quadratic, constraint_weight, constraint_weight)
 
     return dimod.BinaryQuadraticModel(linear, quadratic, offset, vartype)
 
