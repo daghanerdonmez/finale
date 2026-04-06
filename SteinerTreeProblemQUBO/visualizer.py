@@ -37,19 +37,19 @@ def draw_steiner_tree(problem: SteinerTree) -> None:
     plt.axis("off")
     plt.show()
 
-problem = generate_geometric_steiner_tree(
+"""problem = generate_geometric_steiner_tree(
                         node_count=8,
                         terminal_count=3,
                         max_weight=100,
                         connectivity="knn",
                         k=8,
                         seed=1,
-                    )
-"""problem = generate_erdos_renyi_steiner_tree(
-                        node_count=8,
-                        terminal_count=4,
-                        edge_probability=0.3,
+                    )"""
+problem = generate_erdos_renyi_steiner_tree(
+                        node_count=10,
+                        terminal_count=3,
+                        edge_probability=0.6,
                         weight_range=(1, 100),
                         seed=1,
-                    )"""
+                    )
 draw_steiner_tree(problem)

@@ -1,0 +1,96 @@
+Steiner Tree Comparison  |  20260405_002352
+node_counts: [4, 6, 8, 10, 12]  terminals: 3  max_weight: 100
+OJ params: constraint_weight=100  version=3  batch=100  max_reads=10000  num_sweeps=2000  trotter=8
+Geometric params: connectivity=knn  k_values=[3, 5, 8]
+Erdos-Renyi params: edge_probabilities=[0.1, 0.3, 0.6]
+Seeds: 1-10
+======================================================================
+
+Seed 1 | n=4 | Geometric (knn, k=3)
+  |V|=4  |E|=6  terminals=['v0', 'v1', 'v3']
+  Gurobi ILP        | cost: 124.0      | time: 0.0473s
+  Gurobi Binary ILP | cost: 124.0      | time: 0.0021s
+  OJ SQA            | cost: 124.0      | time: 2.4758s | matched at 100 reads
+
+Seed 1 | n=4 | Geometric (knn, k=5)
+  |V|=4  |E|=6  terminals=['v0', 'v1', 'v3']
+  Gurobi ILP        | cost: 124.0      | time: 0.0038s
+  Gurobi Binary ILP | cost: 124.0      | time: 0.0022s
+  OJ SQA            | cost: 124.0      | time: 1.6404s | matched at 100 reads
+
+Seed 1 | n=4 | Geometric (knn, k=8)
+  |V|=4  |E|=6  terminals=['v0', 'v1', 'v3']
+  Gurobi ILP        | cost: 124.0      | time: 0.0036s
+  Gurobi Binary ILP | cost: 124.0      | time: 0.0021s
+  OJ SQA            | cost: 124.0      | time: 1.4797s | matched at 100 reads
+
+Seed 1 | n=4 | Erdos-Renyi (p=0.1)
+  |V|=4  |E|=3  terminals=['v0', 'v2', 'v1']
+  Gurobi ILP        | cost: 134.0      | time: 0.0007s
+  Gurobi Binary ILP | cost: 134.0      | time: 0.0006s
+  OJ SQA            | cost: 134.0      | time: 1.1236s | matched at 100 reads
+
+Seed 1 | n=4 | Erdos-Renyi (p=0.3)
+  |V|=4  |E|=3  terminals=['v0', 'v1', 'v2']
+  Gurobi ILP        | cost: 40.0       | time: 0.0006s
+  Gurobi Binary ILP | cost: 40.0       | time: 0.0007s
+  OJ SQA            | cost: 40.0       | time: 1.0448s | matched at 100 reads
+
+Seed 1 | n=4 | Erdos-Renyi (p=0.6)
+  |V|=4  |E|=4  terminals=['v3', 'v0', 'v1']
+  Gurobi ILP        | cost: 111.0      | time: 0.0009s
+  Gurobi Binary ILP | cost: 111.0      | time: 0.0018s
+  OJ SQA            | cost: 111.0      | time: 1.2277s | matched at 100 reads
+
+Seed 1 | n=6 | Geometric (knn, k=3)
+  |V|=6  |E|=12  terminals=['v0', 'v3', 'v2']
+  Gurobi ILP        | cost: 108.0      | time: 0.0063s
+  Gurobi Binary ILP | cost: 108.0      | time: 0.0039s
+  OJ SQA            | cost: 108.0      | time: 2.3329s | matched at 100 reads
+
+Seed 1 | n=6 | Geometric (knn, k=5)
+  |V|=6  |E|=15  terminals=['v0', 'v3', 'v2']
+  Gurobi ILP        | cost: 94.0       | time: 0.0051s
+  Gurobi Binary ILP | cost: 94.0       | time: 0.0054s
+  OJ SQA            | cost: 94.0       | time: 122.6805s | matched at 4100 reads
+
+Seed 1 | n=6 | Geometric (knn, k=8)
+  |V|=6  |E|=15  terminals=['v0', 'v3', 'v2']
+  Gurobi ILP        | cost: 94.0       | time: 0.0043s
+  Gurobi Binary ILP | cost: 94.0       | time: 0.0049s
+  OJ SQA            | cost: 94.0       | time: 74.2407s | matched at 2300 reads
+
+Seed 1 | n=6 | Erdos-Renyi (p=0.1)
+  |V|=6  |E|=5  terminals=['v3', 'v1', 'v5']
+  Gurobi ILP        | cost: 6.0        | time: 0.0011s
+  Gurobi Binary ILP | cost: 6.0        | time: 0.0014s
+  OJ SQA            | cost: 6.0        | time: 1.5653s | matched at 100 reads
+
+Seed 1 | n=6 | Erdos-Renyi (p=0.3)
+  |V|=6  |E|=5  terminals=['v0', 'v5', 'v4']
+  Gurobi ILP        | cost: 199.0      | time: 0.0010s
+  Gurobi Binary ILP | cost: 199.0      | time: 0.0010s
+  OJ SQA            | cost: 199.0      | time: 1.5233s | matched at 100 reads
+
+Seed 1 | n=6 | Erdos-Renyi (p=0.6)
+  |V|=6  |E|=9  terminals=['v4', 'v0', 'v3']
+  Gurobi ILP        | cost: 110.0      | time: 0.0029s
+  Gurobi Binary ILP | cost: 110.0      | time: 0.0036s
+  OJ SQA            | cost: 110.0      | time: 69.9962s | matched at 3200 reads
+
+Seed 1 | n=8 | Geometric (knn, k=3)
+  |V|=8  |E|=16  terminals=['v3', 'v4', 'v0']
+  Gurobi ILP        | cost: 200.0      | time: 0.0061s
+  Gurobi Binary ILP | cost: 200.0      | time: 0.0075s
+  OJ SQA            | cost: 200.0      | time: 24.5493s | matched at 800 reads
+
+Seed 1 | n=8 | Geometric (knn, k=5)
+  |V|=8  |E|=23  terminals=['v3', 'v4', 'v0']
+  Gurobi ILP        | cost: 163.0      | time: 0.0068s
+  Gurobi Binary ILP | cost: 163.0      | time: 0.0070s
+  OJ SQA            | cost: 232.0      | time: 427.3393s | no match in 10000 reads
+
+Seed 1 | n=8 | Geometric (knn, k=8)
+  |V|=8  |E|=28  terminals=['v3', 'v4', 'v0']
+  Gurobi ILP        | cost: 127.0      | time: 0.0091s
+  Gurobi Binary ILP | cost: 127.0      | time: 0.0084s

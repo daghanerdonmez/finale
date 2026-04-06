@@ -65,26 +65,26 @@ def solve_with_sqa(
 
 if __name__ == "__main__":
 
-    problem = generate_geometric_steiner_tree(
+    """problem = generate_geometric_steiner_tree(
                         node_count=12,
                         terminal_count=3,
                         max_weight=100,
                         connectivity="knn",
                         k=8,
                         seed=1,
-                    )
-    """problem = generate_erdos_renyi_steiner_tree(
+                    )"""
+    problem = generate_erdos_renyi_steiner_tree(
                         node_count=10,
                         terminal_count=3,
-                        edge_probability=0.1,
+                        edge_probability=0.6,
                         weight_range=(1, 100),
                         seed=1,
-                    )"""
+                    )
     print("SteinerTree object created")
     result = solve_with_sqa(
         problem,
         constraint_weight=100,
-        version = 2,
+        version = 1,
         num_reads=1000,
         show_stats=True,
         show_progress=True,

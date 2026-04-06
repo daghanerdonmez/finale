@@ -13,12 +13,20 @@ def steiner_to_bqm_daghan(
     vartype = dimod.BINARY
     offset = 0.0
 
-    add_H_cost(problem, linear)
-    offset += add_H_flow(problem, linear, quadratic, constraint_weight)
-    offset += add_H_cap(problem, linear, quadratic, constraint_weight)
-    if version >= 2:
+    if version == 1: #base model
+        add_H_cost(problem, linear)
+        offset += add_H_flow(problem, linear, quadratic, constraint_weight)
+        offset += add_H_cap(problem, linear, quadratic, constraint_weight)
+    if version == 2: #additional constraints
+        add_H_cost(problem, linear)
+        offset += add_H_flow(problem, linear, quadratic, constraint_weight)
+        offset += add_H_cap(problem, linear, quadratic, constraint_weight)
         add_H_opp(problem, quadratic, constraint_weight)
         offset += add_H_use(problem, linear, quadratic, constraint_weight, constraint_weight)
+    if version == 3:
+        add_H_cost(problem, linear)
+        offset += add_H_flow(problem, linear, quadratic, constraint_weight)
+        offset += add_H_cap_alternative(problem, linear, quadratic, constraint_weight)
 
     return dimod.BinaryQuadraticModel(linear, quadratic, offset, vartype)
 
@@ -122,6 +130,44 @@ def add_H_cap(
         )
 
     return offset
+
+#performs poorly compared to the initial version
+def add_H_cap_alternative(
+        problem: SteinerTree,
+        linear: dict,
+        quadratic: dict,
+        constraint_weight: float
+) -> float:
+    B = math.ceil(math.log2(len(problem.terminals)))
+    offset = 0.0
+
+    for a, b, _ in problem.edges:
+        x_var = ("x", a, b)
+
+        # (f_uv + f_vu)(1 - x_e)
+        # = (sum bits of f_uv + sum bits of f_vu)
+        #   - x_e(sum bits of f_uv + sum bits of f_vu)
+
+        for bit in range(B):
+            coeff = 2 ** bit
+
+            z_uv = ("z", a, b, bit)
+            z_vu = ("z", b, a, bit)
+
+            # + f_uv + f_vu
+            linear[z_uv] = linear.get(z_uv, 0.0) + constraint_weight * coeff
+            linear[z_vu] = linear.get(z_vu, 0.0) + constraint_weight * coeff
+
+            # - x_e f_uv
+            key1 = tuple(sorted((x_var, z_uv)))
+            quadratic[key1] = quadratic.get(key1, 0.0) - constraint_weight * coeff
+
+            # - x_e f_vu
+            key2 = tuple(sorted((x_var, z_vu)))
+            quadratic[key2] = quadratic.get(key2, 0.0) - constraint_weight * coeff
+
+    return offset
+        
 
 
 def squared_linear_expression(
