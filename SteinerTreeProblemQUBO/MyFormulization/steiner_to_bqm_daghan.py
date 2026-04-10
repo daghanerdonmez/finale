@@ -38,6 +38,12 @@ def steiner_to_bqm_daghan(
         offset += add_H_flow(problem, linear, quadratic, constraint_weight)
         offset += add_H_cap(problem, linear, quadratic, 2*constraint_weight)
         add_H_opp(problem, quadratic, constraint_weight)
+    if version == 6: #additional constraints
+        add_H_cost(problem, linear)
+        offset += add_H_flow(problem, linear, quadratic, constraint_weight)
+        offset += add_H_cap(problem, linear, quadratic, constraint_weight)
+        add_H_opp(problem, quadratic, constraint_weight)
+        offset += add_H_use_correct_version(problem, linear, quadratic, constraint_weight)
     return dimod.BinaryQuadraticModel(linear, quadratic, offset, vartype)
 
 
@@ -267,5 +273,47 @@ def add_H_use(
 
         key = tuple(sorted((x_var, y_var)))
         quadratic[key] = quadratic.get(key, 0.0) - constraint_weight_2
+
+    return offset
+
+def add_H_use_correct_version(
+        problem: SteinerTree,
+        linear: dict,
+        quadratic: dict,
+        constraint_weight_1: float,
+) -> float:
+    B = math.ceil(math.log2(len(problem.terminals)))
+    offset = 0.0
+
+    for a, b, _ in problem.edges:
+        expr = {}
+
+        # f_uv
+        for bit in range(B):
+            var_name = ("z", a, b, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        # f_vu
+        for bit in range(B):
+            var_name = ("z", b, a, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        # -x_e
+        x_var = ("x", a, b)
+        expr[x_var] = expr.get(x_var, 0.0) - 1.0
+
+        # -t_e   where t_e is the slack for x_e <= f_uv + f_vu
+        # so F_e - x_e - t_e = 0
+        for bit in range(B):
+            var_name = ("t", a, b, bit)
+            expr[var_name] = expr.get(var_name, 0.0) - (2 ** bit)
+
+        offset += squared_linear_expression(
+            expr=expr,
+            constant=0.0,
+            linear=linear,
+            quadratic=quadratic,
+            constraint_weight=constraint_weight_1
+        )
 
     return offset

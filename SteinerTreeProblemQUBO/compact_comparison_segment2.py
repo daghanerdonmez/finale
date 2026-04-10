@@ -46,7 +46,7 @@ OJ_CONFIGS = [
     #("v1_tuned",   1, 4000, 16),
     ("v2_tuned",   2, 4000, 16),
     ("v4_tuned",   4, 4000, 16),
-    ("v5_tuned",   5, 4000, 16),
+    ("v6_tuned",   6, 4000, 16),
     #("v1_default", 1, None, None),
     #("v2_default", 2, None, None),
     #("v4_default", 4, None, None),
