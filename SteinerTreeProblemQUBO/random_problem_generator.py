@@ -127,6 +127,7 @@ def generate_geometric_steiner_tree(
                 edge_set.add((i, j))
 
     elif connectivity == "knn":
+        k = min(k, node_count - 1)  # can't have more neighbors than other nodes
         for i in range(node_count):
             dists = sorted(range(node_count), key=lambda j: _dist(i, j))
             for j in dists[1: k + 1]:

@@ -18,13 +18,13 @@ from SteinerTreeProblemQUBO.MyFormulization.oj_solver import solve_with_sqa
 SEED_START = 1
 SEED_END = 10
 
-NODE_COUNT_LIST = [4, 6, 8, 10, 12]
-TERMINAL_COUNT = 3
+NODE_COUNT_LIST = [8, 14, 20]
+TERMINAL_COUNT = 6
 MAX_WEIGHT = 100
 
 # Geometric generator
 GEO_CONNECTIVITY = "knn"
-GEO_K_LIST = [3, 5, 8]
+GEO_K_LIST = [5, 8, 12]
 
 # Erdos-Renyi generator
 ER_EDGE_PROB_LIST = [0.1, 0.3, 0.6]
