@@ -33,7 +33,11 @@ def steiner_to_bqm_daghan(
         offset += add_H_cap(problem, linear, quadratic, constraint_weight)
         add_H_opp(problem, quadratic, constraint_weight)
         #offset += add_H_use(problem, linear, quadratic, constraint_weight, constraint_weight)
-
+    if version == 5:
+        add_H_cost(problem, linear)
+        offset += add_H_flow(problem, linear, quadratic, constraint_weight)
+        offset += add_H_cap(problem, linear, quadratic, 2*constraint_weight)
+        add_H_opp(problem, quadratic, constraint_weight)
     return dimod.BinaryQuadraticModel(linear, quadratic, offset, vartype)
 
 
