@@ -73,7 +73,7 @@ def _load_gurobi_results():
 
 
 def _run_oj(problem, optimal_cost, label, version, num_sweeps, trotter, log):
-    """Run OJ SQA in batches, stop early if it matches optimal."""
+    """Run OJ SQA in batches, stop early if it matches or beats optimal."""
     t0 = time.time()
     total_reads = 0
     best_oj_cost = float("inf")
@@ -100,7 +100,7 @@ def _run_oj(problem, optimal_cost, label, version, num_sweeps, trotter, log):
         if oj_cost < best_oj_cost:
             best_oj_cost = oj_cost
 
-        if optimal_cost is not None and abs(best_oj_cost - optimal_cost) < 1e-6:
+        if optimal_cost is not None and best_oj_cost <= optimal_cost + 1e-6:
             matched_at = total_reads
             break
 
@@ -108,7 +108,13 @@ def _run_oj(problem, optimal_cost, label, version, num_sweeps, trotter, log):
 
     sweep_str = str(num_sweeps) if num_sweeps is not None else "default"
     trot_str = str(trotter) if trotter is not None else "default"
-    match_str = f"matched at {matched_at} reads" if matched_at else f"no match in {total_reads} reads"
+    if matched_at:
+        if best_oj_cost < optimal_cost - 1e-6:
+            match_str = f"BUGGY: cost < optimal ({best_oj_cost:.1f} < {optimal_cost}) at {matched_at} reads"
+        else:
+            match_str = f"matched at {matched_at} reads"
+    else:
+        match_str = f"no match in {total_reads} reads"
     log.write(f"  OJ {label:<14s} | cost: {best_oj_cost:<10.1f} | time: {t_oj:.4f}s | sweeps={sweep_str} trotter={trot_str} | {match_str}\n")
 
 
