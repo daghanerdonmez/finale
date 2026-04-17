@@ -91,7 +91,7 @@ def _run_qubo_with_first_hit(problem, optimal_cost):
             num_sweeps=SQA_NUM_SWEEPS,
             trotter=SQA_TROTTER,
         )
-        cost = r_oj["best_energy_with_offset"]
+        cost = float(r_oj["best_energy_with_offset"])
         if cost < best_cost:
             best_cost = cost
         trial_costs.append(best_cost)
@@ -110,7 +110,7 @@ def _run_qubo_with_first_hit(problem, optimal_cost):
     # Flag possible bugs: BQM energy below the ILP optimum means the
     # penalty landscape admits a cheaper feasible-looking solution than
     # the true optimum (or the optimum was wrong).  Worth surfacing.
-    buggy = (
+    buggy = bool(
         optimal_cost is not None
         and best_cost < optimal_cost - 1e-6
     )
