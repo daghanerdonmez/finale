@@ -44,6 +44,10 @@ BQM_VERSION = 6
 CONSTRAINT_WEIGHT = 3 * MAX_WEIGHT
 NUM_TRIALS = 10                # number of independent trials per instance
 NUM_READS_PER_TRIAL = 100      # reads per trial (10 x 100 = 1000 total)
+STOP_ON_FIRST_HIT = True       # if True, break out of the trial loop the first
+                               # time the optimum is matched (saves cluster time
+                               # on easy instances; unsolved instances still use
+                               # the full NUM_TRIALS x NUM_READS_PER_TRIAL budget)
 
 # openjij SQA kwargs — match the "tuned" config from compact_comparison_segment2.
 SQA_NUM_SWEEPS = 4000
@@ -103,6 +107,8 @@ def _run_qubo_with_first_hit(problem, optimal_cost):
             and best_cost <= optimal_cost + 1e-6
         ):
             first_hit_reads = cumulative_reads
+            if STOP_ON_FIRST_HIT:
+                break
 
     elapsed = time.time() - t0
     total_reads = NUM_TRIALS * NUM_READS_PER_TRIAL
@@ -150,6 +156,7 @@ def main():
             "num_trials": NUM_TRIALS,
             "num_reads_per_trial": NUM_READS_PER_TRIAL,
             "total_reads_per_instance": NUM_TRIALS * NUM_READS_PER_TRIAL,
+            "stop_on_first_hit": STOP_ON_FIRST_HIT,
             "sqa_num_sweeps": SQA_NUM_SWEEPS,
             "sqa_trotter": SQA_TROTTER,
         },
