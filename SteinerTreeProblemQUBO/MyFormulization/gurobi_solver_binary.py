@@ -32,17 +32,6 @@ def solve_ilp_binary(problem: SteinerTree):
             z[a, b, bit] = model.addVar(vtype=GRB.BINARY, name=f"z_{a}_{b}_{bit}")
             z[b, a, bit] = model.addVar(vtype=GRB.BINARY, name=f"z_{b}_{a}_{bit}")
 
-    # y_e: edge actually used by flow
-    y = {}
-    for a, b, _ in problem.edges:
-        y[a, b] = model.addVar(vtype=GRB.BINARY, name=f"y_{a}_{b}")
-
-    # a_uv: direction-activation binaries
-    a_var = {}
-    for a, b, _ in problem.edges:
-        a_var[a, b] = model.addVar(vtype=GRB.BINARY, name=f"a_{a}_{b}")
-        a_var[b, a] = model.addVar(vtype=GRB.BINARY, name=f"a_{b}_{a}")
-
     model.update()
 
     # Helper: reconstruct flow as linear expression from bits
@@ -70,38 +59,21 @@ def solve_ilp_binary(problem: SteinerTree):
                 inflow += flow_expr(a, b)
 
         if v == root:
-            d_v = M
+            d_v = -M
         elif v in problem.terminals:
-            d_v = -1
+            d_v = 1
         else:
             d_v = 0
 
-        model.addConstr(outflow - inflow == d_v, name=f"flow_{v}")
+        model.addConstr(inflow - outflow == d_v, name=f"flow_{v}")
 
     for a, b, _ in problem.edges:
         f_ab = flow_expr(a, b)
         f_ba = flow_expr(b, a)
 
-        # a_uv + a_vu = x_e
-        model.addConstr(a_var[a, b] + a_var[b, a] == x[a, b],
-                        name=f"dir_{a}_{b}")
-
-        # f_uv <= M * a_uv
-        model.addConstr(f_ab <= M * a_var[a, b],
-                        name=f"fcap_{a}_{b}")
-        model.addConstr(f_ba <= M * a_var[b, a],
-                        name=f"fcap_{b}_{a}")
-
         # f_uv + f_vu <= M * y_e
-        model.addConstr(f_ab + f_ba <= M * y[a, b],
+        model.addConstr(f_ab + f_ba <= M * x[a, b],
                         name=f"use_ub_{a}_{b}")
-        # f_uv + f_vu >= y_e
-        model.addConstr(f_ab + f_ba >= y[a, b],
-                        name=f"use_lb_{a}_{b}")
-
-        # x_e <= y_e
-        model.addConstr(x[a, b] <= y[a, b],
-                        name=f"sel_{a}_{b}")
 
     # ---- Solve ----
     model.optimize()

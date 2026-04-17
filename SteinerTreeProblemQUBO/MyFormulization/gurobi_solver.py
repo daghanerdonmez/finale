@@ -6,8 +6,7 @@ from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
 def solve_ilp(problem: SteinerTree):
     """
     Solve the Steiner Tree problem using the compact ILP formulation
-    with integer flow variables f_uv, edge selection x_e, usage y_e,
-    and direction-activation a_uv.
+    with integer flow variables f_uv, edge selection x_e.
     """
     root = problem.terminals[0]
     M = len(problem.terminals) - 1  # max flow = |K| - 1
@@ -27,17 +26,6 @@ def solve_ilp(problem: SteinerTree):
     for a, b, _ in problem.edges:
         f[a, b] = model.addVar(vtype=GRB.INTEGER, lb=0, ub=M, name=f"f_{a}_{b}")
         f[b, a] = model.addVar(vtype=GRB.INTEGER, lb=0, ub=M, name=f"f_{b}_{a}")
-
-    # y_e: edge actually used by flow
-    y = {}
-    for a, b, _ in problem.edges:
-        y[a, b] = model.addVar(vtype=GRB.BINARY, name=f"y_{a}_{b}")
-
-    # a_uv: direction-activation binaries
-    a_var = {}
-    for a, b, _ in problem.edges:
-        a_var[a, b] = model.addVar(vtype=GRB.BINARY, name=f"a_{a}_{b}")
-        a_var[b, a] = model.addVar(vtype=GRB.BINARY, name=f"a_{b}_{a}")
 
     model.update()
 
@@ -62,35 +50,18 @@ def solve_ilp(problem: SteinerTree):
                 inflow += f[a, b]
 
         if v == root:
-            d_v = M
+            d_v = -M
         elif v in problem.terminals:
-            d_v = -1
+            d_v = 1
         else:
             d_v = 0
 
-        model.addConstr(outflow - inflow == d_v, name=f"flow_{v}")
+        model.addConstr(inflow - outflow == d_v, name=f"flow_{v}")
 
     for a, b, _ in problem.edges:
-        # a_uv + a_vu = x_e
-        model.addConstr(a_var[a, b] + a_var[b, a] == x[a, b],
-                        name=f"dir_{a}_{b}")
-
-        # f_uv <= M * a_uv
-        model.addConstr(f[a, b] <= M * a_var[a, b],
-                        name=f"fcap_{a}_{b}")
-        model.addConstr(f[b, a] <= M * a_var[b, a],
-                        name=f"fcap_{b}_{a}")
-
         # f_uv + f_vu <= M * y_e
-        model.addConstr(f[a, b] + f[b, a] <= M * y[a, b],
+        model.addConstr(f[a, b] + f[b, a] <= M * x[a, b],
                         name=f"use_ub_{a}_{b}")
-        # f_uv + f_vu >= y_e
-        model.addConstr(f[a, b] + f[b, a] >= y[a, b],
-                        name=f"use_lb_{a}_{b}")
-
-        # x_e <= y_e
-        model.addConstr(x[a, b] <= y[a, b],
-                        name=f"sel_{a}_{b}")
 
     # ---- Solve ----
     model.optimize()
