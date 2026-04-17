@@ -41,7 +41,7 @@ MAX_WEIGHT = 100
 
 # QUBO solver configuration (BQM version 6).
 BQM_VERSION = 6
-CONSTRAINT_WEIGHT = MAX_WEIGHT
+CONSTRAINT_WEIGHT = 3 * MAX_WEIGHT
 NUM_TRIALS = 10                # number of independent trials per instance
 NUM_READS_PER_TRIAL = 100      # reads per trial (10 x 100 = 1000 total)
 
