@@ -41,7 +41,7 @@ MAX_WEIGHT = 100
 
 # QUBO solver configuration (BQM version 6).
 BQM_VERSION = 6
-CONSTRAINT_WEIGHT = 2 * MAX_WEIGHT
+CONSTRAINT_WEIGHT = 5 * MAX_WEIGHT
 NUM_TRIALS = 10                # number of independent trials per instance
 NUM_READS_PER_TRIAL = 100      # reads per trial (10 x 100 = 1000 total)
 STOP_ON_FIRST_HIT = False       # if True, break out of the trial loop the first
