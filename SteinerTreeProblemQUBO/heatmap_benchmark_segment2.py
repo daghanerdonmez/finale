@@ -44,7 +44,7 @@ BQM_VERSION = 6
 CONSTRAINT_WEIGHT = 2 * MAX_WEIGHT
 NUM_TRIALS = 10                # number of independent trials per instance
 NUM_READS_PER_TRIAL = 100      # reads per trial (10 x 100 = 1000 total)
-STOP_ON_FIRST_HIT = True       # if True, break out of the trial loop the first
+STOP_ON_FIRST_HIT = False       # if True, break out of the trial loop the first
                                # time the optimum is matched (saves cluster time
                                # on easy instances; unsolved instances still use
                                # the full NUM_TRIALS x NUM_READS_PER_TRIAL budget)
