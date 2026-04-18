@@ -41,7 +41,7 @@ MAX_WEIGHT = 100
 
 # QUBO solver configuration (BQM version 6).
 BQM_VERSION = 6
-CONSTRAINT_WEIGHT = 3 * MAX_WEIGHT
+CONSTRAINT_WEIGHT = 2 * MAX_WEIGHT
 NUM_TRIALS = 10                # number of independent trials per instance
 NUM_READS_PER_TRIAL = 100      # reads per trial (10 x 100 = 1000 total)
 STOP_ON_FIRST_HIT = True       # if True, break out of the trial loop the first
@@ -57,7 +57,7 @@ SQA_TROTTER = 16
 # every instance already recorded under results["instances"] is skipped and
 # new instances are appended to the SAME file (text log gets a fresh file).
 # Leave as None to start a brand-new run.
-RESUME_FROM = "heatmap_qubo_20260417_132413.json"
+RESUME_FROM = None
 # ────────────────────────────────────────────────────────────────────
 
 
