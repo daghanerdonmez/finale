@@ -52,6 +52,12 @@ STOP_ON_FIRST_HIT = True       # if True, break out of the trial loop the first
 # openjij SQA kwargs — match the "tuned" config from compact_comparison_segment2.
 SQA_NUM_SWEEPS = 4000
 SQA_TROTTER = 16
+
+# Set to a path (string) of a partial heatmap_qubo_*.json to resume that run:
+# every instance already recorded under results["instances"] is skipped and
+# new instances are appended to the SAME file (text log gets a fresh file).
+# Leave as None to start a brand-new run.
+RESUME_FROM = "heatmap_qubo_20260417_132413.json"
 # ────────────────────────────────────────────────────────────────────
 
 
@@ -139,30 +145,52 @@ def main():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_dir = os.path.join(os.path.dirname(__file__), "logs")
     os.makedirs(log_dir, exist_ok=True)
-    json_path = os.path.join(log_dir, f"heatmap_qubo_{timestamp}.json")
-    txt_path = os.path.join(log_dir, f"heatmap_qubo_{timestamp}.txt")
 
-    results = {
-        "_meta": {
-            "timestamp": timestamp,
-            "gurobi_source": os.path.basename(gurobi_path),
-            "node_count_list": NODE_COUNT_LIST,
-            "terminal_count_list": TERMINAL_COUNT_LIST,
-            "edge_probability_list": EDGE_PROBABILITY_LIST,
-            "num_instances_per_combo": NUM_INSTANCES_PER_COMBO,
-            "max_weight": MAX_WEIGHT,
-            "bqm_version": BQM_VERSION,
-            "constraint_weight": CONSTRAINT_WEIGHT,
-            "num_trials": NUM_TRIALS,
-            "num_reads_per_trial": NUM_READS_PER_TRIAL,
-            "total_reads_per_instance": NUM_TRIALS * NUM_READS_PER_TRIAL,
-            "stop_on_first_hit": STOP_ON_FIRST_HIT,
-            "sqa_num_sweeps": SQA_NUM_SWEEPS,
-            "sqa_trotter": SQA_TROTTER,
-        },
-        "instances": {},
-        "summary": {},   # (p, n, k) -> {solved_count, success_rate, ...}
+    fresh_meta = {
+        "timestamp": timestamp,
+        "gurobi_source": os.path.basename(gurobi_path),
+        "node_count_list": NODE_COUNT_LIST,
+        "terminal_count_list": TERMINAL_COUNT_LIST,
+        "edge_probability_list": EDGE_PROBABILITY_LIST,
+        "num_instances_per_combo": NUM_INSTANCES_PER_COMBO,
+        "max_weight": MAX_WEIGHT,
+        "bqm_version": BQM_VERSION,
+        "constraint_weight": CONSTRAINT_WEIGHT,
+        "num_trials": NUM_TRIALS,
+        "num_reads_per_trial": NUM_READS_PER_TRIAL,
+        "total_reads_per_instance": NUM_TRIALS * NUM_READS_PER_TRIAL,
+        "stop_on_first_hit": STOP_ON_FIRST_HIT,
+        "sqa_num_sweeps": SQA_NUM_SWEEPS,
+        "sqa_trotter": SQA_TROTTER,
     }
+
+    if RESUME_FROM is not None:
+        resume_path = (
+            RESUME_FROM
+            if os.path.isabs(RESUME_FROM)
+            else os.path.join(log_dir, RESUME_FROM)
+        )
+        if not os.path.exists(resume_path):
+            raise FileNotFoundError(f"RESUME_FROM not found: {resume_path}")
+        with open(resume_path) as f:
+            results = json.load(f)
+        results.setdefault("instances", {})
+        results.setdefault("summary", {})
+        # Append a resume marker but keep the original meta so downstream
+        # tools can identify which instances came from which settings.
+        results["_meta"].setdefault("resumes", []).append(
+            {"resumed_at": timestamp, "with_settings": fresh_meta}
+        )
+        json_path = resume_path                                  # write back to same file
+        txt_path = os.path.join(log_dir, f"heatmap_qubo_resume_{timestamp}.txt")
+        print(
+            f"Resuming {resume_path} — "
+            f"{len(results['instances'])} instances already complete"
+        )
+    else:
+        results = {"_meta": fresh_meta, "instances": {}, "summary": {}}
+        json_path = os.path.join(log_dir, f"heatmap_qubo_{timestamp}.json")
+        txt_path = os.path.join(log_dir, f"heatmap_qubo_{timestamp}.txt")
 
     # Count total instances (only k <= n combos).
     total = 0
@@ -212,6 +240,19 @@ def main():
                                 f"  seed={seed}: MISSING from Gurobi results, "
                                 f"skipping\n"
                             )
+                            continue
+
+                        # ── Resume: reuse already-completed instance ──
+                        existing = results["instances"].get(key)
+                        if existing is not None:
+                            first_hits.append(existing.get("first_hit_reads"))
+                            solved_flags.append(existing.get("solved", False))
+                            log.write(
+                                f"  seed={seed:<2d}  (resumed, already complete) "
+                                f"first_hit={existing.get('first_hit_reads')} "
+                                f"solved={existing.get('solved')}\n"
+                            )
+                            log.flush()
                             continue
 
                         problem = generate_sparsity_steiner_tree(
