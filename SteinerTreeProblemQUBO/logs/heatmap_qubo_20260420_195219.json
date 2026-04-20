@@ -1,0 +1,308 @@
+{
+  "_meta": {
+    "timestamp": "20260420_195219",
+    "gurobi_source": "heatmap_gurobi_20260420_195215.json",
+    "node_count_list": [
+      12
+    ],
+    "terminal_count_list": [
+      3,
+      4
+    ],
+    "edge_probability_list": [
+      0.6
+    ],
+    "num_instances_per_combo": 10,
+    "max_weight": 100,
+    "bqm_version": 6,
+    "constraint_weight": 100,
+    "num_trials": 10,
+    "num_reads_per_trial": 100,
+    "total_reads_per_instance": 1000,
+    "stop_on_first_hit": true,
+    "sqa_num_sweeps": 4000,
+    "sqa_trotter": 16
+  },
+  "instances": {
+    "sparsity|p=0.6|n=12|k=3|seed=0": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 0,
+      "num_nodes": 12,
+      "num_edges": 43,
+      "ilp_cost": 75.0,
+      "first_hit_reads": 100,
+      "solved": true,
+      "best_cost": 75.0,
+      "trial_costs": [
+        75.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 26.9599,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=3|seed=1": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 1,
+      "num_nodes": 12,
+      "num_edges": 42,
+      "ilp_cost": 63.0,
+      "first_hit_reads": 500,
+      "solved": true,
+      "best_cost": 63.0,
+      "trial_costs": [
+        77.0,
+        77.0,
+        77.0,
+        77.0,
+        63.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 127.1032,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=3|seed=2": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 2,
+      "num_nodes": 12,
+      "num_edges": 42,
+      "ilp_cost": 79.0,
+      "first_hit_reads": 100,
+      "solved": true,
+      "best_cost": 79.0,
+      "trial_costs": [
+        79.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 25.9773,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=3|seed=3": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 3,
+      "num_nodes": 12,
+      "num_edges": 45,
+      "ilp_cost": 24.0,
+      "first_hit_reads": 500,
+      "solved": true,
+      "best_cost": 24.0,
+      "trial_costs": [
+        28.0,
+        28.0,
+        28.0,
+        28.0,
+        24.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 142.5041,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=3|seed=4": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 4,
+      "num_nodes": 12,
+      "num_edges": 40,
+      "ilp_cost": 77.0,
+      "first_hit_reads": 100,
+      "solved": true,
+      "best_cost": 77.0,
+      "trial_costs": [
+        77.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 25.084,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=3|seed=5": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 5,
+      "num_nodes": 12,
+      "num_edges": 39,
+      "ilp_cost": 41.0,
+      "first_hit_reads": 100,
+      "solved": true,
+      "best_cost": 41.0,
+      "trial_costs": [
+        41.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 24.532,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=3|seed=6": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 6,
+      "num_nodes": 12,
+      "num_edges": 45,
+      "ilp_cost": 103.0,
+      "first_hit_reads": 600,
+      "solved": true,
+      "best_cost": 103.0,
+      "trial_costs": [
+        114.0,
+        114.0,
+        114.0,
+        114.0,
+        114.0,
+        103.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 171.0387,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=3|seed=7": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 7,
+      "num_nodes": 12,
+      "num_edges": 50,
+      "ilp_cost": 73.0,
+      "first_hit_reads": 100,
+      "solved": true,
+      "best_cost": 73.0,
+      "trial_costs": [
+        73.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 31.3935,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=3|seed=8": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 8,
+      "num_nodes": 12,
+      "num_edges": 40,
+      "ilp_cost": 65.0,
+      "first_hit_reads": 200,
+      "solved": true,
+      "best_cost": 65.0,
+      "trial_costs": [
+        78.0,
+        65.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 51.7941,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=3|seed=9": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "seed": 9,
+      "num_nodes": 12,
+      "num_edges": 44,
+      "ilp_cost": 63.0,
+      "first_hit_reads": null,
+      "solved": false,
+      "best_cost": 68.0,
+      "trial_costs": [
+        81.0,
+        80.0,
+        68.0,
+        68.0,
+        68.0,
+        68.0,
+        68.0,
+        68.0,
+        68.0,
+        68.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 292.9664,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=4|seed=0": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 4,
+      "seed": 0,
+      "num_nodes": 12,
+      "num_edges": 40,
+      "ilp_cost": 115.0,
+      "first_hit_reads": null,
+      "solved": false,
+      "best_cost": 234.0,
+      "trial_costs": [
+        276.0,
+        276.0,
+        269.0,
+        259.0,
+        259.0,
+        259.0,
+        259.0,
+        259.0,
+        234.0,
+        234.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 312.6239,
+      "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=4|seed=1": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 4,
+      "seed": 1,
+      "num_nodes": 12,
+      "num_edges": 51,
+      "ilp_cost": 39.0,
+      "first_hit_reads": null,
+      "solved": false,
+      "best_cost": 244.0,
+      "trial_costs": [
+        346.0,
+        244.0,
+        244.0,
+        244.0,
+        244.0,
+        244.0,
+        244.0,
+        244.0,
+        244.0,
+        244.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 407.7609,
+      "buggy_below_optimal": false
+    }
+  },
+  "summary": {
+    "p=0.6|n=12|k=3": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 3,
+      "num_instances_run": 10,
+      "num_instances_solved": 9,
+      "success_rate": 0.9,
+      "first_hits": [
+        100,
+        500,
+        100,
+        500,
+        100,
+        100,
+        600,
+        100,
+        200,
+        null
+      ],
+      "avg_first_hit_reads_when_solved": 255.55555555555554
+    }
+  }
+}

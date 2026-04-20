@@ -39,6 +39,12 @@ EDGE_PROBABILITY_LIST = [0.6]
 NUM_INSTANCES_PER_COMBO = 10
 MAX_WEIGHT = 100
 
+# If a seed produces a QUBO cost STRICTLY BELOW the ILP optimum, the penalty
+# formulation leaked and that seed is meaningless for benchmarking.  We discard
+# it and try the next seed ID until we collect NUM_INSTANCES_PER_COMBO valid
+# seeds, or give up after MAX_SEED_ATTEMPTS attempts (whichever comes first).
+MAX_SEED_ATTEMPTS = 3 * NUM_INSTANCES_PER_COMBO
+
 # QUBO solver configuration (BQM version 6).
 BQM_VERSION = 6
 CONSTRAINT_WEIGHT = 1 * MAX_WEIGHT
@@ -58,6 +64,23 @@ SQA_TROTTER = 16
 # new instances are appended to the SAME file (text log gets a fresh file).
 # Leave as None to start a brand-new run.
 RESUME_FROM = None
+
+# ── Parallel / sharded mode ─────────────────────────────────────────
+# For distributed runs across machines, set SEED_RANGE to (start, end) INCLUSIVE
+# so this worker processes only seeds in that range.  Every seed in the range
+# runs to completion (no quota, no replacement across shard boundaries) — the
+# merger (merge_heatmap_qubo_shards.py) applies the NUM_INSTANCES_PER_COMBO
+# quota globally after all shards finish.
+#
+# Example worker split for 10 seeds across 3 machines:
+#   machine A: SEED_RANGE = (0, 2)
+#   machine B: SEED_RANGE = (3, 5)
+#   machine C: SEED_RANGE = (6, 9)
+# Add more machines with SEED_RANGE = (10, 14) if discards leave you short.
+#
+# Leave as None for the sequential "collect 10 valid seeds starting at 0"
+# behaviour on a single machine.
+SEED_RANGE = None
 # ────────────────────────────────────────────────────────────────────
 
 
@@ -83,11 +106,15 @@ def _load_gurobi_results():
 def _run_qubo_with_first_hit(problem, optimal_cost):
     """Run NUM_TRIALS x NUM_READS_PER_TRIAL reads, tracking first-hit.
 
-    Returns a dict describing the run.
+    Returns a dict describing the run.  If the best cost ever drops strictly
+    below ``optimal_cost`` (penalty leak), the loop terminates immediately and
+    the returned dict has ``discarded=True``; the caller should drop this
+    seed from the benchmark and try a replacement seed.
     """
     best_cost = float("inf")
     trial_costs = []
     first_hit_reads = None
+    discarded = False
     t0 = time.time()
 
     for trial in range(NUM_TRIALS):
@@ -106,6 +133,13 @@ def _run_qubo_with_first_hit(problem, optimal_cost):
             best_cost = cost
         trial_costs.append(best_cost)
 
+        # (1) QUBO dropped BELOW the ILP optimum -> formulation leak.
+        #     Abandon this seed immediately and flag it for the caller.
+        if optimal_cost is not None and best_cost < optimal_cost - 1e-6:
+            discarded = True
+            break
+
+        # (2) Matched the optimum — record first hit.
         cumulative_reads = (trial + 1) * NUM_READS_PER_TRIAL
         if (
             first_hit_reads is None
@@ -119,14 +153,6 @@ def _run_qubo_with_first_hit(problem, optimal_cost):
     elapsed = time.time() - t0
     total_reads = NUM_TRIALS * NUM_READS_PER_TRIAL
 
-    # Flag possible bugs: BQM energy below the ILP optimum means the
-    # penalty landscape admits a cheaper feasible-looking solution than
-    # the true optimum (or the optimum was wrong).  Worth surfacing.
-    buggy = bool(
-        optimal_cost is not None
-        and best_cost < optimal_cost - 1e-6
-    )
-
     return {
         "first_hit_reads": first_hit_reads,
         "solved": first_hit_reads is not None,
@@ -134,7 +160,8 @@ def _run_qubo_with_first_hit(problem, optimal_cost):
         "trial_costs": trial_costs,
         "total_reads": total_reads,
         "time_seconds": round(elapsed, 4),
-        "buggy_below_optimal": buggy,
+        "buggy_below_optimal": discarded,
+        "discarded": discarded,
     }
 
 
@@ -153,6 +180,8 @@ def main():
         "terminal_count_list": TERMINAL_COUNT_LIST,
         "edge_probability_list": EDGE_PROBABILITY_LIST,
         "num_instances_per_combo": NUM_INSTANCES_PER_COMBO,
+        "max_seed_attempts": MAX_SEED_ATTEMPTS,
+        "seed_range": SEED_RANGE,
         "max_weight": MAX_WEIGHT,
         "bqm_version": BQM_VERSION,
         "constraint_weight": CONSTRAINT_WEIGHT,
@@ -189,10 +218,19 @@ def main():
         )
     else:
         results = {"_meta": fresh_meta, "instances": {}, "summary": {}}
-        json_path = os.path.join(log_dir, f"heatmap_qubo_{timestamp}.json")
-        txt_path = os.path.join(log_dir, f"heatmap_qubo_{timestamp}.txt")
+        shard_suffix = (
+            f"_seeds{SEED_RANGE[0]}-{SEED_RANGE[1]}" if SEED_RANGE is not None else ""
+        )
+        json_path = os.path.join(
+            log_dir, f"heatmap_qubo_{timestamp}{shard_suffix}.json"
+        )
+        txt_path = os.path.join(
+            log_dir, f"heatmap_qubo_{timestamp}{shard_suffix}.txt"
+        )
 
-    # Count total instances (only k <= n combos).
+    # Count target valid instances (only k <= n combos).  With the
+    # seed-replacement policy `done` may exceed `total` if some seeds are
+    # discarded, so this is an *optimistic* denominator.
     total = 0
     for p in EDGE_PROBABILITY_LIST:
         for n in NODE_COUNT_LIST:
@@ -225,34 +263,73 @@ def main():
                     if k > n:
                         continue
 
-                    first_hits = []   # per-instance first-hit read counts (or None)
+                    first_hits = []       # per-valid-seed first-hit read counts (or None)
                     solved_flags = []
+                    used_seed_ids = []    # seeds that counted toward the benchmark
+                    discarded_seed_ids = []  # seeds dropped for being below optimal
+                    missing_seed_ids = []    # seeds with no Gurobi record
                     combo_label = f"p={p} n={n} k={k}"
                     log.write(f"--- {combo_label} ---\n")
 
-                    for seed in range(NUM_INSTANCES_PER_COMBO):
+                    # In SHARDED mode this worker processes every seed in
+                    # SEED_RANGE (no quota, merger enforces quota globally).
+                    # In SEQUENTIAL mode we stop as soon as we've collected
+                    # NUM_INSTANCES_PER_COMBO valid seeds.
+                    if SEED_RANGE is not None:
+                        start_seed, end_seed = SEED_RANGE
+                    else:
+                        start_seed, end_seed = 0, MAX_SEED_ATTEMPTS - 1
+                    valid_completed = 0
+                    seed_attempt = start_seed
+                    while seed_attempt <= end_seed and (
+                        SEED_RANGE is not None
+                        or valid_completed < NUM_INSTANCES_PER_COMBO
+                    ):
                         done += 1
-                        key = _make_key(p, n, k, seed)
-                        print(f"[{done}/{total}] {key}", flush=True)
+                        key = _make_key(p, n, k, seed_attempt)
+                        print(
+                            f"[{done}] {key}  "
+                            f"(valid {valid_completed}/{NUM_INSTANCES_PER_COMBO})",
+                            flush=True,
+                        )
 
                         if key not in gurobi_instances:
                             log.write(
-                                f"  seed={seed}: MISSING from Gurobi results, "
-                                f"skipping\n"
+                                f"  seed={seed_attempt}: MISSING from Gurobi "
+                                f"results, skipping (does not count as valid)\n"
                             )
+                            log.flush()
+                            missing_seed_ids.append(seed_attempt)
+                            seed_attempt += 1
                             continue
 
                         # ── Resume: reuse already-completed instance ──
                         existing = results["instances"].get(key)
                         if existing is not None:
+                            if existing.get("discarded") or existing.get(
+                                "buggy_below_optimal"
+                            ):
+                                log.write(
+                                    f"  seed={seed_attempt:<2d}  (resumed) "
+                                    f"DISCARDED — below optimal, skipping\n"
+                                )
+                                log.flush()
+                                discarded_seed_ids.append(seed_attempt)
+                                seed_attempt += 1
+                                continue
+
                             first_hits.append(existing.get("first_hit_reads"))
                             solved_flags.append(existing.get("solved", False))
+                            used_seed_ids.append(seed_attempt)
                             log.write(
-                                f"  seed={seed:<2d}  (resumed, already complete) "
-                                f"first_hit={existing.get('first_hit_reads')} "
+                                f"  seed={seed_attempt:<2d}  (resumed, already "
+                                f"complete) first_hit="
+                                f"{existing.get('first_hit_reads')} "
                                 f"solved={existing.get('solved')}\n"
                             )
                             log.flush()
+                            valid_completed += 1
+                            seed_attempt += 1
                             continue
 
                         problem = generate_sparsity_steiner_tree(
@@ -260,7 +337,7 @@ def main():
                             terminal_count=k,
                             extra_edge_probability=p,
                             weight_range=(1, MAX_WEIGHT),
-                            seed=seed,
+                            seed=seed_attempt,
                         )
 
                         g = gurobi_instances[key]
@@ -272,27 +349,42 @@ def main():
                             "edge_probability": p,
                             "node_count": n,
                             "terminal_count": k,
-                            "seed": seed,
+                            "seed": seed_attempt,
                             "num_nodes": g["num_nodes"],
                             "num_edges": g["num_edges"],
                             "ilp_cost": opt,
                             **run,
                         }
 
+                        if run["discarded"]:
+                            log.write(
+                                f"  seed={seed_attempt:<2d}  |V|={g['num_nodes']:<3d} "
+                                f"|E|={g['num_edges']:<3d}  opt={opt:<8}  "
+                                f"best={run['best_cost']:<10.1f}  DISCARDED "
+                                f"(QUBO < optimal, penalty leak)  "
+                                f"t={run['time_seconds']:.2f}s\n"
+                            )
+                            log.flush()
+                            discarded_seed_ids.append(seed_attempt)
+                            with open(json_path, "w") as jf:
+                                json.dump(results, jf, indent=2)
+                            seed_attempt += 1
+                            continue
+
                         first_hits.append(run["first_hit_reads"])
                         solved_flags.append(run["solved"])
+                        used_seed_ids.append(seed_attempt)
 
                         hit_str = (
                             f"first hit @ {run['first_hit_reads']} reads"
                             if run["solved"]
                             else f"NOT solved in {run['total_reads']} reads"
                         )
-                        bug_str = "  [BUGGY<opt]" if run["buggy_below_optimal"] else ""
                         log.write(
-                            f"  seed={seed:<2d}  |V|={g['num_nodes']:<3d} "
+                            f"  seed={seed_attempt:<2d}  |V|={g['num_nodes']:<3d} "
                             f"|E|={g['num_edges']:<3d}  opt={opt:<8}  "
                             f"best={run['best_cost']:<10.1f}  {hit_str}  "
-                            f"t={run['time_seconds']:.2f}s{bug_str}\n"
+                            f"t={run['time_seconds']:.2f}s\n"
                         )
                         log.flush()
 
@@ -300,6 +392,20 @@ def main():
                         # survives crashes on the cluster.
                         with open(json_path, "w") as jf:
                             json.dump(results, jf, indent=2)
+
+                        valid_completed += 1
+                        seed_attempt += 1
+
+                    if SEED_RANGE is None and valid_completed < NUM_INSTANCES_PER_COMBO:
+                        log.write(
+                            f"  WARNING: only collected {valid_completed}/"
+                            f"{NUM_INSTANCES_PER_COMBO} valid seeds after "
+                            f"{seed_attempt} attempts "
+                            f"(MAX_SEED_ATTEMPTS={MAX_SEED_ATTEMPTS}).  "
+                            f"Discarded={len(discarded_seed_ids)} "
+                            f"missing_gurobi={len(missing_seed_ids)}\n"
+                        )
+                        log.flush()
 
                     solved_count = sum(solved_flags)
                     n_done = len(solved_flags)
@@ -318,10 +424,18 @@ def main():
                         "success_rate": success_rate,
                         "first_hits": first_hits,
                         "avg_first_hit_reads_when_solved": avg_first_hit,
+                        "used_seed_ids": used_seed_ids,
+                        "discarded_seed_ids": discarded_seed_ids,
+                        "missing_seed_ids": missing_seed_ids,
+                        "seed_attempts": seed_attempt,
+                        "reached_target": valid_completed >= NUM_INSTANCES_PER_COMBO,
                     }
 
                     log.write(
-                        f"  SUMMARY {combo_label}: solved {solved_count}/{n_done}"
+                        f"  SUMMARY {combo_label}: solved {solved_count}/{n_done}  "
+                        f"(discarded {len(discarded_seed_ids)}, "
+                        f"missing {len(missing_seed_ids)}, "
+                        f"seeds used={used_seed_ids})"
                     )
                     if avg_first_hit is not None:
                         log.write(

@@ -1,0 +1,23 @@
+Heatmap QUBO benchmark  |  20260420_195219
+Gurobi source: /Users/daghanerdonmez/Desktop/evvifing/boun/cmpe/491-492/finale/SteinerTreeProblemQUBO/logs/gurobi_results/heatmap_gurobi_20260420_195215.json
+node_counts: [12]  terminals: [3, 4]  edge_probs: [0.6]
+instances/combo: 10  trials: 10 x 100 reads (total 1000)
+BQM version 6  constraint_weight=100  sqa_sweeps=4000  trotter=16
+==========================================================================
+
+--- p=0.6 n=12 k=3 ---
+  seed=0   |V|=12  |E|=43   opt=75.0      best=75.0        first hit @ 100 reads  t=26.96s
+  seed=1   |V|=12  |E|=42   opt=63.0      best=63.0        first hit @ 500 reads  t=127.10s
+  seed=2   |V|=12  |E|=42   opt=79.0      best=79.0        first hit @ 100 reads  t=25.98s
+  seed=3   |V|=12  |E|=45   opt=24.0      best=24.0        first hit @ 500 reads  t=142.50s
+  seed=4   |V|=12  |E|=40   opt=77.0      best=77.0        first hit @ 100 reads  t=25.08s
+  seed=5   |V|=12  |E|=39   opt=41.0      best=41.0        first hit @ 100 reads  t=24.53s
+  seed=6   |V|=12  |E|=45   opt=103.0     best=103.0       first hit @ 600 reads  t=171.04s
+  seed=7   |V|=12  |E|=50   opt=73.0      best=73.0        first hit @ 100 reads  t=31.39s
+  seed=8   |V|=12  |E|=40   opt=65.0      best=65.0        first hit @ 200 reads  t=51.79s
+  seed=9   |V|=12  |E|=44   opt=63.0      best=68.0        NOT solved in 1000 reads  t=292.97s
+  SUMMARY p=0.6 n=12 k=3: solved 9/10   avg first-hit = 255.6 reads (solved only)
+
+--- p=0.6 n=12 k=4 ---
+  seed=0   |V|=12  |E|=40   opt=115.0     best=234.0       NOT solved in 1000 reads  t=312.62s
+  seed=1   |V|=12  |E|=51   opt=39.0      best=244.0       NOT solved in 1000 reads  t=407.76s
