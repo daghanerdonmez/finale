@@ -33,18 +33,18 @@ from SteinerTreeProblemQUBO.MyFormulization.oj_solver import solve_with_sqa
 
 # ── Parameters ──────────────────────────────────────────────────────
 # Must match segment 1 so we regenerate the same instances.
-NODE_COUNT_LIST = [4, 6, 8, 10, 12]
-TERMINAL_COUNT_LIST = [2, 3, 4, 5, 6]
-EDGE_PROBABILITY_LIST = [0.1, 0.3, 0.6]
+NODE_COUNT_LIST = [12]
+TERMINAL_COUNT_LIST = [3, 4]
+EDGE_PROBABILITY_LIST = [0.6]
 NUM_INSTANCES_PER_COMBO = 10
 MAX_WEIGHT = 100
 
 # QUBO solver configuration (BQM version 6).
 BQM_VERSION = 6
-CONSTRAINT_WEIGHT = 5 * MAX_WEIGHT
+CONSTRAINT_WEIGHT = 1 * MAX_WEIGHT
 NUM_TRIALS = 10                # number of independent trials per instance
 NUM_READS_PER_TRIAL = 100      # reads per trial (10 x 100 = 1000 total)
-STOP_ON_FIRST_HIT = False       # if True, break out of the trial loop the first
+STOP_ON_FIRST_HIT = True       # if True, break out of the trial loop the first
                                # time the optimum is matched (saves cluster time
                                # on easy instances; unsolved instances still use
                                # the full NUM_TRIALS x NUM_READS_PER_TRIAL budget)

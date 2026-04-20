@@ -268,6 +268,7 @@ def solve_ilp_li_et_al(problem: SteinerTree, non_edge_penalty: float = 10000.0):
             "objective": model.ObjVal,
             "tree_cost": tree_cost,
             "edges": edge_list,
+            "root": root,
             "used_transitions": used_transitions,
             "x_all": x_all,
             "z_all": z_all,
@@ -281,6 +282,7 @@ def solve_ilp_li_et_al(problem: SteinerTree, non_edge_penalty: float = 10000.0):
         "objective": None,
         "tree_cost": None,
         "edges": [],
+        "root": root,
         "used_transitions": [],
         "model": model,
     }

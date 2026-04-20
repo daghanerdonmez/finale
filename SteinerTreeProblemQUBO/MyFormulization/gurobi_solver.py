@@ -71,9 +71,15 @@ def solve_ilp(problem: SteinerTree):
         for a, b, w in problem.edges:
             if x[a, b].X > 0.5:
                 selected_edges.append((a, b, w))
+        flows = {}
+        for a, b, _ in problem.edges:
+            flows[(a, b)] = f[a, b].X
+            flows[(b, a)] = f[b, a].X
         return {
             "cost": model.ObjVal,
             "edges": selected_edges,
+            "flows": flows,
+            "root": root,
             "status": "OPTIMAL",
             "model": model,
         }
@@ -81,6 +87,7 @@ def solve_ilp(problem: SteinerTree):
         return {
             "cost": None,
             "edges": [],
+            "root": root,
             "status": model.status,
             "model": model,
         }
