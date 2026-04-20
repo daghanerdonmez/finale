@@ -280,6 +280,33 @@
       "total_reads": 1000,
       "time_seconds": 407.7609,
       "buggy_below_optimal": false
+    },
+    "sparsity|p=0.6|n=12|k=4|seed=2": {
+      "edge_probability": 0.6,
+      "node_count": 12,
+      "terminal_count": 4,
+      "seed": 2,
+      "num_nodes": 12,
+      "num_edges": 43,
+      "ilp_cost": 72.0,
+      "first_hit_reads": null,
+      "solved": false,
+      "best_cost": 226.0,
+      "trial_costs": [
+        226.0,
+        226.0,
+        226.0,
+        226.0,
+        226.0,
+        226.0,
+        226.0,
+        226.0,
+        226.0,
+        226.0
+      ],
+      "total_reads": 1000,
+      "time_seconds": 351.7553,
+      "buggy_below_optimal": false
     }
   },
   "summary": {

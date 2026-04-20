@@ -33,9 +33,9 @@ from SteinerTreeProblemQUBO.MyFormulization.oj_solver import solve_with_sqa
 
 # ── Parameters ──────────────────────────────────────────────────────
 # Must match segment 1 so we regenerate the same instances.
-NODE_COUNT_LIST = [12]
-TERMINAL_COUNT_LIST = [3, 4]
-EDGE_PROBABILITY_LIST = [0.6]
+NODE_COUNT_LIST = [4, 6, 8, 10, 12]
+TERMINAL_COUNT_LIST = [2, 3, 4, 5, 6]
+EDGE_PROBABILITY_LIST = [0.1, 0.3, 0.6]
 NUM_INSTANCES_PER_COMBO = 10
 MAX_WEIGHT = 100
 
@@ -43,7 +43,7 @@ MAX_WEIGHT = 100
 # formulation leaked and that seed is meaningless for benchmarking.  We discard
 # it and try the next seed ID until we collect NUM_INSTANCES_PER_COMBO valid
 # seeds, or give up after MAX_SEED_ATTEMPTS attempts (whichever comes first).
-MAX_SEED_ATTEMPTS = 3 * NUM_INSTANCES_PER_COMBO
+MAX_SEED_ATTEMPTS = 2 * NUM_INSTANCES_PER_COMBO
 
 # QUBO solver configuration (BQM version 6).
 BQM_VERSION = 6
