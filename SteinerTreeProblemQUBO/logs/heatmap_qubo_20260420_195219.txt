@@ -22,3 +22,14 @@ BQM version 6  constraint_weight=100  sqa_sweeps=4000  trotter=16
   seed=0   |V|=12  |E|=40   opt=115.0     best=234.0       NOT solved in 1000 reads  t=312.62s
   seed=1   |V|=12  |E|=51   opt=39.0      best=244.0       NOT solved in 1000 reads  t=407.76s
   seed=2   |V|=12  |E|=43   opt=72.0      best=226.0       NOT solved in 1000 reads  t=351.76s
+  seed=3   |V|=12  |E|=46   opt=71.0      best=298.0       NOT solved in 1000 reads  t=356.13s
+  seed=4   |V|=12  |E|=39   opt=52.0      best=228.0       NOT solved in 1000 reads  t=291.13s
+  seed=5   |V|=12  |E|=40   opt=64.0      best=120.0       NOT solved in 1000 reads  t=297.05s
+  seed=6   |V|=12  |E|=42   opt=88.0      best=137.0       NOT solved in 1000 reads  t=298.33s
+  seed=7   |V|=12  |E|=51   opt=69.0      best=329.0       NOT solved in 1000 reads  t=359.01s
+  seed=8   |V|=12  |E|=45   opt=126.0     best=214.0       NOT solved in 1000 reads  t=345.95s
+  seed=9   |V|=12  |E|=47   opt=79.0      best=297.0       NOT solved in 1000 reads  t=374.04s
+  SUMMARY p=0.6 n=12 k=4: solved 0/10
+
+
+Done.

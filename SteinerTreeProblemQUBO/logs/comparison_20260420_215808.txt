@@ -1,0 +1,12 @@
+Steiner Tree Comparison  |  20260420_215808
+node_counts: [30]  terminals: 5  max_weight: 100
+OJ params: constraint_weight=100  version=6  batch=100  max_reads=1000  num_sweeps=4000  trotter=16
+Geometric params: connectivity=knn  k_values=[]
+Erdos-Renyi params: edge_probabilities=[0.6]
+Seeds: 1-3
+======================================================================
+
+Seed 1 | n=30 | Erdos-Renyi (p=0.6)
+  |V|=30  |E|=268  terminals=['v7', 'v25', 'v8', 'v6', 'v2']
+  Gurobi ILP        | cost: 55.0       | time: 0.0577s
+  Gurobi Binary ILP | cost: 55.0       | time: 0.0589s

@@ -11,6 +11,7 @@ from SteinerTreeProblemQUBO.MyFormulization.steiner_to_oj_qubo_daghan import (
 from SteinerTreeProblemQUBO.random_problem_generator import (
     generate_geometric_steiner_tree,
     generate_erdos_renyi_steiner_tree,
+    generate_random_steiner_tree
 )
 from tqdm import tqdm
 
@@ -73,23 +74,24 @@ if __name__ == "__main__":
                         k=8,
                         seed=1,
                     )"""
-    problem = generate_erdos_renyi_steiner_tree(
+    """problem = generate_erdos_renyi_steiner_tree(
                         node_count=10,
                         terminal_count=3,
                         edge_probability=0.6,
                         weight_range=(1, 100),
                         seed=1,
-                    )
+                    )"""
+    problem = generate_random_steiner_tree(10, (10, 100), 3, 0.3, 5)
     print("SteinerTree object created")
     result = solve_with_sqa(
         problem,
         constraint_weight=100,
-        version = 1,
-        num_reads=1000,
+        version = 6,
+        num_reads=100,
         show_stats=True,
         show_progress=True,
-        num_sweeps = 2000,
-        trotter = 8
+        num_sweeps = 4000,
+        trotter = 16
     )
 
     print("best energy:", result["best_energy_with_offset"])

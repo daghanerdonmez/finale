@@ -38,7 +38,7 @@ def generate_random_steiner_tree(
     for i in range(node_count):
         for j in range(i + 1, node_count):
             u, v = nodes[i], nodes[j]
-            key = (u, v)
+            key = tuple(sorted((u, v)))
             if key not in existing and rng.random() < extra_edge_probability:
                 w = rng.randint(weight_range[0], weight_range[1])
                 edges.append((u, v, w))

@@ -12,26 +12,26 @@ from SteinerTreeProblemQUBO.MyFormulization.oj_solver import solve_with_sqa
 
 # ── Parameters ──────────────────────────────────────────────────────
 SEED_START = 1
-SEED_END = 10
+SEED_END = 3
 
-NODE_COUNT_LIST = [4, 6, 8, 10, 12]
+NODE_COUNT_LIST = [10,15,20,30]
 TERMINAL_COUNT = 3
 MAX_WEIGHT = 100
 
 # Geometric generator
 GEO_CONNECTIVITY = "knn"
-GEO_K_LIST = [3, 5, 8]
+GEO_K_LIST = []
 
 # Erdos-Renyi generator
-ER_EDGE_PROB_LIST = [0.1, 0.3, 0.6]
+ER_EDGE_PROB_LIST = [0.6]
 
 # OJ solver
 CONSTRAINT_WEIGHT = MAX_WEIGHT
-OJ_VERSION = 3
+OJ_VERSION = 6
 OJ_BATCH_SIZE = 100
-OJ_MAX_READS = 10000
-OJ_NUM_SWEEPS = 2000
-OJ_TROTTER = 8
+OJ_MAX_READS = 100
+OJ_NUM_SWEEPS = 4000
+OJ_TROTTER = 16
 # ────────────────────────────────────────────────────────────────────
 
 

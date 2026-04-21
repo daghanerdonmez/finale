@@ -44,6 +44,14 @@ def steiner_to_bqm_daghan(
         offset += add_H_cap(problem, linear, quadratic, constraint_weight)
         add_H_opp(problem, quadratic, constraint_weight)
         offset += add_H_use_correct_version(problem, linear, quadratic, constraint_weight)
+    if version == 7: #version 6 + add H_tree, H_node constraint 
+        add_H_cost(problem, linear)
+        offset += add_H_flow(problem, linear, quadratic, constraint_weight)
+        offset += add_H_cap(problem, linear, quadratic, constraint_weight)
+        add_H_opp(problem, quadratic, constraint_weight)
+        offset += add_H_use_correct_version(problem, linear, quadratic, constraint_weight)
+        offset += add_H_tree(problem, linear, quadratic, constraint_weight)
+        offset += add_H_node(problem, linear, quadratic, constraint_weight)
     return dimod.BinaryQuadraticModel(linear, quadratic, offset, vartype)
 
 
@@ -317,3 +325,75 @@ def add_H_use_correct_version(
         )
 
     return offset
+
+def add_H_node(
+        problem: SteinerTree,
+        linear: dict,
+        quadratic: dict,
+        constraint_weight: float,
+) -> float:
+    offset = 0.0
+
+    for v in problem.nodes:
+        expr = {}
+
+        # number of incident edges on v
+        num_incident_edges = len([1 for a, b, _ in problem.edges if a == v or b == v])
+        B_v = math.ceil(math.log2(num_incident_edges + 1))
+
+        # q_v
+        for bit in range(B_v):
+            var_name = ("q", v, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        # y_v
+        y_var = ("y", v)
+        expr[y_var] = expr.get(y_var, 0.0) + 1.0
+
+        # -x_e for each edge e incident on v
+        for a, b, _ in problem.edges:
+            if a == v or b == v:
+                x_var = ("x", a, b)
+                expr[x_var] = expr.get(x_var, 0.0) - 1.0
+
+        offset += squared_linear_expression(
+            expr=expr,
+            constant=0.0,
+            linear=linear,
+            quadratic=quadratic,
+            constraint_weight=constraint_weight
+        )
+
+    return offset
+    
+def add_H_tree(
+        problem: SteinerTree,
+        linear: dict,
+        quadratic: dict,
+        constraint_weight: float,
+) -> float:
+    offset = 0.0
+
+    expr = {}
+
+    # number of used edges in the solution
+    for a, b, _ in problem.edges:
+        x_var = ("x", a, b)
+        expr[x_var] = expr.get(x_var, 0.0) + 1.0
+
+    # - number of used nodes in the solution
+    for v in problem.nodes:
+        y_var = ("y", v)
+        expr[y_var] = expr.get(y_var, 0.0) - 1.0
+
+    offset += squared_linear_expression(
+        expr=expr,
+        constant=1.0,
+        linear=linear,
+        quadratic=quadratic,
+        constraint_weight=constraint_weight
+    )
+
+    return offset
+
+

@@ -6,7 +6,7 @@ from SteinerTreeProblemQUBO.MyFormulization.gurobi_solver_binary import solve_il
 
 if __name__ == "__main__":
 
-    problem = generate_random_steiner_tree(10, (10, 100), 3, 0.3, 20)
+    problem = generate_random_steiner_tree(50, (10, 100), 15, 0.3, 5)
     print("SteinerTree object created")
     print(f"Nodes: {problem.nodes}")
     print(f"Terminals: {problem.terminals}")
