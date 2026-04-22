@@ -13,6 +13,9 @@ from SteinerTreeProblemQUBO.random_problem_generator import (
     generate_erdos_renyi_steiner_tree,
     generate_random_steiner_tree
 )
+from SteinerTreeProblemQUBO.sparsity_problem_generator import (
+    generate_sparsity_steiner_tree,
+)
 from tqdm import tqdm
 
 
@@ -81,13 +84,20 @@ if __name__ == "__main__":
                         weight_range=(1, 100),
                         seed=1,
                     )"""
-    problem = generate_random_steiner_tree(10, (10, 100), 3, 0.3, 5)
+    #problem = generate_random_steiner_tree(10, (10, 100), 3, 0.3, 5)
+    problem = generate_sparsity_steiner_tree(
+                        node_count=6,
+                        terminal_count=3,
+                        extra_edge_probability=0.6,
+                        weight_range=(1, 100),
+                        seed=2,
+                    )
     print("SteinerTree object created")
     result = solve_with_sqa(
         problem,
-        constraint_weight=100,
-        version = 6,
-        num_reads=100,
+        constraint_weight=500,
+        version = 8,
+        num_reads=10000,
         show_stats=True,
         show_progress=True,
         num_sweeps = 4000,

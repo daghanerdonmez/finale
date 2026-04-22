@@ -56,11 +56,11 @@ def draw_steiner_tree(problem: SteinerTree) -> None:
                         seed=1,
                     )"""
 problem = generate_sparsity_steiner_tree(
-                        node_count=14,
-                        terminal_count=4,
+                        node_count=6,
+                        terminal_count=3,
                         extra_edge_probability=0.6,
                         weight_range=(1, 100),
-                        seed=0,
+                        seed=2,
                     )
 print(problem.nodes)
 print(problem.edges)
