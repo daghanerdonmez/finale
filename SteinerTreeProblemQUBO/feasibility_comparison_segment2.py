@@ -282,8 +282,10 @@ def main():
 
                     combo_label = f"p={p} n={n} k={k}"
                     log.write(f"--- {combo_label} ---\n")
-                    combo_stats = {v: {"solved": 0, "feasible": 0, "run": 0}
-                                   for v in BQM_VERSIONS}
+                    combo_stats = {
+                        v: {"solved": 0, "feasible": 0, "no_penalty": 0, "run": 0}
+                        for v in BQM_VERSIONS
+                    }
 
                     for seed in range(NUM_INSTANCES_PER_COMBO):
                         done += 1
@@ -337,10 +339,24 @@ def main():
                                 problem, x_edges
                             )
 
+                            # Raw objective contribution = sum of weights of
+                            # edges with x_e = 1.  Anything on top of that
+                            # in best_cost is a penalty from violated
+                            # constraints (flow / capacity / use / tree / etc).
+                            edge_weight_sum = sum(
+                                w for (a, b, w) in problem.edges
+                                if x_values.get((a, b), 0) == 1
+                            )
+                            penalty = run["best_cost"] - edge_weight_sum
+                            has_penalty = abs(penalty) > 1e-6
+
                             version_entry = {
                                 "first_hit_reads": run["first_hit_reads"],
                                 "solved": run["solved"],
                                 "best_cost": run["best_cost"],
+                                "edge_weight_sum": edge_weight_sum,
+                                "penalty": penalty,
+                                "has_penalty": has_penalty,
                                 "trial_costs": run["trial_costs"],
                                 "total_reads": run["total_reads"],
                                 "time_seconds": run["time_seconds"],
@@ -370,6 +386,8 @@ def main():
                                 combo_stats[version]["solved"] += 1
                             if feasible:
                                 combo_stats[version]["feasible"] += 1
+                            if not has_penalty:
+                                combo_stats[version]["no_penalty"] += 1
 
                             hit_str = (
                                 f"first hit @ {run['first_hit_reads']} reads"
@@ -381,9 +399,15 @@ def main():
                                 if feasible
                                 else f"INFEASIBLE ({reason})"
                             )
+                            pen_str = (
+                                f"NO PENALTY (cost = edge_sum = {edge_weight_sum})"
+                                if not has_penalty
+                                else f"PENALIZED (edge_sum={edge_weight_sum} "
+                                     f"penalty={penalty:+.2f})"
+                            )
                             log.write(
                                 f"    v{version}: best={run['best_cost']:<10.1f} "
-                                f"{hit_str}  {feas_str}  "
+                                f"{hit_str}  {feas_str}  {pen_str}  "
                                 f"t={run['time_seconds']:.2f}s\n"
                             )
 
@@ -414,11 +438,15 @@ def main():
                             "num_run": s["run"],
                             "num_solved": s["solved"],
                             "num_feasible": s["feasible"],
+                            "num_no_penalty": s["no_penalty"],
                             "solved_rate": (
                                 s["solved"] / s["run"] if s["run"] else None
                             ),
                             "feasible_rate": (
                                 s["feasible"] / s["run"] if s["run"] else None
+                            ),
+                            "no_penalty_rate": (
+                                s["no_penalty"] / s["run"] if s["run"] else None
                             ),
                         }
 
@@ -427,7 +455,8 @@ def main():
                         s = combo_stats[version]
                         log.write(
                             f"    v{version}: solved {s['solved']}/{s['run']}  "
-                            f"feasible {s['feasible']}/{s['run']}\n"
+                            f"feasible {s['feasible']}/{s['run']}  "
+                            f"no_penalty {s['no_penalty']}/{s['run']}\n"
                         )
                     log.write("\n")
                     log.flush()
