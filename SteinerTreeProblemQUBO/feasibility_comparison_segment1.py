@@ -18,8 +18,8 @@ from SteinerTreeProblemQUBO.sparsity_problem_generator import (
 from SteinerTreeProblemQUBO.MyFormulization.gurobi_solver import solve_ilp
 
 # ── Parameters ──────────────────────────────────────────────────────
-NODE_COUNT_LIST = [8, 10, 12, 14, 16]
-TERMINAL_COUNT_LIST = [4, 6, 8]
+NODE_COUNT_LIST = [4,5,6,7,8]
+TERMINAL_COUNT_LIST = [3]
 
 # Separate experiments per density.  Each p in this list produces its own
 # set of instances (different random graphs because p is part of the seed).
