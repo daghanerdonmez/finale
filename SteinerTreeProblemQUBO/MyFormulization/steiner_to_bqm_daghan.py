@@ -52,6 +52,15 @@ def steiner_to_bqm_daghan(
         offset += add_H_use_correct_version(problem, linear, quadratic, constraint_weight)
         offset += add_H_tree(problem, linear, quadratic, constraint_weight)
         offset += add_H_node(problem, linear, quadratic, constraint_weight)
+    if version == 8: #version 6 + add H_root, H_depth, H_activation constraint
+        add_H_cost(problem, linear)
+        offset += add_H_flow(problem, linear, quadratic, constraint_weight)
+        offset += add_H_cap(problem, linear, quadratic, constraint_weight)
+        add_H_opp(problem, quadratic, constraint_weight)
+        offset += add_H_use_correct_version(problem, linear, quadratic, constraint_weight)
+        offset += add_H_root(problem, linear, quadratic, constraint_weight)
+        offset += add_H_depth(problem, linear, quadratic, constraint_weight)
+        offset += add_H_activation(problem, linear, quadratic, constraint_weight)
     return dimod.BinaryQuadraticModel(linear, quadratic, offset, vartype)
 
 
@@ -396,4 +405,227 @@ def add_H_tree(
 
     return offset
 
+def add_H_activation(
+        problem: SteinerTree,
+        linear: dict,
+        quadratic: dict,
+        constraint_weight: float,
+) -> float:
+    
+    # f_uv - M*a_uv <= 0
+    # f_vu - M*a_vu <= 0
+    #
+    # and
+    # 
+    # a_uv <= f_uv
+    # a_vu <= f_vu
+
+    offset = 0.0
+    M = len(problem.terminals) - 1
+    B = math.ceil(math.log2(len(problem.terminals)))
+
+    for a, b, _ in problem.edges:
+        expr = {}
+        
+        # f_uv - M*a_uv <= 0
+        # f_uv
+        for bit in range(B):
+            var_name = ("z", a, b, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        # - M*a_uv
+        a_var = ("a", a, b)
+        expr[a_var] = expr.get(a_var, 0.0) - M
+
+        # +r_uv1
+        for bit in range(B):
+            var_name = ("r", a, b, 1, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        offset += squared_linear_expression(
+            expr=expr,
+            constant=0.0,
+            linear=linear,
+            quadratic=quadratic,
+            constraint_weight=constraint_weight
+        )
+
+        expr = {}
+
+        # f_vu - M*a_vu <= 0
+        # f_vu
+        for bit in range(B):
+            var_name = ("z", b, a, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        # - M*a_vu
+        a_var = ("a", b, a)
+        expr[a_var] = expr.get(a_var, 0.0) - M
+
+        # +r_vu1
+        for bit in range(B):
+            var_name = ("r", b, a, 1, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        offset += squared_linear_expression(
+            expr=expr,
+            constant=0.0,
+            linear=linear,
+            quadratic=quadratic,
+            constraint_weight=constraint_weight
+        )
+
+    for a, b, _ in problem.edges:
+        expr = {}
+
+        # a_uv <= f_uv
+        # f_uv
+        for bit in range(B):
+            var_name = ("z", a, b, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        # - a_uv
+        a_var = ("a", a, b)
+        expr[a_var] = expr.get(a_var, 0.0) - 1
+
+        # -r_uv2
+        for bit in range(B):
+            var_name = ("r", a, b, 2, bit)
+            expr[var_name] = expr.get(var_name, 0.0) - (2 ** bit)
+
+        offset += squared_linear_expression(
+            expr=expr,
+            constant=0.0,
+            linear=linear,
+            quadratic=quadratic,
+            constraint_weight=constraint_weight
+        )
+
+        expr = {}
+
+        # a_vu <= f_vu
+        # f_vu
+        for bit in range(B):
+            var_name = ("z", b, a, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        # - a_vu
+        a_var = ("a", b, a)
+        expr[a_var] = expr.get(a_var, 0.0) - 1
+
+        # -r_vu2
+        for bit in range(B):
+            var_name = ("r", b, a, 2, bit)
+            expr[var_name] = expr.get(var_name, 0.0) - (2 ** bit)
+
+        offset += squared_linear_expression(
+            expr=expr,
+            constant=0.0,
+            linear=linear,
+            quadratic=quadratic,
+            constraint_weight=constraint_weight
+        )
+
+    return offset
+
+def add_H_root(
+        problem: SteinerTree,
+        linear: dict,
+        quadratic: dict,
+        constraint_weight: float,
+) -> float:
+    offset = 0.0
+    root = problem.terminals[0]
+    B_o = math.ceil(math.log2(len(problem.nodes)))
+
+    expr = {}
+
+    # o_r
+    for bit in range(B_o):
+        var_name = ("o", root, bit)
+        expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+    offset += squared_linear_expression(
+        expr=expr,
+        constant=0.0,
+        linear=linear,
+        quadratic=quadratic,
+        constraint_weight=constraint_weight
+    )
+
+    return offset
+
+def add_H_depth(
+        problem: SteinerTree,
+        linear: dict,
+        quadratic: dict,
+        constraint_weight: float,
+) -> float:
+    offset = 0.0
+    B_o = math.ceil(math.log2(len(problem.nodes)))
+    N = len(problem.nodes)
+    B_g = math.ceil(math.log2(2 * N - 1))
+
+    for a, b, _ in problem.edges:
+        expr = {}
+
+        # o_v - o_u - 1 + N(1 - a_uv) >= 0
+        # o_v
+        for bit in range(B_o):
+            var_name = ("o", b, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        # - o_u
+        for bit in range(B_o):
+            var_name = ("o", a, bit)
+            expr[var_name] = expr.get(var_name, 0.0) - (2 ** bit)
+
+        # N(1 - a_uv) 
+        a_var = ("a", a, b)
+        expr[a_var] = expr.get(a_var, 0.0) - N
+
+        # -g_uv
+        for bit in range(B_g):
+            var_name = ("g", a, b, bit)
+            expr[var_name] = expr.get(var_name, 0.0) - (2 ** bit)
+
+        offset += squared_linear_expression(
+            expr=expr,
+            constant=N-1.0,
+            linear=linear,
+            quadratic=quadratic,
+            constraint_weight=constraint_weight
+        )
+
+        expr = {}
+
+        # o_u - o_v - 1 + N(1 - a_vu) >= 0
+        # o_u
+        for bit in range(B_o):
+            var_name = ("o", a, bit)
+            expr[var_name] = expr.get(var_name, 0.0) + (2 ** bit)
+
+        # - o_v
+        for bit in range(B_o):
+            var_name = ("o", b, bit)
+            expr[var_name] = expr.get(var_name, 0.0) - (2 ** bit)
+
+        # N(1 - a_vu)
+        a_var = ("a", b, a)
+        expr[a_var] = expr.get(a_var, 0.0) - N
+
+        # -g_vu
+        for bit in range(B_g):
+            var_name = ("g", b, a, bit)
+            expr[var_name] = expr.get(var_name, 0.0) - (2 ** bit)
+
+        offset += squared_linear_expression(
+            expr=expr,
+            constant=N-1.0,
+            linear=linear,
+            quadratic=quadratic,
+            constraint_weight=constraint_weight
+        )
+
+    return offset
 

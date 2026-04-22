@@ -38,7 +38,7 @@ NUM_INSTANCES_PER_COMBO = 3
 MAX_WEIGHT = 100
 
 # QUBO solver configuration.
-BQM_VERSIONS = [6, 7]
+BQM_VERSIONS = [8]
 CONSTRAINT_WEIGHT = 5 * MAX_WEIGHT
 NUM_TRIALS = 10                # number of independent trials per instance
 NUM_READS_PER_TRIAL = 100      # reads per trial (10 x 100 = 1000 total)
