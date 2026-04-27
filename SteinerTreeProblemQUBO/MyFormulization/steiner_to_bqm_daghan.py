@@ -63,7 +63,35 @@ def steiner_to_bqm_daghan(
         offset += add_H_activation(problem, linear, quadratic, constraint_weight)
     return dimod.BinaryQuadraticModel(linear, quadratic, offset, vartype)
 
+# this is a helper function
+# it takes a linear expression in the form of a dictionary {var_name: coefficient} and a constant term
+# and adds the squared form of the expression to the linear and quadratic dictionaries with the given constraint
+# simple example:
+# if expr = {x: 2, y: 3}, constant = 1, constraint_weight = w
+# then it adds w*(2x + 3y + 1)^2 to the linear and quadratic dictionaries
+def squared_linear_expression(
+        expr: Dict[tuple, float],
+        constant: float,
+        linear: dict,
+        quadratic: dict,
+        constraint_weight: float
+) -> float:
+    offset = constraint_weight * (constant ** 2)
+    items = list(expr.items())
 
+    for i, (var_name1, coefficient1) in enumerate(items):
+        linear[var_name1] = linear.get(var_name1, 0.0) + constraint_weight * (coefficient1 ** 2 + 2 * constant * coefficient1)
+
+        for var_name2, coefficient2 in items[i+1:]:
+            key = tuple(sorted((var_name1, var_name2)))
+            quadratic[key] = quadratic.get(key, 0.0) + constraint_weight * (2 * coefficient1 * coefficient2)
+    
+    return offset
+
+
+# for all edges e,
+# cost c_e is added if x_e = 1
+# hamiltonian form: c_e x_e
 def add_H_cost(
         problem: SteinerTree,
         linear: dict,
@@ -72,6 +100,10 @@ def add_H_cost(
         var_name = ("x", edge[0], edge[1])
         linear[var_name] = linear.get(var_name, 0.0) + edge[2]
 
+# for all nodes v,
+# ∑f_uv - ∑f_vu = d_v,
+# where d_v = 1 if v is a terminal other than the root, d_v = - (|K| - 1) if v is the root, and d_v = 0 otherwise
+# hamiltonian form: (∑f_uv - ∑f_vu - d_v)^2
 def add_H_flow(
         problem: SteinerTree,
         linear:dict,
@@ -122,6 +154,10 @@ def add_H_flow(
 
     return offset
 
+# for all edges e,
+# f_uv + f_vu <= (|K| - 1) x_e
+# equivalent to: f_uv + f_vu - (|K| - 1) x_e - s_e = 0, where s_e is a slack variable
+# hamiltonian form: (f_uv + f_vu - (|K| - 1) x_e - s_e)^2
 def add_H_cap(
         problem: SteinerTree,
         linear: dict,
@@ -200,29 +236,11 @@ def add_H_cap_alternative(
             quadratic[key2] = quadratic.get(key2, 0.0) - constraint_weight * coeff
 
     return offset
-        
 
 
-def squared_linear_expression(
-        expr: Dict[tuple, float],
-        constant: float,
-        linear: dict,
-        quadratic: dict,
-        constraint_weight: float
-) -> float:
-    offset = constraint_weight * (constant ** 2)
-    items = list(expr.items())
-
-    for i, (var_name1, coefficient1) in enumerate(items):
-        linear[var_name1] = linear.get(var_name1, 0.0) + constraint_weight * (coefficient1 ** 2 + 2 * constant * coefficient1)
-
-        for var_name2, coefficient2 in items[i+1:]:
-            key = tuple(sorted((var_name1, var_name2)))
-            quadratic[key] = quadratic.get(key, 0.0) + constraint_weight * (2 * coefficient1 * coefficient2)
-    
-    return offset
-
-
+# for all edges e,
+# f_uv * f_vu = 0
+# hamiltonian form: f_uv * f_vu
 def add_H_opp(
         problem: SteinerTree,
         quadratic: dict,
@@ -242,6 +260,9 @@ def add_H_opp(
                 key = tuple(sorted((var_name1, var_name2)))
                 quadratic[key] = quadratic.get(key, 0.0) + constraint_weight * coeff1 * coeff2
 
+
+# ay bunu silmedim ama doğru mu yanlış mı okumaya da çok üşeniyorum öf
+# neyse altta doğrusu var galiba onu kullanıyorum
 def add_H_use(
         problem: SteinerTree,
         linear: dict,
@@ -293,6 +314,10 @@ def add_H_use(
 
     return offset
 
+# for all edges e,
+# x_e <= f_uv + f_vu
+# equivalent to: f_uv + f_vu - x_e - t_e = 0, where t_e is a slack variable
+# hamiltonian form: (f_uv + f_vu - x_e - t_e)^2
 def add_H_use_correct_version(
         problem: SteinerTree,
         linear: dict,
@@ -405,21 +430,20 @@ def add_H_tree(
 
     return offset
 
+# for all edges e,
+# f_uv - M*a_uv <= 0
+# f_vu - M*a_vu <= 0
+# and
+# a_uv <= f_uv
+# a_vu <= f_vu
+# where M = |K| - 1
+# hamiltonian form: (f_uv - M*a_uv + r_uv1)^2 + (f_vu - M*a_vu + r_vu1)^2 + (a_uv - f_uv + r_uv2)^2 + (a_vu - f_vu + r_vu2)^2
 def add_H_activation(
         problem: SteinerTree,
         linear: dict,
         quadratic: dict,
         constraint_weight: float,
 ) -> float:
-    
-    # f_uv - M*a_uv <= 0
-    # f_vu - M*a_vu <= 0
-    #
-    # and
-    # 
-    # a_uv <= f_uv
-    # a_vu <= f_vu
-
     offset = 0.0
     M = len(problem.terminals) - 1
     B = math.ceil(math.log2(len(problem.terminals)))
@@ -528,6 +552,9 @@ def add_H_activation(
 
     return offset
 
+# for the root node r,
+# o_r = 0
+# hamiltonian form: o_r^2
 def add_H_root(
         problem: SteinerTree,
         linear: dict,
@@ -555,6 +582,12 @@ def add_H_root(
 
     return offset
 
+# for all edges e = (u, v),
+# o_v - o_u - 1 + N(1 - a_uv) >= 0
+# o_u - o_v - 1 + N(1 - a_vu) >= 0
+# where N = |V|
+# hamiltonian form: (o_v - o_u - 1 + N(1 - a_uv) - g_uv)^2 + (o_u - o_v - 1 + N(1 - a_vu) - g_vu)^2,
+# where g_uv and g_vu are slack variables for the respective constraints
 def add_H_depth(
         problem: SteinerTree,
         linear: dict,

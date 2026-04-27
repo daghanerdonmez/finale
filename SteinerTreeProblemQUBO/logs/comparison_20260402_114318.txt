@@ -1,0 +1,47 @@
+Steiner Tree Comparison  |  20260402_114318
+node_counts: [4, 6, 8, 10, 12]  terminals: 3  max_weight: 100
+OJ params: constraint_weight=100  version=2  num_reads=10000
+Geometric params: connectivity=knn  k_values=[3, 5, 8]
+Erdos-Renyi params: edge_probabilities=[0.1, 0.3, 0.6]
+Seeds: 1-10
+======================================================================
+
+Seed 1 | n=4 | Geometric (knn, k=3)
+  |V|=4  |E|=6  terminals=['v0', 'v1', 'v3']
+  Gurobi ILP        | cost: 124.0      | time: 0.0395s
+  Gurobi Binary ILP | cost: 124.0      | time: 0.0022s
+  OJ SQA            | cost: 124.0      | time: 93.0726s
+  OJ matches optimal: yes
+
+Seed 1 | n=4 | Geometric (knn, k=5)
+  |V|=4  |E|=6  terminals=['v0', 'v1', 'v3']
+  Gurobi ILP        | cost: 124.0      | time: 0.0028s
+  Gurobi Binary ILP | cost: 124.0      | time: 0.0017s
+  OJ SQA            | cost: 124.0      | time: 98.2290s
+  OJ matches optimal: yes
+
+Seed 1 | n=4 | Geometric (knn, k=8)
+  |V|=4  |E|=6  terminals=['v0', 'v1', 'v3']
+  Gurobi ILP        | cost: 124.0      | time: 0.0026s
+  Gurobi Binary ILP | cost: 124.0      | time: 0.0017s
+  OJ SQA            | cost: 124.0      | time: 108.0763s
+  OJ matches optimal: yes
+
+Seed 1 | n=4 | Erdos-Renyi (p=0.1)
+  |V|=4  |E|=3  terminals=['v0', 'v2', 'v1']
+  Gurobi ILP        | cost: 134.0      | time: 0.0007s
+  Gurobi Binary ILP | cost: 134.0      | time: 0.0006s
+  OJ SQA            | cost: 134.0      | time: 70.4919s
+  OJ matches optimal: yes
+
+Seed 1 | n=4 | Erdos-Renyi (p=0.3)
+  |V|=4  |E|=3  terminals=['v0', 'v1', 'v2']
+  Gurobi ILP        | cost: 40.0       | time: 0.0007s
+  Gurobi Binary ILP | cost: 40.0       | time: 0.0008s
+  OJ SQA            | cost: 40.0       | time: 79.5414s
+  OJ matches optimal: yes
+
+Seed 1 | n=4 | Erdos-Renyi (p=0.6)
+  |V|=4  |E|=4  terminals=['v3', 'v0', 'v1']
+  Gurobi ILP        | cost: 111.0      | time: 0.0009s
+  Gurobi Binary ILP | cost: 111.0      | time: 0.0019s

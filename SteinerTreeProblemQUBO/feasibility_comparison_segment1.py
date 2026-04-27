@@ -18,14 +18,14 @@ from SteinerTreeProblemQUBO.sparsity_problem_generator import (
 from SteinerTreeProblemQUBO.MyFormulization.gurobi_solver import solve_ilp
 
 # ── Parameters ──────────────────────────────────────────────────────
-NODE_COUNT_LIST = [4,5,6,7,8]
-TERMINAL_COUNT_LIST = [3]
+NODE_COUNT_LIST = [3,4,5,6,7]
+TERMINAL_COUNT_LIST = [2,3,4,5]
 
 # Separate experiments per density.  Each p in this list produces its own
 # set of instances (different random graphs because p is part of the seed).
-EDGE_PROBABILITY_LIST = [0.6]
+EDGE_PROBABILITY_LIST = [0.1, 0.3, 0.6]
 
-NUM_INSTANCES_PER_COMBO = 3   # seeds 0 .. NUM_INSTANCES_PER_COMBO - 1
+NUM_INSTANCES_PER_COMBO = 5   # seeds 0 .. NUM_INSTANCES_PER_COMBO - 1
 MAX_WEIGHT = 100
 # ────────────────────────────────────────────────────────────────────
 
