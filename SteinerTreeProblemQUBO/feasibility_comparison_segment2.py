@@ -31,8 +31,8 @@ from SteinerTreeProblemQUBO.MyFormulization.oj_solver import solve_with_sqa
 
 # ── Parameters ──────────────────────────────────────────────────────
 # Must match segment 1 so we regenerate the same instances.
-NODE_COUNT_LIST = [3,4,5,6,7]
-TERMINAL_COUNT_LIST = [2,3,4,5]
+NODE_COUNT_LIST = [4,6,8,10,12]
+TERMINAL_COUNT_LIST = [2,3,4,5,6]
 EDGE_PROBABILITY_LIST = [0.1, 0.3, 0.6]
 NUM_INSTANCES_PER_COMBO = 5
 MAX_WEIGHT = 100
