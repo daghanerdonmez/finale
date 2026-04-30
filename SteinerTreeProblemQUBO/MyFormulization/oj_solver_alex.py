@@ -5,8 +5,8 @@ print(os.getcwd())
 import dimod
 import openjij as oj
 from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
-from SteinerTreeProblemQUBO.MyFormulization.steiner_to_oj_qubo_daghan import (
-    steiner_to_oj_qubo_daghan,
+from SteinerTreeProblemQUBO.MyFormulization.steiner_to_oj_qubo_alex import (
+    steiner_to_oj_qubo_alex,
 )
 from SteinerTreeProblemQUBO.random_problem_generator import (
     generate_geometric_steiner_tree,
@@ -31,7 +31,7 @@ def solve_with_sqa(
     if num_reads < 1:
         raise ValueError("num_reads must be at least 1")
 
-    qubo, offset = steiner_to_oj_qubo_daghan(problem, constraint_weight, version)
+    qubo, offset = steiner_to_oj_qubo_alex(problem, constraint_weight, version)
 
     if show_stats:
         bqm = dimod.BinaryQuadraticModel.from_qubo(qubo, offset=offset)
