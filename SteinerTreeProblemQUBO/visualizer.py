@@ -48,20 +48,20 @@ def draw_steiner_tree(problem: SteinerTree) -> None:
                         k=8,
                         seed=1,
                     )"""
-"""problem = generate_erdos_renyi_steiner_tree(
-                        node_count=10,
-                        terminal_count=3,
-                        edge_probability=0.6,
-                        weight_range=(1, 100),
-                        seed=1,
-                    )"""
-problem = generate_sparsity_steiner_tree(
+problem = generate_erdos_renyi_steiner_tree(
+    node_count=3,
+    terminal_count=2,
+    edge_probability=1.0,
+    seed=0,
+)
+"""problem = generate_sparsity_steiner_tree(
                         node_count=6,
                         terminal_count=3,
                         extra_edge_probability=0.6,
                         weight_range=(1, 100),
                         seed=2,
-                    )
+                    )"""
+
 print(problem.nodes)
 print(problem.edges)
 draw_steiner_tree(problem)
