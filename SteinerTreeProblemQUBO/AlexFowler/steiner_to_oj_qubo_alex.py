@@ -2,7 +2,7 @@ from typing import Tuple
 
 from SteinerTreeProblemQUBO.MyFormulization import steiner_to_bqm_daghan
 from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
-from SteinerTreeProblemQUBO.MyFormulization.steiner_to_bqm_alex import (
+from SteinerTreeProblemQUBO.AlexFowler.steiner_to_bqm_alex import (
     steiner_to_bqm_ordering,
 )
 

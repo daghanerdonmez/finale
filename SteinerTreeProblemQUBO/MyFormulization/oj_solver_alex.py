@@ -5,7 +5,7 @@ print(os.getcwd())
 import dimod
 import openjij as oj
 from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
-from SteinerTreeProblemQUBO.MyFormulization.steiner_to_oj_qubo_alex import (
+from SteinerTreeProblemQUBO.AlexFowler.steiner_to_oj_qubo_alex import (
     steiner_to_oj_qubo_alex,
 )
 from SteinerTreeProblemQUBO.random_problem_generator import (
