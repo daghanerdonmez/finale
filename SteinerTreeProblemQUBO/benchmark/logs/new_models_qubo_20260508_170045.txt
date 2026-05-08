@@ -1,0 +1,11 @@
+New models QUBO benchmark  |  20260508_170045
+Gurobi source: /Users/daghanerdonmez/Desktop/evvifing/boun/cmpe/491-492/finale/SteinerTreeProblemQUBO/benchmark/logs/gurobi_new_models_results/new_models_gurobi_20260508_170031.json
+node_counts=[4, 6, 8, 10, 12]  terminals=[2, 3, 4, 5, 6]  edge_probs=[0.1, 0.3, 0.6]
+instances/combo=10  trials=10 x 100 reads  constraint_weight=500  sweeps=4000  trotter=16
+==============================================================================
+
+--- p=0.1 n=4 k=2 ---
+  seed=0   |V|=4    |E|=3    opt=8.0
+    hybrid: best=8.0  ratio=1.0000  hit @ 1 reads  feasible 99/100  tts=3.20s
+    alex  : best=8.0  ratio=1.0000  hit @ 1 reads  feasible 100/100  tts=1.87s
+  seed=1   |V|=4    |E|=4    opt=74.0

@@ -31,6 +31,9 @@ def steiner_to_bqm_hybrid(
     quadratic: Dict[Tuple[Var, Var], float] = {}
     offset = 0.0
 
+    nodes = list(problem.nodes)
+    n = len(nodes)
+
     ctx = _HybridContext(problem)
 
     _initialize_variables(ctx, linear)
@@ -38,7 +41,7 @@ def steiner_to_bqm_hybrid(
     add_H_cost(problem, ctx, linear)
 
     offset += add_H_terminal_parent(ctx, linear, quadratic, constraint_weight)
-    offset += add_H_nonterminal_parent(ctx, linear, quadratic, constraint_weight)
+    offset += add_H_nonterminal_parent(ctx, linear, quadratic, constraint_weight * n)
     add_H_no_fake_root(ctx, linear, quadratic, constraint_weight)
     offset += add_H_root_depth(ctx, linear, quadratic, constraint_weight)
     offset += add_H_depth(ctx, linear, quadratic, constraint_weight)

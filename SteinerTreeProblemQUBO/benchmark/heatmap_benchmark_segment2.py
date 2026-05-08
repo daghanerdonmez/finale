@@ -29,7 +29,7 @@ from datetime import datetime
 from SteinerTreeProblemQUBO.sparsity_problem_generator import (
     generate_sparsity_steiner_tree,
 )
-from SteinerTreeProblemQUBO.MyFormulization.oj_solver_alex import solve_with_sqa
+from SteinerTreeProblemQUBO.AlexFowler.oj_solver_alex import solve_with_sqa
 
 # ── Parameters ──────────────────────────────────────────────────────
 # Must match segment 1 so we regenerate the same instances.

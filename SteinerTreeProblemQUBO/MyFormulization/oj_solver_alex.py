@@ -22,7 +22,6 @@ from tqdm import tqdm
 def solve_with_sqa(
     problem: SteinerTree,
     constraint_weight: float,
-    version = 2,
     num_reads: int = 1000,
     show_stats: bool = False,
     show_progress: bool = False,
@@ -31,7 +30,7 @@ def solve_with_sqa(
     if num_reads < 1:
         raise ValueError("num_reads must be at least 1")
 
-    qubo, offset = steiner_to_oj_qubo_alex(problem, constraint_weight, version)
+    qubo, offset = steiner_to_oj_qubo_alex(problem, constraint_weight)
 
     if show_stats:
         bqm = dimod.BinaryQuadraticModel.from_qubo(qubo, offset=offset)
@@ -96,12 +95,11 @@ if __name__ == "__main__":
     result = solve_with_sqa(
         problem,
         constraint_weight=300,
-        version = 8,
         num_reads=1000,
         show_stats=True,
         show_progress=True,
-        num_sweeps = 4000,
-        trotter = 16
+        num_sweeps=4000,
+        trotter=16,
     )
 
     print("best energy:", result["best_energy_with_offset"])

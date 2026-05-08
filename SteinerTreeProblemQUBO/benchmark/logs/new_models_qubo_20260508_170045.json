@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "timestamp": "20260508_170045",
+    "gurobi_source": "new_models_gurobi_20260508_170031.json",
+    "node_count_list": [
+      4,
+      6,
+      8,
+      10,
+      12
+    ],
+    "terminal_count_list": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "edge_probability_list": [
+      0.1,
+      0.3,
+      0.6
+    ],
+    "num_instances_per_combo": 10,
+    "max_weight": 100,
+    "models": [
+      "hybrid",
+      "alex"
+    ],
+    "constraint_weight": 500,
+    "num_trials": 10,
+    "num_reads_per_trial": 100,
+    "total_reads_budget": 1000,
+    "stop_on_first_hit": true,
+    "sqa_num_sweeps": 4000,
+    "sqa_trotter": 16
+  },
+  "instances": {
+    "sparsity|p=0.1|n=4|k=2|seed=0": {
+      "edge_probability": 0.1,
+      "node_count": 4,
+      "terminal_count": 2,
+      "seed": 0,
+      "num_nodes": 4,
+      "num_edges": 3,
+      "ilp_cost": 8.0,
+      "models": {
+        "hybrid": {
+          "solved": true,
+          "first_hit_reads": 1,
+          "best_cost": 8.0,
+          "approx_ratio": 1.0,
+          "feasible_reads": 99,
+          "feasible_read_rate": 0.99,
+          "time_to_solution": 3.2036197185516357,
+          "total_reads": 100,
+          "total_time": 3.2066
+        },
+        "alex": {
+          "solved": true,
+          "first_hit_reads": 1,
+          "best_cost": 8.0,
+          "approx_ratio": 1.0,
+          "feasible_reads": 100,
+          "feasible_read_rate": 1.0,
+          "time_to_solution": 1.8652291297912598,
+          "total_reads": 100,
+          "total_time": 1.8673
+        }
+      }
+    }
+  },
+  "summary": {}
+}

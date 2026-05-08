@@ -16,7 +16,6 @@ def _format_variable_label(variable) -> str:
 def steiner_to_oj_qubo_alex(
     problem: SteinerTree,
     constraint_weight: float,
-    version = 2
 ) -> Tuple[dict, float]:
     bqm = steiner_to_bqm_ordering(problem, constraint_weight)
     relabeling = {variable: _format_variable_label(variable) for variable in bqm.variables}
