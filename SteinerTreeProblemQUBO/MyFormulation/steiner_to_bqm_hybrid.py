@@ -8,9 +8,22 @@ from SteinerTreeProblemQUBO.SteinerTree import SteinerTree
 Var = tuple
 
 
+# ---------------------------------------------------------------------------
+# Manually tunable penalty coefficients -- one per constraint term.
+#
+# Edit these by hand to rescale individual penalties independently. There is
+# no automatic/derived scaling (e.g. no more "* n" on the non-terminal-parent
+# term); whatever you set here is exactly what gets used.
+# ---------------------------------------------------------------------------
+WEIGHT_TERMINAL_PARENT = 1.0
+WEIGHT_NONTERMINAL_PARENT = 1.0
+WEIGHT_NO_FAKE_ROOT = 1.0
+WEIGHT_ROOT_DEPTH = 1.0
+WEIGHT_DEPTH = 1.0
+
+
 def steiner_to_bqm_hybrid(
         problem: SteinerTree,
-        constraint_weight: float,
 ) -> dimod.BinaryQuadraticModel:
     """
     Plain hybrid Steiner Tree QUBO formulation.
@@ -26,13 +39,13 @@ def steiner_to_bqm_hybrid(
         p_v: non-terminal v is used
         o_{v,i}: binary expansion bits of depth o_v
         g_{u,v,i}: slack bits for the conditional depth inequality
+
+    Each penalty term below uses its own WEIGHT_* constant defined at the
+    top of this file, so they can be scaled independently by hand.
     """
     linear: Dict[Var, float] = {}
     quadratic: Dict[Tuple[Var, Var], float] = {}
     offset = 0.0
-
-    nodes = list(problem.nodes)
-    n = len(nodes)
 
     ctx = _HybridContext(problem)
 
@@ -40,11 +53,11 @@ def steiner_to_bqm_hybrid(
 
     add_H_cost(problem, ctx, linear)
 
-    offset += add_H_terminal_parent(ctx, linear, quadratic, constraint_weight)
-    offset += add_H_nonterminal_parent(ctx, linear, quadratic, constraint_weight * n)
-    add_H_no_fake_root(ctx, linear, quadratic, constraint_weight)
-    offset += add_H_root_depth(ctx, linear, quadratic, constraint_weight)
-    offset += add_H_depth(ctx, linear, quadratic, constraint_weight)
+    offset += add_H_terminal_parent(ctx, linear, quadratic, WEIGHT_TERMINAL_PARENT)
+    offset += add_H_nonterminal_parent(ctx, linear, quadratic, WEIGHT_NONTERMINAL_PARENT)
+    add_H_no_fake_root(ctx, linear, quadratic, WEIGHT_NO_FAKE_ROOT)
+    offset += add_H_root_depth(ctx, linear, quadratic, WEIGHT_ROOT_DEPTH)
+    offset += add_H_depth(ctx, linear, quadratic, WEIGHT_DEPTH)
 
     return dimod.BinaryQuadraticModel(linear, quadratic, offset, dimod.BINARY)
 

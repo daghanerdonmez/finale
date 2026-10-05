@@ -1,0 +1,85 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{hwang1992}
+\citation{karp1972}
+\citation{hwang1992}
+\citation{glover2019}
+\citation{lucas2014}
+\citation{fowler2017}
+\citation{rose1976}
+\citation{rankooh2022}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Problem and modelling background}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}The Steiner Tree Problem}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}What a QUBO model does}{2}{subsection.2.2}\protected@file@percent }
+\newlabel{eq:qubo}{{1}{2}{What a QUBO model does}{equation.1}{}}
+\newlabel{eq:cost-plus-penalty}{{2}{2}{What a QUBO model does}{equation.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The modelling plan}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}The complete-order formulation}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Selected-edge variables and cost}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{eq:q-s}{{3}{3}{Selected-edge variables and cost}{equation.3}{}}
+\newlabel{eq:cost}{{4}{3}{Selected-edge variables and cost}{equation.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Ordering variables}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Penalty 1: selected edges must follow the order}{3}{subsection.3.3}\protected@file@percent }
+\newlabel{eq:single-edge-order}{{5}{3}{Penalty 1: selected edges must follow the order}{equation.5}{}}
+\newlabel{eq:edge-order}{{6}{4}{Penalty 1: selected edges must follow the order}{equation.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Penalty 2: the order must be consistent}{4}{subsection.3.4}\protected@file@percent }
+\newlabel{eq:triangle}{{7}{4}{Penalty 2: the order must be consistent}{equation.7}{}}
+\newlabel{eq:full-triangle}{{8}{4}{Penalty 2: the order must be consistent}{equation.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Penalty 3: every terminal needs one parent}{4}{subsection.3.5}\protected@file@percent }
+\newlabel{eq:terminal}{{9}{4}{Penalty 3: every terminal needs one parent}{equation.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Penalty 4: a nonterminal is unused or has one parent}{4}{subsection.3.6}\protected@file@percent }
+\newlabel{eq:fowler-parent}{{10}{4}{Penalty 4: a nonterminal is unused or has one parent}{equation.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Complete Hamiltonian and its meaning}{5}{subsection.3.7}\protected@file@percent }
+\newlabel{eq:fowler}{{11}{5}{Complete Hamiltonian and its meaning}{equation.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Replacing the complete order by a chordal order}{5}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Why construct another graph?}{5}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Chordal graphs and chordal completion}{5}{subsection.4.2}\protected@file@percent }
+\newlabel{eq:completion}{{12}{5}{Chordal graphs and chordal completion}{equation.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Building the completion by elimination}{5}{subsection.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Triangle penalties cannot detect the directed four-cycle on the left. The fill edge on the right is an ordering comparison only; either of its directions produces a directed triangle.}}{6}{figure.1}\protected@file@percent }
+\newlabel{fig:four-cycle}{{1}{6}{Triangle penalties cannot detect the directed four-cycle on the left. The fill edge on the right is an ordering comparison only; either of its directions produces a directed triangle}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Ordering variables and Hamiltonian}{6}{subsection.4.4}\protected@file@percent }
+\newlabel{eq:chordal-triangle}{{13}{6}{Ordering variables and Hamiltonian}{equation.13}{}}
+\newlabel{eq:chordal-fowler}{{14}{6}{Ordering variables and Hamiltonian}{equation.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}A local nonterminal coefficient}{6}{subsection.4.5}\protected@file@percent }
+\newlabel{eq:local-parent}{{15}{6}{A local nonterminal coefficient}{equation.15}{}}
+\newlabel{eq:local-positive}{{16}{6}{A local nonterminal coefficient}{equation.16}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Why the chordal formulation is exact}{7}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}A sufficient penalty weight}{7}{subsection.5.1}\protected@file@percent }
+\newlabel{eq:penalty-bound}{{17}{7}{A sufficient penalty weight}{equation.17}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Model size}{7}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Elimination width}{7}{subsection.6.1}\protected@file@percent }
+\newlabel{eq:width-bounds}{{18}{7}{Elimination width}{equation.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Median chordal/Fowler BQM size divided by Fowler BQM size. Each point summarizes ten instances. Lower values indicate a larger reduction.}}{8}{figure.2}\protected@file@percent }
+\newlabel{fig:size-ratio}{{2}{8}{Median chordal/Fowler BQM size divided by Fowler BQM size. Each point summarizes ten instances. Lower values indicate a larger reduction}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Comparison with complete ordering}{8}{subsection.6.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces The selected-edge and parent terms are common to both models.}}{8}{table.1}\protected@file@percent }
+\newlabel{tab:complexity}{{1}{8}{The selected-edge and parent terms are common to both models}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Experimental evaluation}{8}{section.7}\protected@file@percent }
+\newlabel{sec:experiments}{{7}{8}{Experimental evaluation}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Questions and compared models}{8}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Method}{8}{subsection.7.2}\protected@file@percent }
+\citation{koch2001}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Correctness checks}{9}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Generated instances}{9}{subsection.7.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Mean sample rates on 200 generated instances, in percent.}}{9}{table.2}\protected@file@percent }
+\newlabel{tab:general-rates}{{2}{9}{Mean sample rates on 200 generated instances, in percent}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}SteinLib B}{9}{subsection.7.5}\protected@file@percent }
+\bibcite{hwang1992}{1}
+\bibcite{karp1972}{2}
+\bibcite{glover2019}{3}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Representative SteinLib B sizes and Neal run times. Each entry is Fowler / chordal-local.}}{10}{table.3}\protected@file@percent }
+\newlabel{tab:steinlib-size}{{3}{10}{Representative SteinLib B sizes and Neal run times. Each entry is Fowler / chordal-local}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}Coefficient normalization}{10}{subsection.7.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Discussion and limitations}{10}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{10}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reproducibility.}{10}{section*.1}\protected@file@percent }
+\bibcite{lucas2014}{4}
+\bibcite{fowler2017}{5}
+\bibcite{rose1976}{6}
+\bibcite{rankooh2022}{7}
+\bibcite{koch2001}{8}
+\gdef \@abspage@last{11}

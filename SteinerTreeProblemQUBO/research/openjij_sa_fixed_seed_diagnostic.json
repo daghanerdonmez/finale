@@ -1,0 +1,696 @@
+{
+  "settings": {
+    "output": "SteinerTreeProblemQUBO/research/openjij_sa_results.json",
+    "reads": 100,
+    "sweeps": 2000,
+    "seeds": 1,
+    "sizes": [
+      8,
+      12
+    ],
+    "sampler": "openjij_sa",
+    "penalty_factor": 1.05,
+    "models": [
+      "big_m",
+      "fowler",
+      "binary_order",
+      "chordal_local"
+    ]
+  },
+  "instances": [
+    {
+      "id": "ladder_8_0",
+      "nodes": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "edges": [
+        [
+          "0",
+          "1",
+          0.95
+        ],
+        [
+          "0",
+          "4",
+          0.6
+        ],
+        [
+          "1",
+          "2",
+          0.1
+        ],
+        [
+          "1",
+          "5",
+          1.0
+        ],
+        [
+          "2",
+          "3",
+          0.55
+        ],
+        [
+          "2",
+          "6",
+          0.15
+        ],
+        [
+          "3",
+          "7",
+          0.6
+        ],
+        [
+          "4",
+          "5",
+          0.9
+        ],
+        [
+          "5",
+          "6",
+          0.7
+        ],
+        [
+          "6",
+          "7",
+          0.2
+        ]
+      ],
+      "terminals": [
+        "0",
+        "6"
+      ],
+      "optimum": 1.2,
+      "feasible_upper": 2.2,
+      "chordal_edges": 10,
+      "elimination_width": 2
+    },
+    {
+      "id": "ladder_12_0",
+      "nodes": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "edges": [
+        [
+          "0",
+          "1",
+          0.1
+        ],
+        [
+          "0",
+          "6",
+          0.35
+        ],
+        [
+          "1",
+          "2",
+          0.75
+        ],
+        [
+          "1",
+          "7",
+          0.6
+        ],
+        [
+          "2",
+          "3",
+          0.2
+        ],
+        [
+          "2",
+          "8",
+          0.65
+        ],
+        [
+          "3",
+          "4",
+          0.5
+        ],
+        [
+          "3",
+          "9",
+          1.0
+        ],
+        [
+          "4",
+          "5",
+          0.95
+        ],
+        [
+          "4",
+          "10",
+          0.8
+        ],
+        [
+          "5",
+          "11",
+          0.45
+        ],
+        [
+          "6",
+          "7",
+          0.35
+        ],
+        [
+          "7",
+          "8",
+          0.85
+        ],
+        [
+          "8",
+          "9",
+          0.65
+        ],
+        [
+          "9",
+          "10",
+          0.45
+        ],
+        [
+          "10",
+          "11",
+          0.65
+        ]
+      ],
+      "terminals": [
+        "0",
+        "8",
+        "3",
+        "4"
+      ],
+      "optimum": 2.2,
+      "feasible_upper": 2.2,
+      "chordal_edges": 18,
+      "elimination_width": 2
+    },
+    {
+      "id": "regular3_8_0",
+      "nodes": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "edges": [
+        [
+          "0",
+          "1",
+          0.95
+        ],
+        [
+          "0",
+          "6",
+          0.6
+        ],
+        [
+          "0",
+          "7",
+          0.1
+        ],
+        [
+          "1",
+          "3",
+          1.0
+        ],
+        [
+          "1",
+          "7",
+          0.55
+        ],
+        [
+          "2",
+          "4",
+          0.15
+        ],
+        [
+          "2",
+          "5",
+          0.6
+        ],
+        [
+          "3",
+          "6",
+          0.9
+        ],
+        [
+          "4",
+          "3",
+          0.7
+        ],
+        [
+          "4",
+          "5",
+          0.2
+        ],
+        [
+          "6",
+          "5",
+          0.4
+        ],
+        [
+          "7",
+          "2",
+          0.3
+        ]
+      ],
+      "terminals": [
+        "0",
+        "1"
+      ],
+      "optimum": 0.65,
+      "feasible_upper": 0.65,
+      "chordal_edges": 12,
+      "elimination_width": 3
+    },
+    {
+      "id": "regular3_12_0",
+      "nodes": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "edges": [
+        [
+          "0",
+          "2",
+          0.1
+        ],
+        [
+          "0",
+          "6",
+          0.35
+        ],
+        [
+          "0",
+          "7",
+          0.75
+        ],
+        [
+          "1",
+          "5",
+          0.6
+        ],
+        [
+          "1",
+          "11",
+          0.2
+        ],
+        [
+          "2",
+          "4",
+          0.65
+        ],
+        [
+          "3",
+          "6",
+          0.5
+        ],
+        [
+          "3",
+          "8",
+          1.0
+        ],
+        [
+          "3",
+          "11",
+          0.95
+        ],
+        [
+          "4",
+          "11",
+          0.8
+        ],
+        [
+          "7",
+          "5",
+          0.45
+        ],
+        [
+          "7",
+          "8",
+          0.35
+        ],
+        [
+          "8",
+          "4",
+          0.85
+        ],
+        [
+          "9",
+          "2",
+          0.65
+        ],
+        [
+          "9",
+          "6",
+          0.45
+        ],
+        [
+          "9",
+          "10",
+          0.65
+        ],
+        [
+          "10",
+          "1",
+          0.75
+        ],
+        [
+          "10",
+          "5",
+          0.25
+        ]
+      ],
+      "terminals": [
+        "0",
+        "4",
+        "7",
+        "2"
+      ],
+      "optimum": 1.5,
+      "feasible_upper": 2.9000000000000004,
+      "chordal_edges": 24,
+      "elimination_width": 3
+    }
+  ],
+  "records": [
+    {
+      "instance": "ladder_8_0",
+      "model": "big_m",
+      "variables": 120,
+      "interactions": 877,
+      "max_abs_qubo_linear": 314.1600000000001,
+      "max_abs_qubo_quadratic": 295.68000000000006,
+      "max_abs_ising_field": 115.50000000000003,
+      "max_abs_ising_coupler": 73.92000000000002,
+      "penalty": 2.3100000000000005,
+      "feasible_reads": 0,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 0,
+      "best_feasible_cost": null,
+      "optimum": 1.2,
+      "seconds": 0.567596333,
+      "reads": 100
+    },
+    {
+      "instance": "ladder_8_0",
+      "model": "fowler",
+      "variables": 39,
+      "interactions": 165,
+      "max_abs_qubo_linear": 11.550000000000002,
+      "max_abs_qubo_quadratic": 18.480000000000004,
+      "max_abs_ising_field": 8.585,
+      "max_abs_ising_coupler": 4.620000000000001,
+      "penalty": 2.3100000000000005,
+      "feasible_reads": 100,
+      "optimal_reads": 100,
+      "zero_penalty_reads": 100,
+      "best_feasible_cost": 1.2,
+      "optimum": 1.2,
+      "seconds": 0.13151687499999998,
+      "reads": 100
+    },
+    {
+      "instance": "ladder_8_0",
+      "model": "binary_order",
+      "variables": 93,
+      "interactions": 267,
+      "max_abs_qubo_linear": 11.550000000000002,
+      "max_abs_qubo_quadratic": 9.240000000000002,
+      "max_abs_ising_field": 4.0425,
+      "max_abs_ising_coupler": 2.3100000000000005,
+      "penalty": 2.3100000000000005,
+      "feasible_reads": 0,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 0,
+      "best_feasible_cost": null,
+      "optimum": 1.2,
+      "seconds": 0.28497433299999986,
+      "reads": 100
+    },
+    {
+      "instance": "ladder_8_0",
+      "model": "chordal_local",
+      "variables": 28,
+      "interactions": 72,
+      "max_abs_qubo_linear": 5.620000000000001,
+      "max_abs_qubo_quadratic": 9.240000000000002,
+      "max_abs_ising_field": 3.915000000000001,
+      "max_abs_ising_coupler": 2.3100000000000005,
+      "penalty": 2.3100000000000005,
+      "feasible_reads": 100,
+      "optimal_reads": 100,
+      "zero_penalty_reads": 100,
+      "best_feasible_cost": 1.2,
+      "optimum": 1.2,
+      "seconds": 0.10437704200000009,
+      "reads": 100
+    },
+    {
+      "instance": "ladder_12_0",
+      "model": "big_m",
+      "variables": 236,
+      "interactions": 2285,
+      "max_abs_qubo_linear": 1293.6000000000004,
+      "max_abs_qubo_quadratic": 1182.7200000000003,
+      "max_abs_ising_field": 452.7600000000001,
+      "max_abs_ising_coupler": 295.68000000000006,
+      "penalty": 2.3100000000000005,
+      "feasible_reads": 0,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 0,
+      "best_feasible_cost": null,
+      "optimum": 2.2,
+      "seconds": 0.5674195,
+      "reads": 100
+    },
+    {
+      "instance": "ladder_12_0",
+      "model": "fowler",
+      "variables": 85,
+      "interactions": 596,
+      "max_abs_qubo_linear": 20.790000000000006,
+      "max_abs_qubo_quadratic": 27.720000000000006,
+      "max_abs_ising_field": 13.205000000000002,
+      "max_abs_ising_coupler": 6.9300000000000015,
+      "penalty": 2.3100000000000005,
+      "feasible_reads": 100,
+      "optimal_reads": 100,
+      "zero_penalty_reads": 100,
+      "best_feasible_cost": 2.2,
+      "optimum": 2.2,
+      "seconds": 0.32858341699999993,
+      "reads": 100
+    },
+    {
+      "instance": "ladder_12_0",
+      "model": "binary_order",
+      "variables": 194,
+      "interactions": 599,
+      "max_abs_qubo_linear": 11.550000000000002,
+      "max_abs_qubo_quadratic": 9.240000000000002,
+      "max_abs_ising_field": 4.0425,
+      "max_abs_ising_coupler": 2.3100000000000005,
+      "penalty": 2.3100000000000005,
+      "feasible_reads": 0,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 0,
+      "best_feasible_cost": null,
+      "optimum": 2.2,
+      "seconds": 0.5730360830000003,
+      "reads": 100
+    },
+    {
+      "instance": "ladder_12_0",
+      "model": "chordal_local",
+      "variables": 48,
+      "interactions": 125,
+      "max_abs_qubo_linear": 5.370000000000001,
+      "max_abs_qubo_quadratic": 9.240000000000002,
+      "max_abs_ising_field": 3.9650000000000007,
+      "max_abs_ising_coupler": 2.3100000000000005,
+      "penalty": 2.3100000000000005,
+      "feasible_reads": 100,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 100,
+      "best_feasible_cost": 2.9,
+      "optimum": 2.2,
+      "seconds": 0.16170820799999985,
+      "reads": 100
+    },
+    {
+      "instance": "regular3_8_0",
+      "model": "big_m",
+      "variables": 135,
+      "interactions": 1027,
+      "max_abs_qubo_linear": 92.82000000000002,
+      "max_abs_qubo_quadratic": 87.36000000000001,
+      "max_abs_ising_field": 46.41,
+      "max_abs_ising_coupler": 21.840000000000003,
+      "penalty": 0.6825000000000001,
+      "feasible_reads": 0,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 0,
+      "best_feasible_cost": null,
+      "optimum": 0.65,
+      "seconds": 0.3989274580000002,
+      "reads": 100
+    },
+    {
+      "instance": "regular3_8_0",
+      "model": "fowler",
+      "variables": 42,
+      "interactions": 185,
+      "max_abs_qubo_linear": 3.4125000000000005,
+      "max_abs_qubo_quadratic": 5.460000000000001,
+      "max_abs_ising_field": 2.8887500000000004,
+      "max_abs_ising_coupler": 1.3650000000000002,
+      "penalty": 0.6825000000000001,
+      "feasible_reads": 100,
+      "optimal_reads": 100,
+      "zero_penalty_reads": 100,
+      "best_feasible_cost": 0.65,
+      "optimum": 0.65,
+      "seconds": 0.15022258300000013,
+      "reads": 100
+    },
+    {
+      "instance": "regular3_8_0",
+      "model": "binary_order",
+      "variables": 102,
+      "interactions": 307,
+      "max_abs_qubo_linear": 3.4125000000000005,
+      "max_abs_qubo_quadratic": 2.7300000000000004,
+      "max_abs_ising_field": 1.4737500000000001,
+      "max_abs_ising_coupler": 0.6825000000000001,
+      "penalty": 0.6825000000000001,
+      "feasible_reads": 0,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 0,
+      "best_feasible_cost": null,
+      "optimum": 0.65,
+      "seconds": 0.34866699999999984,
+      "reads": 100
+    },
+    {
+      "instance": "regular3_8_0",
+      "model": "chordal_local",
+      "variables": 33,
+      "interactions": 101,
+      "max_abs_qubo_linear": 2.265,
+      "max_abs_qubo_quadratic": 2.7300000000000004,
+      "max_abs_ising_field": 1.5237500000000002,
+      "max_abs_ising_coupler": 0.6825000000000001,
+      "penalty": 0.6825000000000001,
+      "feasible_reads": 0,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 0,
+      "best_feasible_cost": null,
+      "optimum": 0.65,
+      "seconds": 0.12518645799999994,
+      "reads": 100
+    },
+    {
+      "instance": "regular3_12_0",
+      "model": "big_m",
+      "variables": 254,
+      "interactions": 2519,
+      "max_abs_qubo_linear": 1705.2,
+      "max_abs_qubo_quadratic": 1559.0400000000002,
+      "max_abs_ising_field": 803.8800000000001,
+      "max_abs_ising_coupler": 389.76000000000005,
+      "penalty": 3.0450000000000004,
+      "feasible_reads": 0,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 0,
+      "best_feasible_cost": null,
+      "optimum": 1.5,
+      "seconds": 0.6491999580000005,
+      "reads": 100
+    },
+    {
+      "instance": "regular3_12_0",
+      "model": "fowler",
+      "variables": 88,
+      "interactions": 618,
+      "max_abs_qubo_linear": 27.40500000000001,
+      "max_abs_qubo_quadratic": 36.540000000000006,
+      "max_abs_ising_field": 17.172500000000003,
+      "max_abs_ising_coupler": 9.135000000000002,
+      "penalty": 3.0450000000000004,
+      "feasible_reads": 100,
+      "optimal_reads": 100,
+      "zero_penalty_reads": 100,
+      "best_feasible_cost": 1.5,
+      "optimum": 1.5,
+      "seconds": 0.25571045799999936,
+      "reads": 100
+    },
+    {
+      "instance": "regular3_12_0",
+      "model": "binary_order",
+      "variables": 205,
+      "interactions": 650,
+      "max_abs_qubo_linear": 15.225000000000001,
+      "max_abs_qubo_quadratic": 12.180000000000001,
+      "max_abs_ising_field": 5.328750000000001,
+      "max_abs_ising_coupler": 3.0450000000000004,
+      "penalty": 3.0450000000000004,
+      "feasible_reads": 100,
+      "optimal_reads": 0,
+      "zero_penalty_reads": 100,
+      "best_feasible_cost": 3.45,
+      "optimum": 1.5,
+      "seconds": 0.661935583,
+      "reads": 100
+    },
+    {
+      "instance": "regular3_12_0",
+      "model": "chordal_local",
+      "variables": 57,
+      "interactions": 180,
+      "max_abs_qubo_linear": 7.09,
+      "max_abs_qubo_quadratic": 12.180000000000001,
+      "max_abs_ising_field": 4.992500000000001,
+      "max_abs_ising_coupler": 3.0450000000000004,
+      "penalty": 3.0450000000000004,
+      "feasible_reads": 100,
+      "optimal_reads": 100,
+      "zero_penalty_reads": 100,
+      "best_feasible_cost": 1.5,
+      "optimum": 1.5,
+      "seconds": 0.20307362499999915,
+      "reads": 100
+    }
+  ]
+}

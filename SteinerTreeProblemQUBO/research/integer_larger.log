@@ -1,0 +1,66 @@
+ladder_24_0      big_m        nv= 598 feas=  0 opt=  0 zero=  0 sec=5.71
+ladder_24_0      fowler       nv= 319 feas=  0 opt=  0 zero=  0 sec=3.82
+ladder_24_0      full_order_local nv= 319 feas=  0 opt=  0 zero=  0 sec=3.47
+ladder_24_0      binary_order nv= 517 feas=  0 opt=  0 zero=  0 sec=3.59
+ladder_24_0      chordal      nv= 124 feas= 93 opt=  1 zero= 93 sec=0.86
+ladder_24_0      chordal_fowler nv= 108 feas= 67 opt=  1 zero= 67 sec=0.86
+ladder_24_0      chordal_local nv= 108 feas= 69 opt=  1 zero= 69 sec=0.83
+ladder_24_1      big_m        nv= 598 feas=  0 opt=  0 zero=  0 sec=5.70
+ladder_24_1      fowler       nv= 319 feas=  0 opt=  0 zero=  0 sec=3.25
+ladder_24_1      full_order_local nv= 319 feas=  0 opt=  0 zero=  0 sec=2.96
+ladder_24_1      binary_order nv= 517 feas=  0 opt=  0 zero=  0 sec=3.72
+ladder_24_1      chordal      nv= 124 feas= 75 opt=  0 zero= 75 sec=0.99
+ladder_24_1      chordal_fowler nv= 108 feas= 63 opt=  2 zero= 63 sec=0.84
+ladder_24_1      chordal_local nv= 108 feas= 73 opt=  2 zero= 73 sec=0.75
+Set parameter Username
+Set parameter LicenseID to value 2801207
+Academic license - for non-commercial use only - expires 2027-04-01
+ladder_32_0      big_m        nv= 812 feas=  0 opt=  0 zero=  0 sec=9.19
+ladder_32_0      fowler       nv= 555 feas=  0 opt=  0 zero=  0 sec=5.83
+ladder_32_0      full_order_local nv= 555 feas=  0 opt=  0 zero=  0 sec=5.10
+ladder_32_0      binary_order nv= 707 feas=  0 opt=  0 zero=  0 sec=3.78
+ladder_32_0      chordal      nv= 170 feas= 60 opt=  0 zero= 60 sec=0.94
+ladder_32_0      chordal_fowler nv= 148 feas= 30 opt=  0 zero= 30 sec=1.17
+ladder_32_0      chordal_local nv= 148 feas= 46 opt=  0 zero= 46 sec=1.01
+ladder_32_1      big_m        nv= 812 feas=  0 opt=  0 zero=  0 sec=8.12
+ladder_32_1      fowler       nv= 555 feas=  0 opt=  0 zero=  0 sec=6.68
+ladder_32_1      full_order_local nv= 555 feas=  0 opt=  0 zero=  0 sec=5.59
+ladder_32_1      binary_order nv= 707 feas=  0 opt=  0 zero=  0 sec=5.07
+ladder_32_1      chordal      nv= 170 feas= 74 opt=  0 zero= 74 sec=1.23
+ladder_32_1      chordal_fowler nv= 148 feas= 33 opt=  0 zero= 33 sec=0.99
+ladder_32_1      chordal_local nv= 148 feas= 31 opt=  0 zero= 31 sec=1.03
+regular3_24_0    big_m        nv= 619 feas=  0 opt=  0 zero=  0 sec=6.10
+regular3_24_0    fowler       nv= 322 feas= 72 opt=  0 zero= 72 sec=3.82
+regular3_24_0    full_order_local nv= 322 feas= 70 opt=  0 zero= 70 sec=3.44
+regular3_24_0    binary_order nv= 530 feas=  5 opt=  0 zero=  2 sec=3.76
+regular3_24_0    chordal      nv= 148 feas=100 opt=  0 zero=100 sec=1.10
+regular3_24_0    chordal_fowler nv= 132 feas= 94 opt=  0 zero= 94 sec=1.14
+regular3_24_0    chordal_local nv= 132 feas= 96 opt=  0 zero= 96 sec=1.03
+regular3_24_1    big_m        nv= 619 feas=  0 opt=  0 zero=  0 sec=6.03
+regular3_24_1    fowler       nv= 322 feas= 53 opt=  1 zero= 53 sec=4.02
+regular3_24_1    full_order_local nv= 322 feas= 59 opt=  0 zero= 59 sec=3.54
+regular3_24_1    binary_order nv= 530 feas=  4 opt=  0 zero=  1 sec=3.68
+regular3_24_1    chordal      nv= 149 feas=100 opt=  0 zero=100 sec=1.08
+regular3_24_1    chordal_fowler nv= 133 feas= 94 opt=  1 zero= 93 sec=1.07
+regular3_24_1    chordal_local nv= 133 feas= 95 opt=  0 zero= 95 sec=1.08
+regular3_32_0    big_m        nv= 833 feas=  0 opt=  0 zero=  0 sec=8.25
+regular3_32_0    fowler       nv= 558 feas= 32 opt=  0 zero= 30 sec=7.37
+regular3_32_0    full_order_local nv= 558 feas= 27 opt=  0 zero= 26 sec=6.79
+regular3_32_0    binary_order nv= 720 feas=  1 opt=  0 zero=  0 sec=5.22
+regular3_32_0    chordal      nv= 214 feas=100 opt=  0 zero=100 sec=1.67
+regular3_32_0    chordal_fowler nv= 192 feas= 78 opt=  0 zero= 78 sec=1.63
+regular3_32_0    chordal_local nv= 192 feas= 82 opt=  0 zero= 82 sec=1.51
+regular3_32_1    big_m        nv= 833 feas=  0 opt=  0 zero=  0 sec=8.08
+regular3_32_1    fowler       nv= 558 feas= 14 opt=  0 zero= 14 sec=7.40
+regular3_32_1    full_order_local nv= 558 feas= 20 opt=  0 zero= 19 sec=6.81
+regular3_32_1    binary_order nv= 720 feas=  0 opt=  0 zero=  0 sec=5.02
+regular3_32_1    chordal      nv= 210 feas= 96 opt=  0 zero= 96 sec=1.60
+regular3_32_1    chordal_fowler nv= 188 feas= 78 opt=  0 zero= 78 sec=1.62
+regular3_32_1    chordal_local nv= 188 feas= 86 opt=  0 zero= 86 sec=1.60
+big_m {'instances_solved': 0, 'feasible_rate': 0.0, 'optimal_rate': 0.0, 'zero_penalty_rate': 0.0}
+fowler {'instances_solved': 1, 'feasible_rate': 0.21375, 'optimal_rate': 0.00125, 'zero_penalty_rate': 0.21125}
+full_order_local {'instances_solved': 0, 'feasible_rate': 0.22, 'optimal_rate': 0.0, 'zero_penalty_rate': 0.2175}
+binary_order {'instances_solved': 0, 'feasible_rate': 0.0125, 'optimal_rate': 0.0, 'zero_penalty_rate': 0.00375}
+chordal {'instances_solved': 1, 'feasible_rate': 0.8725, 'optimal_rate': 0.00125, 'zero_penalty_rate': 0.8725}
+chordal_fowler {'instances_solved': 3, 'feasible_rate': 0.67125, 'optimal_rate': 0.005, 'zero_penalty_rate': 0.67}
+chordal_local {'instances_solved': 2, 'feasible_rate': 0.7225, 'optimal_rate': 0.00375, 'zero_penalty_rate': 0.7225}

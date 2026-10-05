@@ -1,0 +1,178 @@
+[
+  {
+    "model": "Big-M depths",
+    "n": 8,
+    "variables": 120,
+    "interactions": 877,
+    "max_abs_qubo_linear": 136.0,
+    "max_abs_qubo_quadratic": 128.0,
+    "max_abs_ising_field": 50.0,
+    "max_abs_ising_coupler": 32.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Big-M depths",
+    "n": 16,
+    "variables": 327,
+    "interactions": 3193,
+    "max_abs_qubo_linear": 560.0,
+    "max_abs_qubo_quadratic": 512.0,
+    "max_abs_ising_field": 196.0,
+    "max_abs_ising_coupler": 128.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Big-M depths",
+    "n": 32,
+    "variables": 812,
+    "interactions": 9874,
+    "max_abs_qubo_linear": 2272.0,
+    "max_abs_qubo_quadratic": 2048.0,
+    "max_abs_ising_field": 776.0,
+    "max_abs_ising_coupler": 512.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Big-M depths",
+    "n": 64,
+    "variables": 1915,
+    "interactions": 27841,
+    "max_abs_qubo_linear": 9152.0,
+    "max_abs_qubo_quadratic": 8192.0,
+    "max_abs_ising_field": 3088.0,
+    "max_abs_ising_coupler": 2048.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Full ordering",
+    "n": 8,
+    "variables": 39,
+    "interactions": 165,
+    "max_abs_qubo_linear": 5.0,
+    "max_abs_qubo_quadratic": 8.0,
+    "max_abs_ising_field": 4.0,
+    "max_abs_ising_coupler": 2.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Full ordering",
+    "n": 16,
+    "variables": 147,
+    "interactions": 1518,
+    "max_abs_qubo_linear": 13.0,
+    "max_abs_qubo_quadratic": 16.0,
+    "max_abs_ising_field": 7.975,
+    "max_abs_ising_coupler": 4.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Full ordering",
+    "n": 32,
+    "variables": 555,
+    "interactions": 13825,
+    "max_abs_qubo_linear": 29.0,
+    "max_abs_qubo_quadratic": 32.0,
+    "max_abs_ising_field": 16.0,
+    "max_abs_ising_coupler": 8.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Full ordering",
+    "n": 64,
+    "variables": 2139,
+    "interactions": 119826,
+    "max_abs_qubo_linear": 61.0,
+    "max_abs_qubo_quadratic": 64.0,
+    "max_abs_ising_field": 32.125,
+    "max_abs_ising_coupler": 16.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Shared comparator",
+    "n": 8,
+    "variables": 93,
+    "interactions": 267,
+    "max_abs_qubo_linear": 5.0,
+    "max_abs_qubo_quadratic": 4.0,
+    "max_abs_ising_field": 2.0,
+    "max_abs_ising_coupler": 1.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Shared comparator",
+    "n": 16,
+    "variables": 273,
+    "interactions": 859,
+    "max_abs_qubo_linear": 5.0,
+    "max_abs_qubo_quadratic": 4.0,
+    "max_abs_ising_field": 2.0,
+    "max_abs_ising_coupler": 1.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Shared comparator",
+    "n": 32,
+    "variables": 707,
+    "interactions": 2326,
+    "max_abs_qubo_linear": 5.0,
+    "max_abs_qubo_quadratic": 4.0,
+    "max_abs_ising_field": 1.9500000000000002,
+    "max_abs_ising_coupler": 1.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Shared comparator",
+    "n": 64,
+    "variables": 1711,
+    "interactions": 5769,
+    "max_abs_qubo_linear": 5.0,
+    "max_abs_qubo_quadratic": 4.0,
+    "max_abs_ising_field": 2.0,
+    "max_abs_ising_coupler": 1.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Chordal + local parents",
+    "n": 8,
+    "variables": 28,
+    "interactions": 72,
+    "max_abs_qubo_linear": 3.0,
+    "max_abs_qubo_quadratic": 4.0,
+    "max_abs_ising_field": 1.95,
+    "max_abs_ising_coupler": 1.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Chordal + local parents",
+    "n": 16,
+    "variables": 68,
+    "interactions": 189,
+    "max_abs_qubo_linear": 3.0,
+    "max_abs_qubo_quadratic": 4.0,
+    "max_abs_ising_field": 1.875,
+    "max_abs_ising_coupler": 1.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Chordal + local parents",
+    "n": 32,
+    "variables": 148,
+    "interactions": 424,
+    "max_abs_qubo_linear": 3.0,
+    "max_abs_qubo_quadratic": 4.0,
+    "max_abs_ising_field": 2.0,
+    "max_abs_ising_coupler": 1.0,
+    "penalty": 1.0
+  },
+  {
+    "model": "Chordal + local parents",
+    "n": 64,
+    "variables": 308,
+    "interactions": 873,
+    "max_abs_qubo_linear": 3.0,
+    "max_abs_qubo_quadratic": 4.0,
+    "max_abs_ising_field": 1.9500000000000002,
+    "max_abs_ising_coupler": 1.0,
+    "penalty": 1.0
+  }
+]

@@ -1,0 +1,272 @@
+{
+ "neal|full_order_local-fowler|feas": {
+  "mean": 0.010400000000000003,
+  "lo": 0.004498749999999999,
+  "hi": 0.01675,
+  "wins": 89,
+  "losses": 65,
+  "ties": 46,
+  "p": 0.0026194769010690587
+ },
+ "neal|full_order_local-fowler|opt": {
+  "mean": 0.004600000000000003,
+  "lo": -0.001549999999999996,
+  "hi": 0.010700000000000001,
+  "wins": 71,
+  "losses": 55,
+  "ties": 74,
+  "p": 0.12822810059334483
+ },
+ "neal|full_order_local-fowler|gap": {
+  "mean": -0.008208559628069071,
+  "lo": -0.015624469978857247,
+  "hi": -0.0010089500845027507,
+  "wins": 24,
+  "losses": 44,
+  "ties": 132,
+  "p": 0.032218927387978276
+ },
+ "neal|chordal_local-chordal_fowler|feas": {
+  "mean": 0.004650000000000004,
+  "lo": -0.00030125000000000133,
+  "hi": 0.009451250000000008,
+  "wins": 85,
+  "losses": 52,
+  "ties": 63,
+  "p": 0.009114137534031083
+ },
+ "neal|chordal_local-chordal_fowler|opt": {
+  "mean": 0.0018499999999999988,
+  "lo": -0.0037012500000000005,
+  "hi": 0.0076512500000000035,
+  "wins": 64,
+  "losses": 72,
+  "ties": 64,
+  "p": 0.904853442911023
+ },
+ "neal|chordal_local-chordal_fowler|gap": {
+  "mean": 0.001459083145538491,
+  "lo": -0.006565756597458279,
+  "hi": 0.009447880621432982,
+  "wins": 32,
+  "losses": 29,
+  "ties": 139,
+  "p": 0.4379011741955393
+ },
+ "neal|chordal_fowler-fowler|feas": {
+  "mean": 0.06794999999999998,
+  "lo": 0.05215,
+  "hi": 0.08515,
+  "wins": 125,
+  "losses": 41,
+  "ties": 34,
+  "p": 2.845064074296502e-14
+ },
+ "neal|chordal_fowler-fowler|opt": {
+  "mean": 0.0099,
+  "lo": 0.0019500000000000032,
+  "hi": 0.01875,
+  "wins": 86,
+  "losses": 49,
+  "ties": 65,
+  "p": 0.01826044695267197
+ },
+ "neal|chordal_fowler-fowler|gap": {
+  "mean": -0.014452966215143888,
+  "lo": -0.02362482864966143,
+  "hi": -0.005832234508396967,
+  "wins": 19,
+  "losses": 53,
+  "ties": 128,
+  "p": 0.00038201134953465954
+ },
+ "neal|chordal_local-full_order_local|feas": {
+  "mean": 0.062200000000000005,
+  "lo": 0.047200000000000006,
+  "hi": 0.07829999999999998,
+  "wins": 124,
+  "losses": 35,
+  "ties": 41,
+  "p": 2.3093454911183724e-14
+ },
+ "neal|chordal_local-full_order_local|opt": {
+  "mean": 0.0071499999999999975,
+  "lo": 4.999999999999832e-05,
+  "hi": 0.014651250000000006,
+  "wins": 75,
+  "losses": 60,
+  "ties": 65,
+  "p": 0.13290115253621382
+ },
+ "neal|chordal_local-full_order_local|gap": {
+  "mean": -0.004785323441536324,
+  "lo": -0.011345870071937287,
+  "hi": 0.002063035463019469,
+  "wins": 26,
+  "losses": 41,
+  "ties": 133,
+  "p": 0.019477855700653184
+ },
+ "neal|chordal_local-fowler|feas": {
+  "mean": 0.07260000000000001,
+  "lo": 0.0565975,
+  "hi": 0.08955125000000001,
+  "wins": 128,
+  "losses": 32,
+  "ties": 40,
+  "p": 5.587357530241153e-17
+ },
+ "neal|chordal_local-fowler|opt": {
+  "mean": 0.01175,
+  "lo": 0.00425,
+  "hi": 0.0199,
+  "wins": 94,
+  "losses": 43,
+  "ties": 63,
+  "p": 0.0005030757278489419
+ },
+ "neal|chordal_local-fowler|gap": {
+  "mean": -0.012993883069605396,
+  "lo": -0.019637320248879056,
+  "hi": -0.006425146191915548,
+  "wins": 20,
+  "losses": 50,
+  "ties": 130,
+  "p": 0.0003454269107733577
+ },
+ "openjij_sa|full_order_local-fowler|feas": {
+  "mean": -0.002849999999999999,
+  "lo": -0.010799999999999999,
+  "hi": 0.005250000000000002,
+  "wins": 65,
+  "losses": 83,
+  "ties": 52,
+  "p": 0.26975729537784987
+ },
+ "openjij_sa|full_order_local-fowler|opt": {
+  "mean": 0.0212,
+  "lo": 0.011799999999999998,
+  "hi": 0.031049999999999994,
+  "wins": 83,
+  "losses": 55,
+  "ties": 62,
+  "p": 8.480909796751833e-05
+ },
+ "openjij_sa|full_order_local-fowler|gap": {
+  "mean": 0.003882047286263124,
+  "lo": -0.0010377955885407506,
+  "hi": 0.008514983727341168,
+  "wins": 39,
+  "losses": 23,
+  "ties": 138,
+  "p": 0.06885276737318113
+ },
+ "openjij_sa|chordal_local-chordal_fowler|feas": {
+  "mean": -0.0016000000000000005,
+  "lo": -0.006751250000000002,
+  "hi": 0.003501250000000002,
+  "wins": 75,
+  "losses": 69,
+  "ties": 56,
+  "p": 0.8150574239988985
+ },
+ "openjij_sa|chordal_local-chordal_fowler|opt": {
+  "mean": 0.009599999999999997,
+  "lo": 0.0028987499999999946,
+  "hi": 0.01705250000000001,
+  "wins": 85,
+  "losses": 51,
+  "ties": 64,
+  "p": 0.002262857947742347
+ },
+ "openjij_sa|chordal_local-chordal_fowler|gap": {
+  "mean": -0.001081683152653653,
+  "lo": -0.007765323376464645,
+  "hi": 0.005239763686808007,
+  "wins": 27,
+  "losses": 30,
+  "ties": 143,
+  "p": 0.9145824715085638
+ },
+ "openjij_sa|chordal_fowler-fowler|feas": {
+  "mean": 0.0544,
+  "lo": 0.0398,
+  "hi": 0.0697,
+  "wins": 108,
+  "losses": 42,
+  "ties": 50,
+  "p": 2.890589313810859e-12
+ },
+ "openjij_sa|chordal_fowler-fowler|opt": {
+  "mean": 0.026099999999999998,
+  "lo": 0.01484875,
+  "hi": 0.03785125,
+  "wins": 81,
+  "losses": 47,
+  "ties": 72,
+  "p": 3.194999391535391e-05
+ },
+ "openjij_sa|chordal_fowler-fowler|gap": {
+  "mean": -0.0018769738553600335,
+  "lo": -0.007490188741106278,
+  "hi": 0.0038568229174267173,
+  "wins": 30,
+  "losses": 31,
+  "ties": 139,
+  "p": 0.6328960753939576
+ },
+ "openjij_sa|chordal_local-full_order_local|feas": {
+  "mean": 0.055650000000000005,
+  "lo": 0.041597499999999996,
+  "hi": 0.07105,
+  "wins": 115,
+  "losses": 43,
+  "ties": 42,
+  "p": 1.8457826970725354e-14
+ },
+ "openjij_sa|chordal_local-full_order_local|opt": {
+  "mean": 0.014499999999999999,
+  "lo": 0.006599999999999999,
+  "hi": 0.023250000000000003,
+  "wins": 84,
+  "losses": 47,
+  "ties": 69,
+  "p": 0.002165649175691292
+ },
+ "openjij_sa|chordal_local-full_order_local|gap": {
+  "mean": -0.006840704294276811,
+  "lo": -0.012749405916809694,
+  "hi": -0.0007352877110336058,
+  "wins": 20,
+  "losses": 41,
+  "ties": 139,
+  "p": 0.010023281906857917
+ },
+ "openjij_sa|chordal_local-fowler|feas": {
+  "mean": 0.05279999999999999,
+  "lo": 0.03909875,
+  "hi": 0.06760125,
+  "wins": 112,
+  "losses": 44,
+  "ties": 44,
+  "p": 1.0208956935850578e-11
+ },
+ "openjij_sa|chordal_local-fowler|opt": {
+  "mean": 0.035699999999999996,
+  "lo": 0.0236,
+  "hi": 0.04865,
+  "wins": 103,
+  "losses": 45,
+  "ties": 52,
+  "p": 6.129505021330077e-08
+ },
+ "openjij_sa|chordal_local-fowler|gap": {
+  "mean": -0.0029586570080136865,
+  "lo": -0.009087793772197936,
+  "hi": 0.0032931583002786045,
+  "wins": 33,
+  "losses": 33,
+  "ties": 134,
+  "p": 0.537597667322752
+ }
+}

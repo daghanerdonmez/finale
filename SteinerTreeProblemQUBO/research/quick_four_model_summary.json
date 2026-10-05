@@ -1,0 +1,137 @@
+{
+ "neal|full_order_local-fowler|feas": {
+  "mean": 0.0125,
+  "lo": -0.004499999999999979,
+  "hi": 0.030999999999999993,
+  "wins": 7,
+  "losses": 8,
+  "ties": 5,
+  "p": 0.45428466796875
+ },
+ "neal|full_order_local-fowler|opt": {
+  "mean": -0.0014999999999999957,
+  "lo": -0.023,
+  "hi": 0.020000000000000004,
+  "wins": 9,
+  "losses": 9,
+  "ties": 2,
+  "p": 0.7987060546875
+ },
+ "neal|full_order_local-fowler|gap": {
+  "mean": -0.012264464346911853,
+  "lo": -0.030951476112164717,
+  "hi": 0.000990099009900991,
+  "wins": 1,
+  "losses": 3,
+  "ties": 16,
+  "p": NaN
+ },
+ "neal|chordal_local-chordal_fowler|feas": {
+  "mean": 0.019999999999999997,
+  "lo": 0.002487499999999996,
+  "hi": 0.04149999999999999,
+  "wins": 10,
+  "losses": 3,
+  "ties": 7,
+  "p": 0.0478515625
+ },
+ "neal|chordal_local-chordal_fowler|opt": {
+  "mean": 0.0225,
+  "lo": 0.0035000000000000005,
+  "hi": 0.043500000000000004,
+  "wins": 12,
+  "losses": 5,
+  "ties": 3,
+  "p": 0.044769287109375
+ },
+ "neal|chordal_local-chordal_fowler|gap": {
+  "mean": -0.014356235380030547,
+  "lo": -0.03392719468644147,
+  "hi": 0.0,
+  "wins": 0,
+  "losses": 3,
+  "ties": 17,
+  "p": NaN
+ },
+ "neal|chordal_fowler-fowler|feas": {
+  "mean": 0.046,
+  "lo": 0.0144875,
+  "hi": 0.08049999999999999,
+  "wins": 13,
+  "losses": 5,
+  "ties": 2,
+  "p": 0.010406494140625
+ },
+ "neal|chordal_fowler-fowler|opt": {
+  "mean": -0.014499999999999996,
+  "lo": -0.03749999999999999,
+  "hi": 0.005499999999999998,
+  "wins": 7,
+  "losses": 8,
+  "ties": 5,
+  "p": 0.52447509765625
+ },
+ "neal|chordal_fowler-fowler|gap": {
+  "mean": 0.004440442901617647,
+  "lo": -0.006947120530935569,
+  "hi": 0.017956310507464813,
+  "wins": 2,
+  "losses": 1,
+  "ties": 17,
+  "p": NaN
+ },
+ "neal|chordal_local-full_order_local|feas": {
+  "mean": 0.05349999999999999,
+  "lo": 0.023999999999999987,
+  "hi": 0.093,
+  "wins": 16,
+  "losses": 2,
+  "ties": 2,
+  "p": 0.00014495849609375
+ },
+ "neal|chordal_local-full_order_local|opt": {
+  "mean": 0.009499999999999998,
+  "lo": -0.008999999999999998,
+  "hi": 0.025499999999999995,
+  "wins": 10,
+  "losses": 7,
+  "ties": 3,
+  "p": 0.2246856689453125
+ },
+ "neal|chordal_local-full_order_local|gap": {
+  "mean": 0.0023486718684989525,
+  "lo": -0.0023922623476220427,
+  "hi": 0.00886024327103797,
+  "wins": 2,
+  "losses": 1,
+  "ties": 17,
+  "p": NaN
+ },
+ "neal|chordal_local-fowler|feas": {
+  "mean": 0.06599999999999999,
+  "lo": 0.032999999999999995,
+  "hi": 0.10601250000000007,
+  "wins": 15,
+  "losses": 2,
+  "ties": 3,
+  "p": 0.0001068115234375
+ },
+ "neal|chordal_local-fowler|opt": {
+  "mean": 0.008000000000000002,
+  "lo": -0.012999999999999994,
+  "hi": 0.031512500000000054,
+  "wins": 9,
+  "losses": 8,
+  "ties": 3,
+  "p": 0.54766845703125
+ },
+ "neal|chordal_local-fowler|gap": {
+  "mean": -0.0099157924784129,
+  "lo": -0.028395061728395066,
+  "hi": 0.0011560693641618602,
+  "wins": 1,
+  "losses": 2,
+  "ties": 17,
+  "p": NaN
+ }
+}

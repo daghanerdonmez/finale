@@ -1,0 +1,134 @@
+{
+  "small": [
+    {
+      "model": "big_m",
+      "instances": 18,
+      "solved": 0,
+      "feasible_percent": 0.3333333333333333,
+      "optimal_percent": 0.0,
+      "zero_penalty_percent": 0.1111111111111111
+    },
+    {
+      "model": "fowler",
+      "instances": 18,
+      "solved": 15,
+      "feasible_percent": 41.44444444444444,
+      "optimal_percent": 33.27777777777778,
+      "zero_penalty_percent": 41.44444444444444
+    },
+    {
+      "model": "full_order_p",
+      "instances": 18,
+      "solved": 12,
+      "feasible_percent": 41.5,
+      "optimal_percent": 19.333333333333332,
+      "zero_penalty_percent": 41.5
+    },
+    {
+      "model": "chordal",
+      "instances": 18,
+      "solved": 15,
+      "feasible_percent": 67.22222222222223,
+      "optimal_percent": 24.333333333333332,
+      "zero_penalty_percent": 67.22222222222223
+    },
+    {
+      "model": "circuit",
+      "instances": 18,
+      "solved": 10,
+      "feasible_percent": 13.88888888888889,
+      "optimal_percent": 9.944444444444445,
+      "zero_penalty_percent": 3.5
+    },
+    {
+      "model": "domain_wall",
+      "instances": 18,
+      "solved": 4,
+      "feasible_percent": 3.888888888888889,
+      "optimal_percent": 3.7777777777777777,
+      "zero_penalty_percent": 3.888888888888889
+    },
+    {
+      "model": "binary_order",
+      "instances": 18,
+      "solved": 12,
+      "feasible_percent": 25.11111111111111,
+      "optimal_percent": 13.88888888888889,
+      "zero_penalty_percent": 16.166666666666668
+    },
+    {
+      "model": "chordal_fowler",
+      "instances": 18,
+      "solved": 17,
+      "feasible_percent": 65.83333333333333,
+      "optimal_percent": 38.333333333333336,
+      "zero_penalty_percent": 65.83333333333333
+    },
+    {
+      "model": "chordal_local",
+      "instances": 18,
+      "solved": 16,
+      "feasible_percent": 66.83333333333333,
+      "optimal_percent": 39.0,
+      "zero_penalty_percent": 66.83333333333333
+    },
+    {
+      "model": "full_order_local",
+      "instances": 18,
+      "solved": 15,
+      "feasible_percent": 39.388888888888886,
+      "optimal_percent": 30.5,
+      "zero_penalty_percent": 39.388888888888886
+    }
+  ],
+  "larger": [
+    {
+      "model": "big_m",
+      "instances": 8,
+      "solved": 0,
+      "feasible_percent": 0.0,
+      "optimal_percent": 0.0,
+      "zero_penalty_percent": 0.0
+    },
+    {
+      "model": "fowler",
+      "instances": 8,
+      "solved": 0,
+      "feasible_percent": 10.25,
+      "optimal_percent": 0.0,
+      "zero_penalty_percent": 10.25
+    },
+    {
+      "model": "binary_order",
+      "instances": 8,
+      "solved": 0,
+      "feasible_percent": 0.625,
+      "optimal_percent": 0.0,
+      "zero_penalty_percent": 0.0
+    },
+    {
+      "model": "chordal",
+      "instances": 8,
+      "solved": 0,
+      "feasible_percent": 66.0,
+      "optimal_percent": 0.0,
+      "zero_penalty_percent": 66.0
+    },
+    {
+      "model": "chordal_fowler",
+      "instances": 8,
+      "solved": 2,
+      "feasible_percent": 52.125,
+      "optimal_percent": 2.125,
+      "zero_penalty_percent": 52.125
+    },
+    {
+      "model": "chordal_local",
+      "instances": 8,
+      "solved": 3,
+      "feasible_percent": 50.375,
+      "optimal_percent": 2.75,
+      "zero_penalty_percent": 50.375
+    }
+  ]
+}

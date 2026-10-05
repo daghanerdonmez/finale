@@ -5,3 +5,6 @@
 /plots
 /SteinerTreeProblemQUBO/STPInstances
 /.claude/worktrees
+/output
+.DS_Store
+/tmp

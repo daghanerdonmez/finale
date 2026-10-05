@@ -1,0 +1,83 @@
+{
+ "openjij_sqa|chordal_local-fowler|feas": {
+  "mean": 0.02795,
+  "lo": 0.018598749999999997,
+  "hi": 0.03935,
+  "wins": 75,
+  "losses": 9,
+  "ties": 116,
+  "p": 2.1949102450085516e-11
+ },
+ "openjij_sqa|chordal_local-fowler|opt": {
+  "mean": 0.006599999999999999,
+  "lo": 0.00365,
+  "hi": 0.0103,
+  "wins": 27,
+  "losses": 0,
+  "ties": 173,
+  "p": 1.4901161193847656e-08
+ },
+ "openjij_sqa|chordal_local-fowler|gap": {
+  "mean": -0.14246619680335595,
+  "lo": -0.2448808118876449,
+  "hi": -0.041601880908338044,
+  "wins": 21,
+  "losses": 58,
+  "ties": 121,
+  "p": 0.0002566477108040132
+ },
+ "openjij_sqa|chordal_fowler-fowler|feas": {
+  "mean": 0.0,
+  "lo": -0.0026,
+  "hi": 0.00255,
+  "wins": 31,
+  "losses": 32,
+  "ties": 137,
+  "p": 0.9780752971314852
+ },
+ "openjij_sqa|chordal_fowler-fowler|opt": {
+  "mean": 5.000000000000001e-05,
+  "lo": -0.00055,
+  "hi": 0.0007000000000000001,
+  "wins": 7,
+  "losses": 5,
+  "ties": 188,
+  "p": 0.85009765625
+ },
+ "openjij_sqa|chordal_fowler-fowler|gap": {
+  "mean": 0.003984749212411165,
+  "lo": -0.09124195560160238,
+  "hi": 0.11064771704343698,
+  "wins": 28,
+  "losses": 36,
+  "ties": 136,
+  "p": 0.6349203846446694
+ },
+ "openjij_sqa|chordal_local-full_order_local|feas": {
+  "mean": 0.00425,
+  "lo": 0.0005499999999999997,
+  "hi": 0.00825,
+  "wins": 51,
+  "losses": 32,
+  "ties": 117,
+  "p": 0.02693147256076624
+ },
+ "openjij_sqa|chordal_local-full_order_local|opt": {
+  "mean": -0.00024999999999999995,
+  "lo": -0.0018999999999999996,
+  "hi": 0.0013,
+  "wins": 11,
+  "losses": 13,
+  "ties": 176,
+  "p": 0.8333734273910522
+ },
+ "openjij_sqa|chordal_local-full_order_local|gap": {
+  "mean": -0.0003370990863186551,
+  "lo": -0.0767218085553506,
+  "hi": 0.08111898449131917,
+  "wins": 32,
+  "losses": 37,
+  "ties": 131,
+  "p": 0.713093063063688
+ }
+}

@@ -1,0 +1,305 @@
+ladder_8_0       fowler       nv=  39 feas= 95 opt= 86 zero= 95 sec=0.14
+ladder_8_0       full_order_local nv=  39 feas= 99 opt= 90 zero= 99 sec=0.13
+ladder_8_0       chordal      nv=  34 feas= 99 opt= 54 zero= 99 sec=0.10
+ladder_8_0       chordal_fowler nv=  28 feas= 99 opt= 79 zero= 99 sec=0.09
+ladder_8_0       chordal_local nv=  28 feas= 99 opt= 79 zero= 99 sec=0.09
+ladder_8_1       fowler       nv=  39 feas= 67 opt= 67 zero= 67 sec=0.13
+ladder_8_1       full_order_local nv=  39 feas= 67 opt= 67 zero= 67 sec=0.15
+ladder_8_1       chordal      nv=  34 feas= 72 opt= 71 zero= 72 sec=0.16
+ladder_8_1       chordal_fowler nv=  28 feas= 66 opt= 65 zero= 66 sec=0.08
+ladder_8_1       chordal_local nv=  28 feas= 67 opt= 67 zero= 67 sec=0.08
+ladder_8_2       fowler       nv=  39 feas= 22 opt= 13 zero= 22 sec=0.13
+ladder_8_2       full_order_local nv=  39 feas= 16 opt= 12 zero= 16 sec=0.13
+ladder_8_2       chordal      nv=  34 feas= 32 opt= 14 zero= 32 sec=0.10
+ladder_8_2       chordal_fowler nv=  28 feas= 29 opt= 23 zero= 29 sec=0.09
+ladder_8_2       chordal_local nv=  28 feas= 21 opt= 14 zero= 21 sec=0.09
+ladder_8_3       fowler       nv=  39 feas= 39 opt= 31 zero= 39 sec=0.13
+ladder_8_3       full_order_local nv=  39 feas= 40 opt= 37 zero= 40 sec=0.19
+ladder_8_3       chordal      nv=  34 feas= 38 opt= 28 zero= 38 sec=0.10
+ladder_8_3       chordal_fowler nv=  28 feas= 44 opt= 38 zero= 44 sec=0.09
+ladder_8_3       chordal_local nv=  28 feas= 40 opt= 36 zero= 40 sec=0.09
+ladder_8_4       fowler       nv=  39 feas= 59 opt= 48 zero= 59 sec=0.13
+ladder_8_4       full_order_local nv=  39 feas= 61 opt= 53 zero= 61 sec=0.13
+ladder_8_4       chordal      nv=  34 feas= 67 opt= 54 zero= 67 sec=0.10
+ladder_8_4       chordal_fowler nv=  28 feas= 59 opt= 49 zero= 59 sec=0.09
+ladder_8_4       chordal_local nv=  28 feas= 68 opt= 59 zero= 68 sec=0.09
+ladder_8_5       fowler       nv=  39 feas=  6 opt=  3 zero=  6 sec=0.19
+ladder_8_5       full_order_local nv=  39 feas= 12 opt=  5 zero= 12 sec=0.13
+ladder_8_5       chordal      nv=  34 feas= 34 opt= 12 zero= 34 sec=0.10
+ladder_8_5       chordal_fowler nv=  28 feas= 29 opt= 13 zero= 29 sec=0.09
+ladder_8_5       chordal_local nv=  28 feas= 22 opt=  8 zero= 22 sec=0.09
+ladder_8_6       fowler       nv=  39 feas= 55 opt= 55 zero= 55 sec=0.13
+ladder_8_6       full_order_local nv=  39 feas= 47 opt= 47 zero= 47 sec=0.13
+ladder_8_6       chordal      nv=  34 feas= 56 opt= 56 zero= 56 sec=0.10
+ladder_8_6       chordal_fowler nv=  28 feas= 52 opt= 52 zero= 52 sec=0.14
+ladder_8_6       chordal_local nv=  28 feas= 56 opt= 56 zero= 56 sec=0.08
+ladder_8_7       fowler       nv=  39 feas=100 opt= 91 zero=100 sec=0.13
+ladder_8_7       full_order_local nv=  39 feas=100 opt= 90 zero=100 sec=0.13
+ladder_8_7       chordal      nv=  34 feas=100 opt= 51 zero=100 sec=0.10
+ladder_8_7       chordal_fowler nv=  28 feas= 99 opt= 92 zero= 99 sec=0.09
+ladder_8_7       chordal_local nv=  28 feas= 98 opt= 81 zero= 98 sec=0.08
+ladder_8_8       fowler       nv=  39 feas= 21 opt= 21 zero= 21 sec=0.12
+ladder_8_8       full_order_local nv=  39 feas= 16 opt= 15 zero= 16 sec=0.12
+ladder_8_8       chordal      nv=  34 feas= 27 opt= 16 zero= 27 sec=0.17
+ladder_8_8       chordal_fowler nv=  28 feas= 21 opt= 20 zero= 21 sec=0.08
+ladder_8_8       chordal_local nv=  28 feas= 24 opt= 24 zero= 24 sec=0.08
+ladder_8_9       fowler       nv=  39 feas= 60 opt= 46 zero= 60 sec=0.13
+ladder_8_9       full_order_local nv=  39 feas= 58 opt= 44 zero= 58 sec=0.13
+ladder_8_9       chordal      nv=  34 feas= 55 opt= 34 zero= 55 sec=0.10
+ladder_8_9       chordal_fowler nv=  28 feas= 62 opt= 46 zero= 62 sec=0.09
+ladder_8_9       chordal_local nv=  28 feas= 67 opt= 49 zero= 67 sec=0.09
+ladder_12_0      fowler       nv=  85 feas= 57 opt= 37 zero= 57 sec=0.36
+ladder_12_0      full_order_local nv=  85 feas= 53 opt= 37 zero= 53 sec=0.29
+ladder_12_0      chordal      nv=  56 feas= 94 opt= 36 zero= 94 sec=0.16
+ladder_12_0      chordal_fowler nv=  48 feas= 75 opt= 53 zero= 75 sec=0.15
+ladder_12_0      chordal_local nv=  48 feas= 87 opt= 57 zero= 87 sec=0.15
+ladder_12_1      fowler       nv=  85 feas= 26 opt=  3 zero= 26 sec=0.36
+ladder_12_1      full_order_local nv=  85 feas= 30 opt=  5 zero= 30 sec=0.29
+ladder_12_1      chordal      nv=  56 feas= 80 opt= 10 zero= 80 sec=0.16
+ladder_12_1      chordal_fowler nv=  48 feas= 90 opt= 18 zero= 90 sec=0.15
+ladder_12_1      chordal_local nv=  48 feas= 91 opt= 16 zero= 91 sec=0.21
+ladder_12_2      fowler       nv=  85 feas= 34 opt= 12 zero= 34 sec=0.31
+ladder_12_2      full_order_local nv=  85 feas= 41 opt=  9 zero= 41 sec=0.29
+ladder_12_2      chordal      nv=  56 feas= 81 opt= 21 zero= 81 sec=0.16
+ladder_12_2      chordal_fowler nv=  48 feas= 71 opt= 18 zero= 71 sec=0.23
+ladder_12_2      chordal_local nv=  48 feas= 75 opt= 20 zero= 75 sec=0.15
+ladder_12_3      fowler       nv=  85 feas= 18 opt=  1 zero= 18 sec=0.27
+ladder_12_3      full_order_local nv=  85 feas= 18 opt=  1 zero= 18 sec=0.26
+ladder_12_3      chordal      nv=  56 feas= 71 opt=  1 zero= 71 sec=0.19
+ladder_12_3      chordal_fowler nv=  48 feas= 69 opt=  5 zero= 69 sec=0.14
+ladder_12_3      chordal_local nv=  48 feas= 69 opt=  7 zero= 69 sec=0.13
+ladder_12_4      fowler       nv=  85 feas= 56 opt=  3 zero= 56 sec=0.30
+ladder_12_4      full_order_local nv=  85 feas= 64 opt=  2 zero= 64 sec=0.31
+ladder_12_4      chordal      nv=  56 feas= 88 opt=  1 zero= 88 sec=0.24
+ladder_12_4      chordal_fowler nv=  48 feas= 87 opt= 11 zero= 87 sec=0.15
+ladder_12_4      chordal_local nv=  48 feas= 82 opt=  9 zero= 82 sec=0.15
+ladder_12_5      fowler       nv=  85 feas= 72 opt= 42 zero= 72 sec=0.32
+ladder_12_5      full_order_local nv=  85 feas= 83 opt= 53 zero= 83 sec=0.31
+ladder_12_5      chordal      nv=  56 feas= 90 opt= 34 zero= 90 sec=0.19
+ladder_12_5      chordal_fowler nv=  48 feas= 95 opt= 59 zero= 95 sec=0.15
+ladder_12_5      chordal_local nv=  48 feas= 95 opt= 47 zero= 95 sec=0.15
+ladder_12_6      fowler       nv=  85 feas= 59 opt= 49 zero= 59 sec=0.32
+ladder_12_6      full_order_local nv=  85 feas= 63 opt= 58 zero= 63 sec=0.30
+ladder_12_6      chordal      nv=  56 feas= 81 opt= 52 zero= 81 sec=0.24
+ladder_12_6      chordal_fowler nv=  48 feas= 86 opt= 80 zero= 86 sec=0.15
+ladder_12_6      chordal_local nv=  48 feas= 92 opt= 80 zero= 92 sec=0.15
+ladder_12_7      fowler       nv=  85 feas= 76 opt= 67 zero= 76 sec=0.31
+ladder_12_7      full_order_local nv=  85 feas= 89 opt= 75 zero= 89 sec=0.30
+ladder_12_7      chordal      nv=  56 feas= 99 opt= 55 zero= 99 sec=0.25
+ladder_12_7      chordal_fowler nv=  48 feas= 92 opt= 65 zero= 92 sec=0.15
+ladder_12_7      chordal_local nv=  48 feas= 93 opt= 75 zero= 93 sec=0.15
+ladder_12_8      fowler       nv=  85 feas= 38 opt= 15 zero= 38 sec=0.31
+ladder_12_8      full_order_local nv=  85 feas= 30 opt= 10 zero= 30 sec=0.30
+ladder_12_8      chordal      nv=  56 feas= 76 opt= 14 zero= 76 sec=0.23
+ladder_12_8      chordal_fowler nv=  48 feas= 86 opt= 27 zero= 86 sec=0.15
+ladder_12_8      chordal_local nv=  48 feas= 83 opt= 26 zero= 83 sec=0.15
+ladder_12_9      fowler       nv=  85 feas= 94 opt= 79 zero= 94 sec=0.31
+ladder_12_9      full_order_local nv=  85 feas= 94 opt= 80 zero= 94 sec=0.29
+ladder_12_9      chordal      nv=  56 feas=100 opt= 81 zero=100 sec=0.23
+ladder_12_9      chordal_fowler nv=  48 feas= 99 opt= 90 zero= 99 sec=0.15
+ladder_12_9      chordal_local nv=  48 feas= 98 opt= 88 zero= 98 sec=0.14
+ladder_16_0      fowler       nv= 147 feas=  6 opt=  4 zero=  6 sec=0.50
+ladder_16_0      full_order_local nv= 147 feas=  7 opt=  3 zero=  7 sec=0.53
+ladder_16_0      chordal      nv=  79 feas= 85 opt=  9 zero= 85 sec=0.24
+ladder_16_0      chordal_fowler nv=  68 feas= 73 opt= 26 zero= 73 sec=0.19
+ladder_16_0      chordal_local nv=  68 feas= 76 opt= 43 zero= 76 sec=0.18
+ladder_16_1      fowler       nv= 147 feas=  0 opt=  0 zero=  0 sec=0.54
+ladder_16_1      full_order_local nv= 147 feas=  2 opt=  0 zero=  2 sec=0.58
+ladder_16_1      chordal      nv=  79 feas= 44 opt=  0 zero= 44 sec=0.23
+ladder_16_1      chordal_fowler nv=  68 feas= 39 opt=  0 zero= 39 sec=0.21
+ladder_16_1      chordal_local nv=  68 feas= 43 opt=  1 zero= 43 sec=0.20
+ladder_16_2      fowler       nv= 147 feas=  6 opt=  0 zero=  5 sec=0.65
+ladder_16_2      full_order_local nv= 147 feas= 10 opt=  0 zero= 10 sec=0.54
+ladder_16_2      chordal      nv=  79 feas= 76 opt=  0 zero= 76 sec=0.23
+ladder_16_2      chordal_fowler nv=  68 feas= 55 opt=  1 zero= 55 sec=0.22
+ladder_16_2      chordal_local nv=  68 feas= 60 opt=  1 zero= 60 sec=0.23
+ladder_16_3      fowler       nv= 147 feas=  8 opt=  0 zero=  8 sec=0.55
+ladder_16_3      full_order_local nv= 147 feas=  8 opt=  0 zero=  8 sec=0.58
+ladder_16_3      chordal      nv=  79 feas= 91 opt=  1 zero= 91 sec=0.22
+ladder_16_3      chordal_fowler nv=  68 feas= 70 opt=  2 zero= 70 sec=0.27
+ladder_16_3      chordal_local nv=  68 feas= 69 opt=  1 zero= 69 sec=0.26
+ladder_16_4      fowler       nv= 147 feas= 19 opt=  1 zero= 19 sec=0.57
+ladder_16_4      full_order_local nv= 147 feas= 19 opt=  1 zero= 19 sec=0.60
+ladder_16_4      chordal      nv=  79 feas= 86 opt=  1 zero= 86 sec=0.22
+ladder_16_4      chordal_fowler nv=  68 feas= 68 opt=  1 zero= 68 sec=0.21
+ladder_16_4      chordal_local nv=  68 feas= 73 opt=  3 zero= 73 sec=0.26
+ladder_16_5      fowler       nv= 147 feas=  7 opt=  0 zero=  7 sec=0.55
+ladder_16_5      full_order_local nv= 147 feas=  8 opt=  0 zero=  8 sec=0.58
+ladder_16_5      chordal      nv=  79 feas= 85 opt=  1 zero= 85 sec=0.23
+ladder_16_5      chordal_fowler nv=  68 feas= 66 opt=  0 zero= 66 sec=0.21
+ladder_16_5      chordal_local nv=  68 feas= 79 opt=  0 zero= 79 sec=0.20
+ladder_16_6      fowler       nv= 147 feas=  3 opt=  0 zero=  3 sec=0.55
+ladder_16_6      full_order_local nv= 147 feas=  2 opt=  0 zero=  2 sec=0.46
+ladder_16_6      chordal      nv=  79 feas= 75 opt=  0 zero= 75 sec=0.23
+ladder_16_6      chordal_fowler nv=  68 feas= 57 opt=  1 zero= 57 sec=0.19
+ladder_16_6      chordal_local nv=  68 feas= 70 opt=  1 zero= 70 sec=0.18
+ladder_16_7      fowler       nv= 147 feas=  0 opt=  0 zero=  0 sec=0.48
+ladder_16_7      full_order_local nv= 147 feas=  2 opt=  0 zero=  2 sec=0.40
+ladder_16_7      chordal      nv=  79 feas= 58 opt=  0 zero= 58 sec=0.32
+ladder_16_7      chordal_fowler nv=  68 feas= 44 opt=  0 zero= 44 sec=0.17
+ladder_16_7      chordal_local nv=  68 feas= 47 opt=  3 zero= 47 sec=0.16
+ladder_16_8      fowler       nv= 147 feas= 43 opt= 15 zero= 43 sec=0.71
+ladder_16_8      full_order_local nv= 147 feas= 44 opt= 19 zero= 44 sec=0.56
+ladder_16_8      chordal      nv=  79 feas= 97 opt=  9 zero= 97 sec=0.24
+ladder_16_8      chordal_fowler nv=  68 feas= 86 opt= 28 zero= 86 sec=0.23
+ladder_16_8      chordal_local nv=  68 feas= 91 opt= 24 zero= 91 sec=0.30
+ladder_16_9      fowler       nv= 147 feas= 21 opt= 11 zero= 21 sec=0.56
+ladder_16_9      full_order_local nv= 147 feas= 22 opt= 15 zero= 22 sec=0.62
+ladder_16_9      chordal      nv=  79 feas= 95 opt=  6 zero= 95 sec=0.23
+ladder_16_9      chordal_fowler nv=  68 feas= 79 opt= 25 zero= 79 sec=0.21
+ladder_16_9      chordal_local nv=  68 feas= 78 opt= 27 zero= 78 sec=0.26
+regular3_8_0     fowler       nv=  42 feas= 47 opt= 47 zero= 47 sec=0.14
+regular3_8_0     full_order_local nv=  42 feas= 53 opt= 53 zero= 53 sec=0.14
+regular3_8_0     chordal      nv=  39 feas= 55 opt= 55 zero= 55 sec=0.11
+regular3_8_0     chordal_fowler nv=  33 feas= 63 opt= 63 zero= 63 sec=0.10
+regular3_8_0     chordal_local nv=  33 feas= 56 opt= 56 zero= 56 sec=0.10
+regular3_8_1     fowler       nv=  42 feas= 38 opt= 30 zero= 38 sec=0.14
+regular3_8_1     full_order_local nv=  42 feas= 36 opt= 31 zero= 36 sec=0.14
+regular3_8_1     chordal      nv=  39 feas= 36 opt= 20 zero= 36 sec=0.17
+regular3_8_1     chordal_fowler nv=  33 feas= 35 opt= 28 zero= 35 sec=0.10
+regular3_8_1     chordal_local nv=  33 feas= 38 opt= 28 zero= 38 sec=0.10
+regular3_8_2     fowler       nv=  42 feas= 48 opt= 48 zero= 48 sec=0.14
+regular3_8_2     full_order_local nv=  42 feas= 60 opt= 60 zero= 60 sec=0.13
+regular3_8_2     chordal      nv=  38 feas= 53 opt= 49 zero= 53 sec=0.11
+regular3_8_2     chordal_fowler nv=  32 feas= 44 opt= 44 zero= 44 sec=0.10
+regular3_8_2     chordal_local nv=  32 feas= 43 opt= 43 zero= 43 sec=0.09
+regular3_8_3     fowler       nv=  42 feas= 98 opt= 24 zero= 98 sec=0.20
+regular3_8_3     full_order_local nv=  42 feas= 96 opt= 32 zero= 96 sec=0.14
+regular3_8_3     chordal      nv=  39 feas= 98 opt= 19 zero= 98 sec=0.11
+regular3_8_3     chordal_fowler nv=  33 feas= 96 opt= 26 zero= 96 sec=0.10
+regular3_8_3     chordal_local nv=  33 feas= 95 opt= 29 zero= 95 sec=0.10
+regular3_8_4     fowler       nv=  42 feas= 65 opt= 65 zero= 65 sec=0.14
+regular3_8_4     full_order_local nv=  42 feas= 72 opt= 72 zero= 72 sec=0.14
+regular3_8_4     chordal      nv=  38 feas= 73 opt= 73 zero= 73 sec=0.13
+regular3_8_4     chordal_fowler nv=  32 feas= 67 opt= 66 zero= 67 sec=0.12
+regular3_8_4     chordal_local nv=  32 feas= 64 opt= 64 zero= 64 sec=0.09
+regular3_8_5     fowler       nv=  42 feas= 75 opt= 74 zero= 75 sec=0.14
+regular3_8_5     full_order_local nv=  42 feas= 76 opt= 74 zero= 76 sec=0.14
+regular3_8_5     chordal      nv=  39 feas= 81 opt= 77 zero= 81 sec=0.11
+regular3_8_5     chordal_fowler nv=  33 feas= 79 opt= 75 zero= 79 sec=0.10
+regular3_8_5     chordal_local nv=  33 feas= 83 opt= 80 zero= 83 sec=0.10
+regular3_8_6     fowler       nv=  42 feas= 72 opt= 23 zero= 72 sec=0.14
+regular3_8_6     full_order_local nv=  42 feas= 75 opt= 30 zero= 75 sec=0.20
+regular3_8_6     chordal      nv=  39 feas= 77 opt= 21 zero= 77 sec=0.11
+regular3_8_6     chordal_fowler nv=  33 feas= 78 opt= 22 zero= 78 sec=0.10
+regular3_8_6     chordal_local nv=  33 feas= 80 opt= 29 zero= 80 sec=0.10
+regular3_8_7     fowler       nv=  42 feas= 92 opt= 92 zero= 92 sec=0.13
+regular3_8_7     full_order_local nv=  42 feas= 96 opt= 96 zero= 96 sec=0.13
+regular3_8_7     chordal      nv=  39 feas= 91 opt= 91 zero= 91 sec=0.11
+regular3_8_7     chordal_fowler nv=  33 feas= 87 opt= 87 zero= 87 sec=0.11
+regular3_8_7     chordal_local nv=  33 feas= 97 opt= 97 zero= 97 sec=0.12
+regular3_8_8     fowler       nv=  42 feas=  4 opt=  1 zero=  4 sec=0.14
+regular3_8_8     full_order_local nv=  42 feas= 10 opt=  4 zero= 10 sec=0.14
+regular3_8_8     chordal      nv=  39 feas= 20 opt=  4 zero= 20 sec=0.11
+regular3_8_8     chordal_fowler nv=  33 feas= 20 opt=  6 zero= 20 sec=0.11
+regular3_8_8     chordal_local nv=  33 feas=  8 opt=  5 zero=  8 sec=0.11
+regular3_8_9     fowler       nv=  42 feas= 55 opt= 52 zero= 55 sec=0.14
+regular3_8_9     full_order_local nv=  42 feas= 48 opt= 46 zero= 48 sec=0.20
+regular3_8_9     chordal      nv=  38 feas= 42 opt= 41 zero= 42 sec=0.11
+regular3_8_9     chordal_fowler nv=  32 feas= 52 opt= 49 zero= 52 sec=0.10
+regular3_8_9     chordal_local nv=  32 feas= 65 opt= 62 zero= 65 sec=0.10
+regular3_12_0    fowler       nv=  88 feas= 99 opt= 59 zero= 99 sec=0.31
+regular3_12_0    full_order_local nv=  88 feas=100 opt= 69 zero=100 sec=0.36
+regular3_12_0    chordal      nv=  65 feas=100 opt= 13 zero=100 sec=0.19
+regular3_12_0    chordal_fowler nv=  57 feas=100 opt= 65 zero=100 sec=0.18
+regular3_12_0    chordal_local nv=  57 feas=100 opt= 60 zero=100 sec=0.18
+regular3_12_1    fowler       nv=  88 feas=100 opt= 98 zero=100 sec=0.36
+regular3_12_1    full_order_local nv=  88 feas=100 opt=100 zero=100 sec=0.29
+regular3_12_1    chordal      nv=  63 feas=100 opt= 97 zero=100 sec=0.18
+regular3_12_1    chordal_fowler nv=  55 feas= 99 opt= 98 zero= 99 sec=0.17
+regular3_12_1    chordal_local nv=  55 feas=100 opt= 98 zero=100 sec=0.17
+regular3_12_2    fowler       nv=  88 feas= 38 opt=  5 zero= 38 sec=0.32
+regular3_12_2    full_order_local nv=  88 feas= 34 opt=  1 zero= 34 sec=0.35
+regular3_12_2    chordal      nv=  62 feas= 92 opt=  2 zero= 92 sec=0.18
+regular3_12_2    chordal_fowler nv=  54 feas= 64 opt=  5 zero= 64 sec=0.17
+regular3_12_2    chordal_local nv=  54 feas= 75 opt=  1 zero= 75 sec=0.18
+regular3_12_3    fowler       nv=  88 feas= 97 opt= 17 zero= 97 sec=0.41
+regular3_12_3    full_order_local nv=  88 feas= 95 opt= 14 zero= 95 sec=0.31
+regular3_12_3    chordal      nv=  65 feas=100 opt=  7 zero=100 sec=0.19
+regular3_12_3    chordal_fowler nv=  57 feas= 98 opt= 14 zero= 98 sec=0.18
+regular3_12_3    chordal_local nv=  57 feas= 96 opt= 19 zero= 96 sec=0.18
+regular3_12_4    fowler       nv=  88 feas=100 opt= 20 zero=100 sec=0.36
+regular3_12_4    full_order_local nv=  88 feas= 99 opt= 16 zero= 99 sec=0.30
+regular3_12_4    chordal      nv=  65 feas=100 opt= 14 zero=100 sec=0.19
+regular3_12_4    chordal_fowler nv=  57 feas=100 opt= 21 zero=100 sec=0.18
+regular3_12_4    chordal_local nv=  57 feas= 99 opt= 16 zero= 99 sec=0.18
+regular3_12_5    fowler       nv=  88 feas= 81 opt= 53 zero= 81 sec=0.43
+regular3_12_5    full_order_local nv=  88 feas= 84 opt= 56 zero= 84 sec=0.31
+regular3_12_5    chordal      nv=  65 feas= 86 opt= 24 zero= 86 sec=0.21
+regular3_12_5    chordal_fowler nv=  57 feas= 95 opt= 60 zero= 95 sec=0.19
+regular3_12_5    chordal_local nv=  57 feas= 93 opt= 53 zero= 93 sec=0.19
+regular3_12_6    fowler       nv=  88 feas= 96 opt=  2 zero= 96 sec=0.40
+regular3_12_6    full_order_local nv=  88 feas= 97 opt=  3 zero= 97 sec=0.30
+regular3_12_6    chordal      nv=  65 feas= 99 opt=  1 zero= 99 sec=0.20
+regular3_12_6    chordal_fowler nv=  57 feas= 99 opt=  4 zero= 99 sec=0.19
+regular3_12_6    chordal_local nv=  57 feas= 97 opt=  4 zero= 97 sec=0.19
+regular3_12_7    fowler       nv=  88 feas= 96 opt= 44 zero= 96 sec=0.46
+regular3_12_7    full_order_local nv=  88 feas= 96 opt= 50 zero= 96 sec=0.31
+regular3_12_7    chordal      nv=  66 feas= 99 opt= 21 zero= 99 sec=0.19
+regular3_12_7    chordal_fowler nv=  58 feas=100 opt= 44 zero=100 sec=0.18
+regular3_12_7    chordal_local nv=  58 feas= 99 opt= 41 zero= 99 sec=0.18
+regular3_12_8    fowler       nv=  88 feas= 91 opt=  7 zero= 91 sec=0.36
+regular3_12_8    full_order_local nv=  88 feas= 96 opt=  7 zero= 96 sec=0.30
+regular3_12_8    chordal      nv=  61 feas= 87 opt=  3 zero= 87 sec=0.18
+regular3_12_8    chordal_fowler nv=  53 feas= 96 opt=  9 zero= 96 sec=0.17
+regular3_12_8    chordal_local nv=  53 feas= 96 opt=  5 zero= 96 sec=0.17
+regular3_12_9    fowler       nv=  88 feas= 94 opt=  7 zero= 94 sec=0.32
+regular3_12_9    full_order_local nv=  88 feas= 93 opt= 12 zero= 93 sec=0.33
+regular3_12_9    chordal      nv=  65 feas= 94 opt=  4 zero= 94 sec=0.19
+regular3_12_9    chordal_fowler nv=  57 feas= 98 opt= 13 zero= 98 sec=0.18
+regular3_12_9    chordal_local nv=  57 feas= 99 opt= 15 zero= 99 sec=0.18
+regular3_16_0    fowler       nv= 150 feas= 95 opt= 45 zero= 95 sec=0.78
+regular3_16_0    full_order_local nv= 150 feas= 99 opt= 55 zero= 99 sec=0.57
+regular3_16_0    chordal      nv=  92 feas=100 opt= 10 zero=100 sec=0.27
+regular3_16_0    chordal_fowler nv=  81 feas= 99 opt= 33 zero= 99 sec=0.26
+regular3_16_0    chordal_local nv=  81 feas= 98 opt= 27 zero= 98 sec=0.31
+regular3_16_1    fowler       nv= 150 feas= 47 opt= 25 zero= 47 sec=0.58
+regular3_16_1    full_order_local nv= 150 feas= 49 opt= 31 zero= 49 sec=0.61
+regular3_16_1    chordal      nv=  93 feas= 80 opt= 27 zero= 80 sec=0.27
+regular3_16_1    chordal_fowler nv=  82 feas= 65 opt= 37 zero= 65 sec=0.26
+regular3_16_1    chordal_local nv=  82 feas= 82 opt= 52 zero= 82 sec=0.31
+regular3_16_2    fowler       nv= 150 feas= 35 opt=  0 zero= 35 sec=0.58
+regular3_16_2    full_order_local nv= 150 feas= 50 opt=  0 zero= 50 sec=0.64
+regular3_16_2    chordal      nv=  91 feas= 91 opt=  0 zero= 91 sec=0.28
+regular3_16_2    chordal_fowler nv=  80 feas= 72 opt=  0 zero= 72 sec=0.26
+regular3_16_2    chordal_local nv=  80 feas= 76 opt=  0 zero= 76 sec=0.30
+regular3_16_3    fowler       nv= 150 feas= 72 opt=  5 zero= 72 sec=0.60
+regular3_16_3    full_order_local nv= 150 feas= 74 opt=  6 zero= 74 sec=0.60
+regular3_16_3    chordal      nv=  94 feas=100 opt=  3 zero=100 sec=0.27
+regular3_16_3    chordal_fowler nv=  83 feas= 91 opt=  6 zero= 91 sec=0.27
+regular3_16_3    chordal_local nv=  83 feas= 96 opt=  2 zero= 96 sec=0.32
+regular3_16_4    fowler       nv= 150 feas= 77 opt= 37 zero= 77 sec=0.58
+regular3_16_4    full_order_local nv= 150 feas= 81 opt= 30 zero= 81 sec=0.61
+regular3_16_4    chordal      nv=  92 feas= 97 opt=  8 zero= 97 sec=0.27
+regular3_16_4    chordal_fowler nv=  81 feas= 97 opt= 37 zero= 97 sec=0.26
+regular3_16_4    chordal_local nv=  81 feas= 98 opt= 41 zero= 98 sec=0.31
+regular3_16_5    fowler       nv= 150 feas= 89 opt= 59 zero= 89 sec=0.58
+regular3_16_5    full_order_local nv= 150 feas= 94 opt= 69 zero= 94 sec=0.60
+regular3_16_5    chordal      nv=  95 feas= 92 opt= 24 zero= 92 sec=0.28
+regular3_16_5    chordal_fowler nv=  84 feas=100 opt= 54 zero=100 sec=0.27
+regular3_16_5    chordal_local nv=  84 feas=100 opt= 64 zero=100 sec=0.32
+regular3_16_6    fowler       nv= 150 feas= 84 opt=  0 zero= 84 sec=0.58
+regular3_16_6    full_order_local nv= 150 feas= 91 opt=  0 zero= 91 sec=0.60
+regular3_16_6    chordal      nv=  87 feas=100 opt=  0 zero=100 sec=0.25
+regular3_16_6    chordal_fowler nv=  76 feas= 94 opt=  0 zero= 94 sec=0.24
+regular3_16_6    chordal_local nv=  76 feas= 98 opt=  0 zero= 98 sec=0.29
+regular3_16_7    fowler       nv= 150 feas= 55 opt=  2 zero= 55 sec=0.58
+regular3_16_7    full_order_local nv= 150 feas= 62 opt=  3 zero= 62 sec=0.60
+regular3_16_7    chordal      nv=  90 feas=100 opt=  0 zero=100 sec=0.26
+regular3_16_7    chordal_fowler nv=  79 feas= 95 opt=  1 zero= 95 sec=0.25
+regular3_16_7    chordal_local nv=  79 feas= 94 opt=  6 zero= 94 sec=0.30
+regular3_16_8    fowler       nv= 150 feas= 92 opt=  3 zero= 92 sec=0.58
+regular3_16_8    full_order_local nv= 150 feas= 90 opt=  3 zero= 90 sec=0.60
+regular3_16_8    chordal      nv=  87 feas= 97 opt=  0 zero= 97 sec=0.25
+regular3_16_8    chordal_fowler nv=  76 feas= 98 opt=  0 zero= 98 sec=0.24
+regular3_16_8    chordal_local nv=  76 feas= 99 opt=  2 zero= 99 sec=0.30
+regular3_16_9    fowler       nv= 150 feas= 96 opt= 17 zero= 96 sec=0.58
+regular3_16_9    full_order_local nv= 150 feas= 97 opt= 18 zero= 97 sec=0.60
+regular3_16_9    chordal      nv=  87 feas=100 opt=  2 zero=100 sec=0.25
+regular3_16_9    chordal_fowler nv=  76 feas= 99 opt= 15 zero= 99 sec=0.24
+regular3_16_9    chordal_local nv=  76 feas=100 opt=  9 zero=100 sec=0.29
+fowler {'instances_solved': 52, 'feasible_rate': 0.5658333333333333, 'optimal_rate': 0.2935, 'zero_penalty_rate': 0.5656666666666667}
+full_order_local {'instances_solved': 52, 'feasible_rate': 0.5846666666666667, 'optimal_rate': 0.3115, 'zero_penalty_rate': 0.5846666666666667}
+chordal {'instances_solved': 52, 'feasible_rate': 0.7953333333333333, 'optimal_rate': 0.23866666666666667, 'zero_penalty_rate': 0.7953333333333333}
+chordal_fowler {'instances_solved': 54, 'feasible_rate': 0.7545, 'optimal_rate': 0.32816666666666666, 'zero_penalty_rate': 0.7545}
+chordal_local {'instances_solved': 57, 'feasible_rate': 0.7728333333333334, 'optimal_rate': 0.335, 'zero_penalty_rate': 0.7728333333333334}
